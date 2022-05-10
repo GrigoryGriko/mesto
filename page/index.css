@@ -1,0 +1,61 @@
+@import url(../styles/vendor/normalize.css);
+@import url(../styles/vendor/fonts.css);
+
+
+.section {
+  max-width: 880px;
+  width: calc(100% - 400px);
+  border: 1px rgb(89, 7, 121) solid;
+}
+.section_size_full {
+  width: 100%;
+  border: 1px green solid;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #000000;
+  font-family: 'Inter', Arial, sans-serif;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  min-height: 74px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  margin-top: 40px;
+}
+
+.profile {
+  min-height: 120px;
+}
+
+.elements-grid {
+  margin-top: 50px;
+}
+.elements-grid__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: row;
+  gap: 17px 20px;
+}
+.elements-grid__item {
+  font-size: 0;
+}
