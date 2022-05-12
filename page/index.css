@@ -1,6 +1,12 @@
 @import url(../styles/vendor/normalize.css);
-/*@import url(../styles/vendor/fonts.css);*/
+@import url(../styles/vendor/fonts.css);
 
+
+.block_flex_center {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+}
 
 .section {
   max-width: 880px;
@@ -8,7 +14,6 @@
 }
 .section_size_full {
   width: 100%;
-  border: 1px green solid;
 }
 
 .page {
@@ -51,6 +56,7 @@
 }
 
 .profile {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -65,28 +71,31 @@
 
 .profile__info {
   margin-left: 30px;
-
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, auto);
-  grid-auto-flow: row;
-  gap: 0 18px;
-  align-items: end;
 }
 .profile__info-name {
   margin: 0;
 
   font-weight: 500;
   font-size: 42px;
-  line-height: 48px;
+  /*line-height: 48px;*/
   color: #fff;
 
 }
 .profile__button-edit {
+
   width: 24px;
   height: 24px;
   border: 1px solid #fff;
+  margin-left: 18px;
   background: transparent;
+
+  background-image: url(../images/button-edit.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  object-position: center;
+}
+
+  cursor: pointer;
 }
 .profile__icon-edit {
 
@@ -95,17 +104,28 @@
 .profile__info-descript {
   margin: 0;
 
+  width: 100%;
+  min-height: 18px;
   font-weight: 400;
   font-size: 18px;
-  line-height: 22px;
+  /*line-height: 22px;*/
   color: #fff;
 }
 
 .profile__button-add {
+  position: absolute;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 150px;
   height: 50px;
   border: 2px solid #fff;
   background: transparent;
+
+  cursor: pointer;
 }
 .profile__icon-add {
 
@@ -128,4 +148,27 @@
 }
 .elements-grid__item {
   font-size: 0;
+
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.elements-grid__place-name {
+  margin: 0;
+
+  position: relative;
+
+  margin: 25px 0 31px 21px;
+  min-width: 246px;
+
+  font-weight: 900;
+  font-size: 24px;
+  color: #000;
+}
+
+.elements-grid__like {
+  position: absolute;
+  right: 15px;
+  bottom: 3px;
 }
