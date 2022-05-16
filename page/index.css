@@ -183,6 +183,11 @@
 .profile__info-name {
   margin: 0;
 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  max-width: 294px;
   font-weight: 500;
   font-size: 42px;
   /*line-height: 48px;*/
@@ -212,8 +217,12 @@
 .profile__info-descript {
   margin: 0;
 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   margin-top: 16px;
-  width: 100%;
+  max-width: 336px;
   min-height: 18px;
   font-weight: 400;
   font-size: 18px;
@@ -285,10 +294,14 @@
 .elements-grid__place-name {
   margin: 0;
 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   position: relative;
 
-  margin: 25px 0 31px 21px;
-  max-height: 23px;
+  margin: 25px 0 27px 21px;
+  /*max-height: 23px;*/
   min-width: 246px;
 
   font-weight: 900;
@@ -400,6 +413,7 @@
     margin-left: 0;
   }
   .profile__info-name {
+    max-width: 189px;
     font-size: 26px;
   }
   .profile__button-edit {
@@ -409,6 +423,7 @@
     background-size: 7.5px 7.5px;
   }
   .profile__info-descript {
+    max-width: 282px;
     text-align: center;
     margin-top: 14px;
   }
