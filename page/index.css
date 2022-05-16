@@ -23,9 +23,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.overlay {
+.popup {
+  display: none;
+
   position: fixed;
-  display: flex;
   justify-content: center;
   align-items: center ;
   background-color: rgba(0, 0, 0, .5);
@@ -33,8 +34,11 @@
   height: 100vh;
   z-index: 998;
 }
+.popup_opened {
+  display: flex;
+}
 
-.form {
+.popup__container {
   position: relative;
   min-width: 430px;
   min-height: 330px;
@@ -49,7 +53,7 @@
   background-color: #fff;
   z-index: 999;
 }
-.form__button-close {
+.popup__button-close {
   position: absolute;
   right: -40px;
   top: -40px;
@@ -68,18 +72,18 @@
   cursor: pointer;
 }
 
-.form__content {
+.popup__content {
   max-width: 358px;
 }
 
-.form__header {
+.popup__header {
   max-width: 330px;
   margin: 0;
 
   font-size: 24px;
   font-weight: 900;
 }
-.form__input {
+.popup__input {
   width: 100%;
 
   font-size: 14px;
@@ -91,14 +95,26 @@
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
-.form__input_name_margin {
+.popup__input_general_properties {
+  width: 100%;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  padding-bottom: 13px;
+
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.popup__name-input {
   margin-top: 54px;
 }
-.form__input_descript_margin {
+.popup__job-input {
   margin-top: 30px;
 }
 
-.form__button-save {
+.popup__button-save {
   width: 100%;
   height: 58px;
   margin-top: 48px;
@@ -178,6 +194,7 @@
   width: 24px;
   height: 24px;
   border: 1px solid #fff;
+  outline: none;
   margin-left: 18px;
 
   background-color: transparent;
@@ -215,6 +232,7 @@
   width: 150px;
   height: 50px;
   border: 2px solid #fff;
+  outline: none;
 
   background-color: transparent;
   background-image: url(../images/button-add.svg);
@@ -321,11 +339,11 @@
   }
 
 
-  .form {
+  .popup__container {
     min-width: 282px;
     min-height: 322px;
   }
-  .form__button-close {
+  .popup__button-close {
     right: 0;
     top: -36px;
 
@@ -334,20 +352,20 @@
     background-size: 20px 20px;
   }
 
-  .form__content {
+  .popup__content {
     max-width: 238px;
   }
 
-  .form__header {
+  .popup__header {
     width: 100%;
     font-size: 18px;
   }
 
-  .form__input_name_margin {
+  .popup__name-input {
     margin-top: 75px;
   }
 
-  .form__button-save {
+  .popup__button-save {
     height: 46px;
     margin-top: 45px;
     font-size: 14px;
