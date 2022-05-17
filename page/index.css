@@ -229,7 +229,7 @@
   white-space: nowrap;
   overflow: hidden;
 
-  margin-top: 16px;
+  margin-top: 6px;
   max-width: 336px;
   min-height: 18px;
   font-weight: 400;
@@ -309,7 +309,7 @@
 
   position: relative;
 
-  margin: 25px 0 27px 21px;
+  margin: 25px 0 26px 21px;
   /*max-height: 23px;*/
   min-width: 246px;
 
@@ -433,7 +433,7 @@
   .profile__info-descript {
     max-width: 282px;
     text-align: center;
-    margin-top: 14px;
+    margin-top: 9px;
   }
 
   .profile__button-add {
