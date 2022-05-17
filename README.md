@@ -11,4 +11,4 @@
 
 
 Ссылка на GitHub Pages:
-https://grigorygriko.github.io/mesto//index.html
+https://grigorygriko.github.io/mesto/index.html
