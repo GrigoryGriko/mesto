@@ -8,15 +8,15 @@
 </head>
 <body>
   <div class="page">
-    <div class="overlay">
-      <form class="form">
-        <button class="form__button-close"></button>
+    <div class="popup">
+      <form class="popup__container">
+        <button class="popup__button-close"></button>
 
-        <div class="form__content">
-          <h2 class="form__header">Редактировать профиль</h2>
-          <input class="form__input form__input_name_margin" type="text" value="Жак-Ив Кусто">
-          <input class="form__input form__input_descript_margin" type="text" value="Исследователь океана">
-          <button class="form__button-save">Сохранить</button>
+        <div class="popup__content">
+          <h2 class="popup__header">Редактировать профиль</h2>
+          <input class="popup__name-input popup__input_general_properties" type="text" value="">
+          <input class="popup__job-input popup__input_general_properties" type="text" value="">
+          <button class="popup__button-save">Сохранить</button>
         </div>
       </form>
     </div>
@@ -29,9 +29,7 @@
         <img class="profile__avatar" src="./images/avatar.jpg">
         <div class="profile__info">
           <div class="profile__name-edit-wrapper">
-            <h1 class="profile__info-name">
-              Жак-Ив Кусто
-            </h1>
+            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
             <button class="profile__button-edit"></button>
           </div>
 
@@ -107,9 +105,11 @@
       </section>
 
       <footer class="footer section_size_full">
-        &copy;&nbsp;2020 Mesto Russia
+        &copy;&nbsp;2022 Mesto Russia
       </footer>
     </main>
   </div>
+
+  <script src="./js/script.js"></script>
 </body>
 </html>
