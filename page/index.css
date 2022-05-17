@@ -348,13 +348,6 @@
   align-self: flex-start;
 }
 
-
-/*@media screen and (min-width: 691px) and (max-width: 885px) {
-  .elements-grid__list {
-    grid-template-columns: repeat(2, 282px);
-  }
-}*/
-
 @media screen and (min-width: 726px) and (max-width: 982px) {
   .elements-grid__list {
     grid-template-columns: repeat(2, 282px);
@@ -466,3 +459,4 @@
     margin-top: 48px;
     margin-bottom: 36px;
   }
+}
