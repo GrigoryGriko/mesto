@@ -35,5 +35,3 @@ setInputValue();
 
 buttonClose.addEventListener('click', formClose);
 buttonSave.addEventListener('click', formSubmitSave);
-
-
