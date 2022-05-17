@@ -1,5 +1,5 @@
-@import url(../styles/vendor/normalize.css);
-@import url(../styles/vendor/fonts.css);
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
 
 
 @import url(../blocks/section/section.css);
@@ -42,5 +42,5 @@
 @import url(../blocks/profile/__info-descript/profile__info-descript.css);
 @import url(../blocks/profile/__info-name/profile__info-name.css);
 @import url(../blocks/profile/__info/profile__info.css);
-@import url(../blocks/profile/__name-edit-wrapper/profile__name-edit-wrapper.css);
+@import url(../blocks/profile/__wrapper/profile__wrapper.css);
 /**/
