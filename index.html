@@ -17,12 +17,12 @@
         <div class="profile__info">
           <div class="profile__wrapper">
             <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-            <button class="profile__button-edit"></button>
+            <button class="profile__button-edit" type="button"></button>
           </div>
 
           <p class="profile__info-descript">Исследователь океана</p>
         </div>
-        <button class="profile__button-add"></button>
+        <button class="profile__button-add" type="button"></button>
       </section>
 
       <section class="elements-grid section-size-full">
@@ -34,7 +34,7 @@
               <h2 class="elements-grid__place-name">
                 Карачаевск
               </h2>
-              <button class="elements-grid__like"></button>
+              <button class="elements-grid__like" type="submit"></button>
             </div>
 
           </li>
@@ -45,7 +45,7 @@
               <h2 class="elements-grid__place-name">
                 Эльбрус
               </h2>
-              <button class="elements-grid__like"></button>
+              <button class="elements-grid__like" type="submit"></button>
             </div>
           </li>
           <li class="elements-grid__item">
@@ -55,7 +55,7 @@
               <h2 class="elements-grid__place-name">
                 Домбай
               </h2>
-              <button class="elements-grid__like"></button>
+              <button class="elements-grid__like" type="submit"></button>
             </div>
           </li>
           <li class="elements-grid__item">
@@ -65,7 +65,7 @@
               <h2 class="elements-grid__place-name">
                 Карачаевск
               </h2>
-              <button class="elements-grid__like"></button>
+              <button class="elements-grid__like" type="submit"></button>
             </div>
           </li>
           <li class="elements-grid__item">
@@ -75,7 +75,7 @@
               <h2 class="elements-grid__place-name">
                 Эльбрус
               </h2>
-              <button class="elements-grid__like"></button>
+              <button class="elements-grid__like" type="submit"></button>
             </div>
           </li>
           <li class="elements-grid__item">
@@ -85,31 +85,31 @@
               <h2 class="elements-grid__place-name">
                 Домбай
               </h2>
-              <button class="elements-grid__like"></button>
+              <button class="elements-grid__like" type="submit"></button>
             </div>
           </li>
         </ul>
       </section>
 
       <footer class="footer section-size-full">
-        &copy;&nbsp;2022 Mesto Russia
+        <p class="footer__text">&copy;&nbsp;2022 Mesto Russia</p>
       </footer>
     </main>
 
     <div class="popup">
-      <form class="popup__container">
-        <button class="popup__button-close"></button>
+      <form class="popup__container" name="form-edit-info" action="" method="post">
+        <button class="popup__button-close" type="button"></button>
 
         <div class="popup__content">
           <h2 class="popup__header">Редактировать профиль</h2>
-          <input class="popup__name-input input-general-properties" type="text" value="">
-          <input class="popup__job-input input-general-properties" type="text" value="">
-          <button class="popup__button-save">Сохранить</button>
+          <input class="popup__name-input input-general-properties" name="your-name" type="text" value="">
+          <input class="popup__job-input input-general-properties" name="your-job" type="text" value="">
+          <button class="popup__button-save" type="submit">Сохранить</button>
         </div>
       </form>
     </div>
   </div>
 
-  <script src="./js/script.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

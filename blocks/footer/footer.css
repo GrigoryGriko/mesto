@@ -2,8 +2,6 @@
   margin-top: 66px;
   margin-bottom: 60px;
   width: 318px;
-  color: #545454;
-  font-size: 18px;
   align-self: flex-start;
 }
 
@@ -12,6 +10,5 @@
     width: 100%;
     margin-top: 48px;
     margin-bottom: 36px;
-    font-size: 14px;
   }
 }
