@@ -1,0 +1,9 @@
+.elements-grid__item {
+  font-size: 0;
+
+  max-width: 282px;
+
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
