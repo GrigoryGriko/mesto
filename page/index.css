@@ -128,6 +128,11 @@
   border-radius: 2px;
 
   cursor: pointer;
+
+  transition: .3s ease opacity;
+}
+.popup__button-save:hover {
+  opacity: .8;
 }
 
 
@@ -209,10 +214,13 @@
   background-position: center;
 
   cursor: pointer;
-}
-.profile__icon-edit {
 
+  transition: .3s ease opacity;
 }
+.profile__button-edit:hover {
+    opacity: .6;
+}
+
 
 .profile__info-descript {
   margin: 0;
@@ -250,9 +258,10 @@
   background-position: center;
 
   cursor: pointer;
+  transition: .3s ease opacity;
 }
-.profile__icon-add {
-
+.profile__button-add:hover {
+  opacity: .6;
 }
 
 
@@ -322,7 +331,13 @@
   background-position: center;
 
   border: none;
+  outline: none;
   cursor: pointer;
+
+  transition: .3s ease opacity;
+}
+.elements-grid__like:hover {
+  opacity: .5;
 }
 
 .footer {
@@ -385,7 +400,6 @@
   }
 
 
-
   .header {
     margin-top: 28px;
     min-height: 56px;
@@ -422,6 +436,7 @@
     margin-left: 10px;
     background-size: 7.5px 7.5px;
   }
+
   .profile__info-descript {
     max-width: 282px;
     text-align: center;
