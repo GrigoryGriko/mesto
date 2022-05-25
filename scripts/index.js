@@ -26,21 +26,12 @@ function openForm(popupId) {
   setInputValue();
 }
 
-function closePopup(popupId) {
-  if (popupId === 'popupEditForm') {
-    popupId = 0;
-  }
-  else if (popupId === 'popupAddForm') {
-    popupId = 1;
-  }
-
-  function closeForm(popupId) {
-    popup[popupId].classList.remove('popup_opened');
-  }
-
-  buttonClose[popupId].addEventListener( 'click', function() {
-    closeForm(popupId);
-  }, false);
+function closePopup() {
+  Array.from(popup).forEach((item, index) => {
+    buttonClose[index].addEventListener( 'click', function() {
+      item.classList.remove('popup_opened');
+    }, false);
+  });
 }
 
 function SubmitSaveForm(e) {
@@ -58,8 +49,7 @@ buttonAdd.addEventListener( 'click', function() {
   openForm(popupAddForm);
 }, false);
 
-closePopup('popupEditForm');
-closePopup('popupAddForm');
+closePopup();
 
 buttonSave.addEventListener('click', SubmitSaveForm);
 
