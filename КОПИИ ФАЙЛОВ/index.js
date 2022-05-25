@@ -25,24 +25,9 @@ function openForm(popupId) {
   popupId.classList.add('popup_opened');
   setInputValue();
 }
-
-function closePopup(popupId) {
-  if (popupId === 'popupEditForm') {
-    popupId = 0;
-  }
-  else if (popupId === 'popupAddForm') {
-    popupId = 1;
-  }
-
-  function closeForm(popupId) {
-    popup[popupId].classList.remove('popup_opened');
-  }
-
-  buttonClose[popupId].addEventListener( 'click', function() {
-    closeForm(popupId);
-  }, false);
+function closeForm(i) {
+  popup[i].classList.remove('popup_opened');
 }
-
 function SubmitSaveForm(e) {
   e.preventDefault();
   textName.textContent = inputName.value;
@@ -58,8 +43,9 @@ buttonAdd.addEventListener( 'click', function() {
   openForm(popupAddForm);
 }, false);
 
-closePopup('popupEditForm');
-closePopup('popupAddForm');
+
+buttonClose[0].addEventListener('click', closeForm);
+buttonClose[1].addEventListener('click', closeForm);
 
 buttonSave.addEventListener('click', SubmitSaveForm);
 
