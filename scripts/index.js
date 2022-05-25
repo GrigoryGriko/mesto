@@ -34,4 +34,3 @@ function formSubmitSave(e) {
 buttonEdit.addEventListener('click', formEdit);
 buttonClose.addEventListener('click', formClose);
 buttonSave.addEventListener('click', formSubmitSave);
-/**/
