@@ -27,29 +27,37 @@ function openForm(popupId) {
 }
 
 function closePopup() {
-  Array.from(popup).forEach((item, index) => {
-    buttonClose[index].addEventListener( 'click', function() {
-      item.classList.remove('popup_opened');
+  Array.from(popup).forEach((item) => {
+    item.classList.remove('popup_opened');
+  });
+}
+function closeFormClick() {
+  Array.from(buttonClose).forEach((item) => {
+    item.addEventListener( 'click', function() {
+      closePopup();
     }, false);
   });
 }
+
+closeFormClick();
+
 
 function SubmitSaveForm(e) {
   e.preventDefault();
   textName.textContent = inputName.value;
   textJob.textContent = inputJob.value;
-  closeForm();
+  closePopup();
 }
 
+function openFormClick(buttonName, formName) {
+  buttonName.addEventListener( 'click', function() {
+    openForm(formName);
+  }, false);
+}
 
-buttonEdit.addEventListener( 'click', function() {
-  openForm(popupEditForm);
-}, false);
-buttonAdd.addEventListener( 'click', function() {
-  openForm(popupAddForm);
-}, false);
+openFormClick(buttonEdit, popupEditForm);
+openFormClick(buttonAdd, popupAddForm);
 
-closePopup();
 
 buttonSave.addEventListener('click', SubmitSaveForm);
 
