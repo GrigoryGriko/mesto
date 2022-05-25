@@ -34,3 +34,56 @@ function formSubmitSave(e) {
 buttonEdit.addEventListener('click', formEdit);
 buttonClose.addEventListener('click', formClose);
 buttonSave.addEventListener('click', formSubmitSave);
+
+
+
+
+const elementsGrid = page.querySelector('.elements-grid__list');
+
+const cardsList = [
+  {
+    name: 'Архыз',
+    link: './images/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: './images/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: './images/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: './images/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: './images/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: './images/baikal.jpg'
+  }
+];
+
+function initialCards(cardsList=[]) {
+  cardsList.forEach(function (item) {
+    elementsGrid.insertAdjacentHTML('afterbegin', `
+    <li class="elements-grid__item">
+      <img class="elements-grid__image" src="${item.link}" alt="${item.name}">
+
+      <div class="elements-grid__text-like-wrapper">
+        <h2 class="elements-grid__place-name">
+          ${item.name}
+        </h2>
+        <button class="elements-grid__like" type="button"></button>
+      </div>
+
+    </li>
+    `);
+  })
+}
+
+
+initialCards(cardsList);

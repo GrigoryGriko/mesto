@@ -6,6 +6,7 @@
 @import url(../blocks/section-size-full/section-size-full.css);
 
 @import url(../blocks/content/content.css);
+@import url(../blocks/elements-grid/__image/elements-grid__image.css);
 @import url(../blocks/elements-grid/__item/elements-grid__item.css);
 @import url(../blocks/elements-grid/__like/elements-grid__like.css);
 @import url(../blocks/elements-grid/__list/elements-grid__list.css);
