@@ -72,6 +72,13 @@ function addCardToList(itemName, itemLink) {
 
   const popupTemplate = document.getElementById('popup-template').content;
   const popup = popupTemplate.querySelector('.popup').cloneNode(true);
+  const popup__Image = popup.querySelector('.popup__full-image');
+  const popup__PlaceName = popup.querySelector('.popup__caption');
+
+  popup__Image.setAttribute('src', itemLink);
+  popup__Image.setAttribute('alt', itemName);
+  popup__PlaceName.textContent = itemName;
+
 
   elementsGrid__Image.addEventListener('click', function() {    /*checkpoint не закрывается на крестик открытое изображение*/
     popup.classList.add('popup_opened');
@@ -107,7 +114,6 @@ function closePopup() {
 const popup = page.querySelectorAll('.popup');
 const buttonClose = page.querySelectorAll('.popup__button-close');
 
-console.log(buttonClose);
 function closeFormClick() {
   Array.from(buttonClose).forEach((item) => {
     item.addEventListener( 'click', function() {
