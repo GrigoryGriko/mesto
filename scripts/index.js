@@ -73,11 +73,7 @@ function addCardToList(itemName, itemLink) {
   const popupTemplate = document.getElementById('popup-template').content;
   const popup = popupTemplate.querySelector('.popup').cloneNode(true);
 
-
-  const cardImage = popup.querySelector('.popup__full-image');
-  console.log(cardImage);
-  cardImage.addEventListener('click', function() {  /*не ловится событие клика*/
-    console.log(111);
+  elementsGrid__Image.addEventListener('click', function() {    /*checkpoint не закрывается на крестик открытое изображение*/
     popup.classList.add('popup_opened');
   });
 
