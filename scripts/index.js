@@ -21,7 +21,7 @@ let textName = page.querySelector('.profile__info-name');
 let textJob = page.querySelector('.profile__info-descript');
 
 
-const elementsGrid = page.querySelector('.elements-grid__list');
+const elementsGridContainer = page.querySelector('.elements-grid__list');
 const cardsList = [
   {
     name: 'Архыз',
@@ -50,19 +50,16 @@ const cardsList = [
 ];
 
 function addCardToList(itemName, itemLink) {
-  elementsGrid.insertAdjacentHTML('afterbegin', `
-  <li class="elements-grid__item">
-    <img class="elements-grid__image" src="${itemLink}" alt="${itemName}">
+  const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
+  const elementsGridItem = elementsGridTemplate.querySelector('.elements-grid__item').cloneNode(true);
+  const elementsGrid__Image = elementsGridItem.querySelector('.elements-grid__image');
+  const elementsGrid__PlaceName = elementsGridItem.querySelector('.elements-grid__place-name');
 
-    <div class="elements-grid__text-like-wrapper">
-      <h2 class="elements-grid__place-name">
-        ${itemName}
-      </h2>
-      <button class="elements-grid__like" type="button"></button>
-    </div>
+  elementsGrid__Image.setAttribute('src', itemLink);
+  elementsGrid__Image.setAttribute('alt', itemName);
+  elementsGrid__PlaceName.textContent = itemName;
 
-  </li>
-  `);
+  elementsGridContainer.prepend(elementsGridItem);
 }
 function initialCards(cardsList=[]) {
   cardsList.forEach(function (item) {
@@ -71,7 +68,6 @@ function initialCards(cardsList=[]) {
 }
 
 initialCards(cardsList);
-
 
 function setInputValue() {
   NameInput.value = textName.textContent;
