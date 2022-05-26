@@ -9,6 +9,7 @@
 @import url(../blocks/elements-grid/__image/elements-grid__image.css);
 @import url(../blocks/elements-grid/__item/elements-grid__item.css);
 @import url(../blocks/elements-grid/__like/elements-grid__like.css);
+@import url(../blocks/elements-grid/__like/_active/elements-grid__like_active.css);
 @import url(../blocks/elements-grid/__list/elements-grid__list.css);
 @import url(../blocks/elements-grid/__place-name/elements-grid__place-name.css);
 @import url(../blocks/elements-grid/__text-like-wrapper/elements-grid__text-like-wrapper.css);

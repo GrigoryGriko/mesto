@@ -59,6 +59,11 @@ function addCardToList(itemName, itemLink) {
   elementsGrid__Image.setAttribute('alt', itemName);
   elementsGrid__PlaceName.textContent = itemName;
 
+  const buttonLike = elementsGridItem.querySelector('.elements-grid__like');
+  buttonLike.addEventListener('click', function(evt) {
+    evt.target.classList.toggle('elements-grid__like_active');
+  });
+
   elementsGridContainer.prepend(elementsGridItem);
 }
 function initialCards(cardsList=[]) {
