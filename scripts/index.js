@@ -64,6 +64,11 @@ function addCardToList(itemName, itemLink) {
     evt.target.classList.toggle('elements-grid__like_active');
   });
 
+  const buttonDelete = elementsGridItem.querySelector('.elements-grid__delete');
+  buttonDelete.addEventListener('click', function(evt) {
+    elementsGridItem.remove();
+  });
+
   elementsGridContainer.prepend(elementsGridItem);
 }
 function initialCards(cardsList=[]) {
