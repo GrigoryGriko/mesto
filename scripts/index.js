@@ -69,6 +69,19 @@ function addCardToList(itemName, itemLink) {
     elementsGridItem.remove();
   });
 
+
+  const popupTemplate = document.getElementById('popup-template').content;
+  const popup = popupTemplate.querySelector('.popup').cloneNode(true);
+
+
+  const cardImage = popup.querySelector('.popup__full-image');
+  console.log(cardImage);
+  cardImage.addEventListener('click', function() {  /*не ловится событие клика*/
+    console.log(111);
+    popup.classList.add('popup_opened');
+  });
+
+  page.append(popup);
   elementsGridContainer.prepend(elementsGridItem);
 }
 function initialCards(cardsList=[]) {
