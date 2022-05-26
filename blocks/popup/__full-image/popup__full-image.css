@@ -1,0 +1,4 @@
+.popup__full-image {
+  position: relative;
+  max-height: calc(100vh - 180px);
+}
