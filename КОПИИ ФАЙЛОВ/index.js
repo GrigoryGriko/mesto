@@ -21,7 +21,7 @@ let textName = page.querySelector('.profile__info-name');
 let textJob = page.querySelector('.profile__info-descript');
 
 
-const elementsGrid = page.querySelector('.elements-grid__list');
+const elementsGridContainer = page.querySelector('.elements-grid__list');
 const cardsList = [
   {
     name: 'Архыз',
@@ -50,19 +50,35 @@ const cardsList = [
 ];
 
 function addCardToList(itemName, itemLink) {
-  elementsGrid.insertAdjacentHTML('afterbegin', `
-  <li class="elements-grid__item">
-    <img class="elements-grid__image" src="${itemLink}" alt="${itemName}">
+  const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
+  const elementsGridItem = elementsGridTemplate.querySelector('.elements-grid__item').cloneNode(true);
+  const elementsGrid__Image = elementsGridItem.querySelector('.elements-grid__image');
+  const elementsGrid__PlaceName = elementsGridItem.querySelector('.elements-grid__place-name');
 
-    <div class="elements-grid__text-like-wrapper">
-      <h2 class="elements-grid__place-name">
-        ${itemName}
-      </h2>
-      <button class="elements-grid__like" type="button"></button>
-    </div>
+  elementsGrid__Image.setAttribute('src', itemLink);
+  elementsGrid__Image.setAttribute('alt', itemName);
+  elementsGrid__PlaceName.textContent = itemName;
 
-  </li>
-  `);
+  const buttonLike = elementsGridItem.querySelector('.elements-grid__like');
+  buttonLike.addEventListener('click', function(evt) {
+    evt.target.classList.toggle('elements-grid__like_active');
+  });
+
+  const buttonDelete = elementsGridItem.querySelector('.elements-grid__delete');
+  buttonDelete.addEventListener('click', function(evt) {
+    elementsGridItem.remove();
+  });
+
+
+  const popupTemplate = document.getElementById('popup-template').content;
+  const popup = popupTemplate.querySelector('.popup').cloneNode(true);
+
+  elementsGrid__Image.addEventListener('click', function() {    /*checkpoint не закрывается на крестик открытое изображение*/
+    popup.classList.add('popup_opened');
+  });
+
+  page.append(popup);
+  elementsGridContainer.prepend(elementsGridItem);
 }
 function initialCards(cardsList=[]) {
   cardsList.forEach(function (item) {
@@ -71,7 +87,6 @@ function initialCards(cardsList=[]) {
 }
 
 initialCards(cardsList);
-
 
 function setInputValue() {
   NameInput.value = textName.textContent;
@@ -83,36 +98,37 @@ function openForm(popupId) {
   setInputValue();
 }
 
-
-function closePopup(nameButton, action='default') {
-  if (action === 'default') {
-    nameButton.addEventListener('click', function() {
-      (nameButton.parentElement.parentElement.parentElement).classList.remove('popup_opened');
-    });
-  } else {
-    nameButton.addEventListener('click', function() {
-      (nameButton.parentElement.parentElement).classList.remove('popup_opened');
-    });
-  }
+function closePopup() {
+  Array.from(popup).forEach((item) => {
+    item.classList.remove('popup_opened');
+  });
 }
+function closeFormClick() {
+  Array.from(buttonClose).forEach((item) => {
+    item.addEventListener( 'click', function() {
+      closePopup();
+    }, false);
+  });
+}
+
+closeFormClick();
+
 
 function SubmitSaveForm(e) {
   e.preventDefault();
   textName.textContent = NameInput.value;
   textJob.textContent = JobInput.value;
-  closePopup(buttonSave);
+  closePopup();
 }
 
 function SubmitAddCard(e) {
   e.preventDefault();
   addCardToList(CardNameInput.value, CardLinkInput.value);
-  closePopup(buttonAddCard);
+  closePopup();
 }
 
 buttonSave.addEventListener('click', SubmitSaveForm);
 buttonAddCard.addEventListener('click', SubmitAddCard);
-closePopup(buttonClose[0], 'close');
-closePopup(buttonClose[1], 'close');
 
 
 function openFormClick(buttonName, formName) {

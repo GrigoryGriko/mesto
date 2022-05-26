@@ -2,12 +2,12 @@ const page = document.querySelector('.page');
 const buttonEdit = page.querySelector('.profile__button-edit');
 const buttonAdd = page.querySelector('.profile__button-add');
 
-const popup = page.querySelectorAll('.popup');
+
 const popupEditForm = page.querySelector('#edit-form');
 const popupAddForm = page.querySelector('#add-form');
 
 const popupContainer = page.querySelector('.popup__container');
-const buttonClose = page.querySelectorAll('.popup__button-close');
+
 const buttonSave = page.querySelector('#button-save-data');
 const buttonAddCard = page.querySelector('#button-add-card');
 
@@ -103,6 +103,11 @@ function closePopup() {
     item.classList.remove('popup_opened');
   });
 }
+
+const popup = page.querySelectorAll('.popup');
+const buttonClose = page.querySelectorAll('.popup__button-close');
+
+console.log(buttonClose);
 function closeFormClick() {
   Array.from(buttonClose).forEach((item) => {
     item.addEventListener( 'click', function() {
