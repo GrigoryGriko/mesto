@@ -79,9 +79,6 @@ function openForm(popupId) {
   setInputValue();
 }
 
-
-const popup = page.querySelectorAll('.popup'); /*удалить наверное*/
-
 function closeEventClick(popup) {
   popup.classList.remove('popup_opened');
 }
