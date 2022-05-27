@@ -3,8 +3,9 @@ const buttonEdit = page.querySelector('.profile__button-edit');
 const buttonAdd = page.querySelector('.profile__button-add');
 
 
-const popupEditForm = page.querySelector('#edit-form');
-const popupAddForm = page.querySelector('#add-form');
+const popupEditData = page.querySelector('.popup_edit_data');
+const popupAddCard = page.querySelector('.popup_add_card');
+const popupShowImage = page.querySelector('.popup_show_image');
 
 
 const buttonSave = page.querySelector('#button-save-data');
@@ -43,7 +44,6 @@ function addCardToList(cardsList) {
     cardElement.remove();
   });
 
-  const popupShowImage = page.querySelector('.popup_show_image');
   const popupImageLink = popupShowImage.querySelector('.popup__full-image');
   const popupPlaceName = popupShowImage.querySelector('.popup__caption');
 
@@ -80,7 +80,7 @@ function openForm(popupId) {
 }
 
 
-const popup = page.querySelectorAll('.popup');
+const popup = page.querySelectorAll('.popup'); /*удалить наверное*/
 
 function closeEventClick(popup) {
   popup.classList.remove('popup_opened');
@@ -92,25 +92,26 @@ function closePopup(popup) {
   });
 }
 
-closePopup(popup[0]);
-closePopup(popup[1]);
-closePopup(popup[2]);
+
+closePopup(popupEditData);
+closePopup(popupAddCard);
+closePopup(popupShowImage);
 
 
 function handleSaveForm(e) {
   e.preventDefault();
   textName.textContent = nameInput.value;
   textJob.textContent = jobInput.value;
-  closeEventClick(popup[0]);
+  closeEventClick(popupEditData);
 }
 
 function handleAddCardButton(e) {
   e.preventDefault();
   addCardToList(cardNameInput.value, cardLinkInput.value);
-  closeEventClick(popup[1]);
+  closeEventClick(popupAddCard);
 }
 
-popupEditForm.addEventListener('submit', handleSaveForm);
+popupEditData.addEventListener('submit', handleSaveForm);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 
 
@@ -120,5 +121,5 @@ function openFormClick(buttonName, formName) {
   }, false);
 }
 
-openFormClick(buttonEdit, popupEditForm);
-openFormClick(buttonAdd, popupAddForm);
+openFormClick(buttonEdit, popupEditData);
+openFormClick(buttonAdd, popupAddCard);
