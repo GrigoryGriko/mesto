@@ -44,22 +44,18 @@ function addCardToList(cardsList) {
     cardElement.remove();
   });
 
-/*
-  const popup = popupTemplate.querySelector('.popup').cloneNode(true);
-  const popupImage = popup.querySelector('.popup__full-image');
-  const popupPlaceName = popup.querySelector('.popup__caption');
+  const popupShowImage = page.querySelector('.popup_show_image');
+  const popupImageLink = popupShowImage.querySelector('.popup__full-image');
+  const popupPlaceName = popupShowImage.querySelector('.popup__caption');
 
-  popupImage.setAttribute('src', cardsList.link);
-  popupImage.setAttribute('alt', cardsList.name);
-  popupPlaceName.textContent = cardsList.name;
-  closePopup(popup);
-*/
+  elementsGridImage.addEventListener('click', function() {
+  popupImageLink.setAttribute('src', cardsList.link);
+    popupImageLink.setAttribute('alt', cardsList.name);
+    popupPlaceName.textContent = cardsList.name;
 
-  elementsGridImage.addEventListener('click', function() {    /*отслеживаем клик по картинки карточки, чтобы открыть общий popup и подставить в него соответсвующие этой карточке значения*/
-    popup.classList.add('popup_opened');
+    popupShowImage.classList.add('popup_opened');
   });
 
-  page.append(popup);
   elementsGridContainer.prepend(cardElement);
 }
 function initialCards(cardsList=[]) {
@@ -95,6 +91,7 @@ function closePopup(popup) {
 
 closePopup(popup[0]);
 closePopup(popup[1]);
+closePopup(popup[2]);
 
 
 function SubmitSaveForm(e) {
