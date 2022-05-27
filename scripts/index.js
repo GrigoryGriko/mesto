@@ -22,7 +22,7 @@ const textJob = page.querySelector('.profile__info-descript');
 
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
-const popupTemplate = document.getElementById('popup-template').content;
+/*const popupTemplate = document.getElementById('popup-template').content;*/
 
 function addCardToList(cardsList) {
 
@@ -44,7 +44,7 @@ function addCardToList(cardsList) {
     cardElement.remove();
   });
 
-
+/*
   const popup = popupTemplate.querySelector('.popup').cloneNode(true);
   const popupImage = popup.querySelector('.popup__full-image');
   const popupPlaceName = popup.querySelector('.popup__caption');
@@ -53,8 +53,9 @@ function addCardToList(cardsList) {
   popupImage.setAttribute('alt', cardsList.name);
   popupPlaceName.textContent = cardsList.name;
   closePopup(popup);
+*/
 
-  elementsGridImage.addEventListener('click', function() {
+  elementsGridImage.addEventListener('click', function() {    /*отслеживаем клик по картинки карточки, чтобы открыть общий popup и подставить в него соответсвующие этой карточке значения*/
     popup.classList.add('popup_opened');
   });
 
