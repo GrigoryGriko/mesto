@@ -78,9 +78,9 @@ function addCardToList(itemName, itemLink) {
   popup__Image.setAttribute('src', itemLink);
   popup__Image.setAttribute('alt', itemName);
   popup__PlaceName.textContent = itemName;
+  closePopup(popup);
 
-
-  elementsGrid__Image.addEventListener('click', function() {    /*checkpoint не закрывается на крестик открытое изображение*/
+  elementsGrid__Image.addEventListener('click', function() {
     popup.classList.add('popup_opened');
   });
 
@@ -105,37 +105,35 @@ function openForm(popupId) {
   setInputValue();
 }
 
-function closePopup() {
-  Array.from(popup).forEach((item) => {
-    item.classList.remove('popup_opened');
-  });
-}
 
 const popup = page.querySelectorAll('.popup');
-const buttonClose = page.querySelectorAll('.popup__button-close');
 
-function closeFormClick() {
-  Array.from(buttonClose).forEach((item) => {
-    item.addEventListener( 'click', function() {
-      closePopup();
-    }, false);
+function closeEventClick(popup) {
+  popup.classList.remove('popup_opened');
+}
+function closePopup(popup) {
+  const buttonClose = popup.querySelector('.popup__button-close');
+  buttonClose.addEventListener('click', function() {
+    closeEventClick(popup);
   });
 }
 
-closeFormClick();
+
+closePopup(popup[0]);
+closePopup(popup[1]);
 
 
 function SubmitSaveForm(e) {
   e.preventDefault();
   textName.textContent = NameInput.value;
   textJob.textContent = JobInput.value;
-  closePopup();
+  closeEventClick(popup[0]);
 }
 
 function SubmitAddCard(e) {
   e.preventDefault();
   addCardToList(CardNameInput.value, CardLinkInput.value);
-  closePopup();
+  closeEventClick(popup[1]);
 }
 
 buttonSave.addEventListener('click', SubmitSaveForm);
@@ -150,4 +148,3 @@ function openFormClick(buttonName, formName) {
 
 openFormClick(buttonEdit, popupEditForm);
 openFormClick(buttonAdd, popupAddForm);
-/**/
