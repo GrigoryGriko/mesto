@@ -49,6 +49,7 @@ const cardsList = [
   }
 ];
 
+
 function addCardToList(itemName, itemLink) {
   const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
   const elementsGridItem = elementsGridTemplate.querySelector('.elements-grid__item').cloneNode(true);
@@ -117,7 +118,6 @@ function closePopup(popup) {
     closeEventClick(popup);
   });
 }
-
 
 closePopup(popup[0]);
 closePopup(popup[1]);
