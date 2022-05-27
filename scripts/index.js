@@ -53,7 +53,7 @@ function addCardToList(cardsList) {
     popupImageLink.setAttribute('alt', cardsList.name);
     popupPlaceName.textContent = cardsList.name;
 
-    popupShowImage.classList.add('popup_opened');
+    openPopup(popupShowImage);
   });
 
   elementsGridContainer.prepend(cardElement);
@@ -71,8 +71,12 @@ function setInputValue() {
   jobInput.value = textJob.textContent;
 }
 
-function openForm(popupId) {
+function openPopup(popupId) {
   popupId.classList.add('popup_opened');
+}
+
+function openForm(popupId) {
+  openPopup(popupId);
   setInputValue();
 }
 
