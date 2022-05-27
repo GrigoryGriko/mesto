@@ -22,7 +22,6 @@ const textJob = page.querySelector('.profile__info-descript');
 
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
-/*const popupTemplate = document.getElementById('popup-template').content;*/
 
 function addCardToList(cardsList) {
 
@@ -111,7 +110,7 @@ function handleAddCardButton(e) {
   closeEventClick(popup[1]);
 }
 
-buttonSave.addEventListener('click', handleSaveForm);
+popupEditForm.addEventListener('submit', handleSaveForm);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 
 
