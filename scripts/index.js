@@ -98,21 +98,21 @@ closePopup(popup[1]);
 closePopup(popup[2]);
 
 
-function SubmitSaveForm(e) {
+function handleSaveForm(e) {
   e.preventDefault();
   textName.textContent = nameInput.value;
   textJob.textContent = jobInput.value;
   closeEventClick(popup[0]);
 }
 
-function SubmitAddCard(e) {
+function handleAddCardButton(e) {
   e.preventDefault();
   addCardToList(cardNameInput.value, cardLinkInput.value);
   closeEventClick(popup[1]);
 }
 
-buttonSave.addEventListener('click', SubmitSaveForm);
-buttonAddCard.addEventListener('click', SubmitAddCard);
+buttonSave.addEventListener('click', handleSaveForm);
+buttonAddCard.addEventListener('click', handleAddCardButton);
 
 
 function openFormClick(buttonName, formName) {
