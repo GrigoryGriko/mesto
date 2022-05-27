@@ -106,6 +106,8 @@ function handleAddCardButton(e) {
   e.preventDefault();
   addCardToList(cardNameInput.value, cardLinkInput.value);
   closeEventClick(popupAddCard);
+
+  popupAddCard.querySelector('.popup__container').reset();
 }
 
 popupEditData.addEventListener('submit', handleSaveForm);
