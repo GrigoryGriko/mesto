@@ -42,16 +42,7 @@ function createCard(cardsList) {
     cardElement.remove();
   });
 
-  const popupImageLink = popupShowImage.querySelector('.popup__full-image');
-  const popupPlaceName = popupShowImage.querySelector('.popup__caption');
-
-  elementsGridImage.addEventListener('click', function() {
-  popupImageLink.setAttribute('src', cardsList.link);
-    popupImageLink.setAttribute('alt', cardsList.name);
-    popupPlaceName.textContent = cardsList.name;
-
-    openPopup(popupShowImage);
-  });
+  openFormClick(elementsGridImage, popupShowImage, 'elementsGridImage', cardsList);
 
   return cardElement;
 }
@@ -79,7 +70,6 @@ function openPopup(popupId) {
 
 function openForm(popupId) {
   openPopup(popupId);
-  setInputValue();
 }
 
 function closeEventClick(popup) {
@@ -123,11 +113,22 @@ popupEditData.addEventListener('submit', handleSaveForm);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 
 
-function openFormClick(buttonName, formName) {
+function openFormClick(buttonName, formName, setInput=false, cardsList=false) {
   buttonName.addEventListener( 'click', function() {
+    if (setInput === 'buttonEdit') {
+      setInputValue();
+    }
+    else if (setInput === 'elementsGridImage') {
+      const popupImageLink = popupShowImage.querySelector('.popup__full-image');
+      const popupPlaceName = popupShowImage.querySelector('.popup__caption');
+
+      popupImageLink.setAttribute('src', cardsList.link);
+      popupImageLink.setAttribute('alt', cardsList.name);
+      popupPlaceName.textContent = cardsList.name;
+    }
     openForm(formName);
   }, false);
 }
 
-openFormClick(buttonEdit, popupEditData);
+openFormClick(buttonEdit, popupEditData, 'buttonEdit');
 openFormClick(buttonAdd, popupAddCard);
