@@ -44,7 +44,7 @@ function createCard(cardsList) {
     evt.target.classList.toggle('elements-grid__like_active');
   }
   const buttonLike = cardElement.querySelector('.elements-grid__like');
-  buttonLike.addEventListener('click', () => putLike(evt));
+  buttonLike.addEventListener('click', (evt) => putLike(evt));
 
   deleteCard(cardElement);
 
