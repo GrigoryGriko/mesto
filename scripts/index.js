@@ -40,10 +40,11 @@ function createCard(cardsList) {
   elementsGridImage.setAttribute('alt', cardsList.name);
   elementsGridPlaceName.textContent = cardsList.name;
 
-  const buttonLike = cardElement.querySelector('.elements-grid__like');
-  buttonLike.addEventListener('click', function(evt) {
+  function putLike(evt) {
     evt.target.classList.toggle('elements-grid__like_active');
-  });
+  }
+  const buttonLike = cardElement.querySelector('.elements-grid__like');
+  buttonLike.addEventListener('click', () => putLike(evt));
 
   deleteCard(cardElement);
 
