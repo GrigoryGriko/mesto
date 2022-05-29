@@ -1,5 +1,5 @@
 .popup_opened {
   visibility: visible;
   opacity: 1;
-  transition: visibility .3s, opacity .3s ease;
+  transition: visibility .7s, opacity .7s ease;
 }

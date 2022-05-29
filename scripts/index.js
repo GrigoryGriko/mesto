@@ -22,6 +22,14 @@ const textJob = page.querySelector('.profile__info-descript');
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
 
+
+function deleteCard(cardElement) {
+  const buttonDelete = cardElement.querySelector('.elements-grid__delete');
+  buttonDelete.addEventListener('click', function(evt) {
+    evt.target.closest('.elements-grid__item').remove();
+  });
+}
+
 function createCard(cardsList) {
 
   const cardElement = elementsGridTemplate.querySelector('.elements-grid__item').cloneNode(true);
@@ -37,12 +45,7 @@ function createCard(cardsList) {
     evt.target.classList.toggle('elements-grid__like_active');
   });
 
-  const buttonDelete = cardElement.querySelector('.elements-grid__delete');
-  buttonDelete.addEventListener('click', function(evt) {
-    cardElement.remove();
-  });
-
-  //openFormClick(elementsGridImage, popupShowImage, 'elementsGridImage', cardsList);
+  deleteCard(cardElement);
 
   const popupImageLink = popupShowImage.querySelector('.popup__full-image');
   const popupPlaceName = popupShowImage.querySelector('.popup__caption');
@@ -123,24 +126,6 @@ function handleAddCardButton(e) {
 popupEditData.addEventListener('submit', handleSaveForm);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 
-
-/*function openFormClick(buttonName, formName, setInput=false, cardsList=false) {
-  buttonName.addEventListener( 'click', function() {
-    if (setInput === 'buttonEdit') {
-      setInputValue();
-    }
-    else if (setInput === 'elementsGridImage') {
-      const popupImageLink = popupShowImage.querySelector('.popup__full-image');
-      const popupPlaceName = popupShowImage.querySelector('.popup__caption');
-
-      popupImageLink.setAttribute('src', cardsList.link);
-      popupImageLink.setAttribute('alt', cardsList.name);
-      popupPlaceName.textContent = cardsList.name;
-    }
-    openForm(formName);
-  }, false);
-}*/
-
 buttonEdit.addEventListener( 'click', function() {
   setInputValue();
   openForm(popupEditData);
@@ -150,6 +135,3 @@ buttonAdd.addEventListener( 'click', function() {
   openForm(popupAddCard);
 }, false);
 
-
-/*openFormClick(buttonEdit, popupEditData, 'buttonEdit');
-openFormClick(buttonAdd, popupAddCard);*/
