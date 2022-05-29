@@ -14,8 +14,12 @@ const buttonAddCard = page.querySelector('#button-add-card');
 const nameInput = page.querySelector('#name-input');
 const jobInput = page.querySelector('#job-input');
 
-const cardNameInput = page.querySelector('#card-name-input');
-const cardLinkInput = page.querySelector('#card-link-input');
+/*const cardNameInput = page.querySelector('#card-name-input'); 
+const cardLinkInput = page.querySelector('#card-link-input');*/
+const cardInput = {
+  name: page.querySelector('#card-name-input'),
+  link: page.querySelector('#card-link-input')
+};
 
 const textName = page.querySelector('.profile__info-name');
 const textJob = page.querySelector('.profile__info-descript');
@@ -24,13 +28,13 @@ const textJob = page.querySelector('.profile__info-descript');
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
 
-function addCardToList(cardsList) {
+function createCard(cardsList) {
 
   const cardElement = elementsGridTemplate.querySelector('.elements-grid__item').cloneNode(true);
   const elementsGridImage = cardElement.querySelector('.elements-grid__image');
   const elementsGridPlaceName = cardElement.querySelector('.elements-grid__place-name');
 
-  elementsGridImage.setAttribute('src', cardsList.link);
+  elementsGridImage.setAttribute('src', cardsList.link);    /*если инициализация карточек то без value, если добавление новой карточки, то добавлять value*/
   elementsGridImage.setAttribute('alt', cardsList.name);
   elementsGridPlaceName.textContent = cardsList.name;
 
@@ -55,11 +59,16 @@ function addCardToList(cardsList) {
     openPopup(popupShowImage);
   });
 
-  elementsGridContainer.prepend(cardElement);
+  return cardElement;
 }
+function renderCard(cardsList) {
+  elementsGridContainer.prepend( createCard(cardsList) );
+}
+
+
 function initialCards(cardsList=[]) {
   cardsList.forEach(function (item) {
-    addCardToList(item);
+    renderCard(item);
   })
 }
 
@@ -104,7 +113,7 @@ function handleSaveForm(e) {
 
 function handleAddCardButton(e) {
   e.preventDefault();
-  addCardToList(cardNameInput.value, cardLinkInput.value);
+  renderCard(cardInput);  /*переписать аргументы*/
   closeEventClick(popupAddCard);
 
   popupAddCard.querySelector('.popup__container').reset();
