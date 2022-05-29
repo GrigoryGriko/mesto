@@ -14,12 +14,6 @@ const buttonAddCard = page.querySelector('#button-add-card');
 const nameInput = page.querySelector('#name-input');
 const jobInput = page.querySelector('#job-input');
 
-/*const cardNameInput = page.querySelector('#card-name-input'); 
-const cardLinkInput = page.querySelector('#card-link-input');*/
-const cardInput = {
-  name: page.querySelector('#card-name-input'),
-  link: page.querySelector('#card-link-input')
-};
 
 const textName = page.querySelector('.profile__info-name');
 const textJob = page.querySelector('.profile__info-descript');
@@ -34,7 +28,7 @@ function createCard(cardsList) {
   const elementsGridImage = cardElement.querySelector('.elements-grid__image');
   const elementsGridPlaceName = cardElement.querySelector('.elements-grid__place-name');
 
-  elementsGridImage.setAttribute('src', cardsList.link);    /*если инициализация карточек то без value, если добавление новой карточки, то добавлять value*/
+  elementsGridImage.setAttribute('src', cardsList.link);
   elementsGridImage.setAttribute('alt', cardsList.name);
   elementsGridPlaceName.textContent = cardsList.name;
 
@@ -113,7 +107,13 @@ function handleSaveForm(e) {
 
 function handleAddCardButton(e) {
   e.preventDefault();
-  renderCard(cardInput);  /*переписать аргументы*/
+
+  const cardInput = {
+    name: page.querySelector('#card-name-input').value,
+    link: page.querySelector('#card-link-input').value
+  };
+  
+  renderCard(cardInput);
   closeEventClick(popupAddCard);
 
   popupAddCard.querySelector('.popup__container').reset();
