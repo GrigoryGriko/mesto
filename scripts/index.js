@@ -135,4 +135,3 @@ buttonEdit.addEventListener( 'click', function() {
 buttonAdd.addEventListener( 'click', function() {
   openForm(popupAddCard);
 }, false);
-
