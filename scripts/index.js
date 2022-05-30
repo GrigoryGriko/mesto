@@ -23,13 +23,9 @@ const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
 
 
-function deleteCard(cardElement) {
-  const buttonDelete = cardElement.querySelector('.elements-grid__delete');
-  buttonDelete.addEventListener('click', function(evt) {
-    evt.target.closest('.elements-grid__item').remove();
-  });
+function deleteCard(evt) {
+  evt.target.closest('.elements-grid__item').remove();
 }
-
 function putLike(evt) {
   evt.target.classList.toggle('elements-grid__like_active');
 }
@@ -47,7 +43,8 @@ function createCard(cardsList) {
   const buttonLike = cardElement.querySelector('.elements-grid__like');
   buttonLike.addEventListener('click', putLike);
 
-  deleteCard(cardElement);
+  const buttonDelete = cardElement.querySelector('.elements-grid__delete');
+  buttonDelete.addEventListener('click', deleteCard);
 
   const popupImageLink = popupShowImage.querySelector('.popup__full-image');
   const popupPlaceName = popupShowImage.querySelector('.popup__caption');
