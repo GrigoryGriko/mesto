@@ -129,4 +129,3 @@ buttonEdit.addEventListener( 'click', function() {
 buttonAdd.addEventListener( 'click', function() {
   openPopup(popupAddCard);
 }, false);
-/**/
