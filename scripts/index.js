@@ -117,7 +117,7 @@ function handleAddCardButton(e) {
     name: page.querySelector('#card-name-input').value,
     link: page.querySelector('#card-link-input').value
   };
-  
+
   renderCard(cardInput);
   closeEventClick(popupAddCard);
 
@@ -135,3 +135,4 @@ buttonEdit.addEventListener( 'click', function() {
 buttonAdd.addEventListener( 'click', function() {
   openForm(popupAddCard);
 }, false);
+/**/
