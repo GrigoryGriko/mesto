@@ -35,7 +35,7 @@
     </main>
 
     <div class="popup popup_edit_data">
-      <form class="popup__container" name="form-edit-info" action="/" method="post">
+      <form class="popup__container" name="form-edit-info" action="/" method="post" novalidate>
         <button class="popup__button-close" type="button"></button>
 
         <div class="popup__content">
@@ -47,6 +47,7 @@
               Ошибка валидации имени
             </span>
           </label>
+
           <label class="popup__field">
             <input class="popup__job-input input-general-properties" id="job-input" name="your-job" type="text" value="" required>
 
@@ -60,13 +61,26 @@
     </div>
 
     <div class="popup popup_add_card">
-      <form class="popup__container" name="form-edit-info" action="/" method="post">
+      <form class="popup__container" name="form-edit-info" action="/" method="post" novalidate>
         <button class="popup__button-close" type="button"></button>
 
         <div class="popup__content">
           <h2 class="popup__header">Новое место</h2>
-          <input class="popup__name-input input-general-properties" id="card-name-input" name="card-name" placeholder="Название" type="text" value="" required>
-          <input class="popup__job-input input-general-properties" id="card-link-input" name="image-link" placeholder="Ссылка на картинку" type="url" value="" required>
+          <label class="popup__field">
+            <input class="popup__name-input input-general-properties" id="card-name-input" name="card-name" placeholder="Название" type="text" value="" required>
+
+            <span class="popup__input-error job-input-error">
+              Ошибка валидации названия
+            </span>
+          </label>
+
+          <label class="popup__field">
+            <input class="popup__job-input input-general-properties" id="card-link-input" name="image-link" placeholder="Ссылка на картинку" type="url" value="" required>
+
+            <span class="popup__input-error card-link-input">
+              Ошибка валидации ссылки на картинку
+            </span>
+          </label>
           <button class="popup__button-save" id="button-add-card" type="submit">Создать</button>
         </div>
       </form>
