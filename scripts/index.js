@@ -84,11 +84,34 @@ function openPopup(popupId) {
 function closeEventClick(popup) {
   popup.classList.remove('popup_opened');
 }
-function closePopup(popup) {
+
+function clickPopupOveraly(popup) {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target === popup) {
+      closeEventClick(popup);
+    }
+  });
+}
+function clickPopupButtonClose(popup) {
   const buttonClose = popup.querySelector('.popup__button-close');
   buttonClose.addEventListener('click', function() {
     closeEventClick(popup);
   });
+}
+function pressKeyEscape(popup) {
+  console.log(popup.querySelector('popup_opened'));
+  document.addEventListener('keydown', (evt) => {
+    if(evt.code === 'Escape') {
+      console.log('work');
+      closeEventClick(popup);
+    }
+  });
+}
+
+function closePopup(popup) {
+  clickPopupButtonClose(popup)
+  clickPopupOveraly(popup);
+  pressKeyEscape(popup)
 }
 
 

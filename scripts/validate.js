@@ -1,13 +1,3 @@
-enableValidation({
-  formSelector: '.popup__container',
-  inputSelector: '.input-general-properties',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
-
-
 function enableValidation(elementsDocument) {
   function showInputError(formElement, inputElement, errorMessage) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -70,4 +60,12 @@ function enableValidation(elementsDocument) {
   }
 
 }
-/**/
+
+enableValidation({
+  formSelector: '.popup__container',
+  inputSelector: '.input-general-properties',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});
