@@ -77,12 +77,14 @@ function setInputValue() {
   jobInput.value = textJob.textContent;
 }
 
-function openPopup(popupId) {
-  popupId.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  setEventPressEscape(popup);
 }
 
 function closeEventClick(popup) {
   popup.classList.remove('popup_opened');
+  removeEventPressEscape();
 }
 
 function setEventClickOverlay(popup) {
@@ -98,18 +100,27 @@ function setEventClickClose(popup) {
     closeEventClick(popup);
   });
 }
+
+function handlepressEscape(evt, popup) {
+  if (evt.code === 'Escape') {
+    closeEventClick(popup);
+  }
+}
 function setEventPressEscape(popup) {
-  document.addEventListener('keydown', (evt) => {
-    if (document.querySelector('.popup_opened') && evt.code === 'Escape') {
-      closeEventClick(popup);
-    }
+  document.addEventListener('keydown', function (evt) {
+    handlepressEscape(evt, popup);
+  });
+}
+function removeEventPressEscape(popup) {
+  document.addEventListener('keydown', function (evt) {
+    handlepressEscape(evt, popup);
   });
 }
 
 function closePopup(popup) {
-  setEventClickClose(popup)
+  setEventClickClose(popup);
   setEventClickOverlay(popup);
-  setEventPressEscape(popup)
+  setEventPressEscape(popup);
 }
 
 
