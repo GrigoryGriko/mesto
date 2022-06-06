@@ -41,7 +41,7 @@
         <div class="popup__content">
           <h2 class="popup__header">Редактировать профиль</h2>
           <label class="popup__field">
-            <input class="popup__name-input input-general-properties" id="name-input" name="your-name" type="text" value="" required>
+            <input class="popup__name-input input-general-properties" id="name-input" name="your-name" type="text" value="" minlength="2" maxlength="40" required>
 
             <span class="popup__input-error name-input-error">
               Ошибка валидации имени
@@ -49,13 +49,13 @@
           </label>
 
           <label class="popup__field">
-            <input class="popup__job-input input-general-properties" id="job-input" name="your-job" type="text" value="" required>
+            <input class="popup__job-input input-general-properties" id="job-input" name="your-job" type="text" value="" minlength="2" maxlength="200" required>
 
             <span class="popup__input-error job-input-error">
               Ошибка валидации рода деятельности
             </span>
           </label>
-            <button class="popup__button-save" id="button-save-data" type="submit">Сохранить</button>
+            <button class="popup__button-save popup__button_disabled" id="button-save-data" type="submit">Сохранить</button>
         </div>
       </form>
     </div>
@@ -67,7 +67,7 @@
         <div class="popup__content">
           <h2 class="popup__header">Новое место</h2>
           <label class="popup__field">
-            <input class="popup__name-input input-general-properties" id="card-name-input" name="card-name" placeholder="Название" type="text" value="" required>
+            <input class="popup__name-input input-general-properties" id="card-name-input" name="card-name" placeholder="Название" type="text" value="" minlength="2" maxlength="30" required>
 
             <span class="popup__input-error card-name-input-error">
               Ошибка валидации названия
@@ -81,7 +81,7 @@
               Ошибка валидации ссылки на картинку
             </span>
           </label>
-          <button class="popup__button-save" id="button-add-card" type="submit">Создать</button>
+          <button class="popup__button-save popup__button_disabled" id="button-add-card" type="submit">Создать</button>
         </div>
       </form>
     </div>

@@ -76,3 +76,11 @@
 .popup__error_visible {
   opacity: 1;
 }
+
+.popup__button_disabled {
+  color: #CCCCCC;
+
+  border: 1px #CCCCCC solid;
+  background-color: transparent;
+  pointer-events: none;
+}

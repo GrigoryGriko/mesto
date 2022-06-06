@@ -1,7 +1,7 @@
 enableValidation({
   formSelector: '.popup__container',
   inputSelector: '.input-general-properties',
-  submitButtonSelector: '.popup__button',
+  submitButtonSelector: '.popup__button-save',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
@@ -35,9 +35,15 @@ function enableValidation(elementsDocument) {
 
   function setEventListeners(formElement) {
     const inputList = Array.from(formElement.querySelectorAll(elementsDocument.inputSelector));
+    const buttonSubmit = formElement.querySelector(elementsDocument.submitButtonSelector);
+
+    toggleButtonStatus(inputList, buttonSubmit);
+
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         checkInputValidity(formElement, inputElement);
+
+        toggleButtonStatus(inputList, buttonSubmit);
       });
     });
   }
@@ -47,5 +53,20 @@ function enableValidation(elementsDocument) {
   formList.forEach((formElement) => {
     setEventListeners(formElement);
   });
+
+
+  function isInvalidInput(inputList) {
+    return inputList.some((inputElement) => {
+      return !inputElement.validity.valid;
+    });
+  }
+
+  function toggleButtonStatus(inputList, buttonElement) {
+    if ( isInvalidInput(inputList) ) {
+      buttonElement.classList.add(elementsDocument.inactiveButtonClass);
+    } else {
+      buttonElement.classList.remove(elementsDocument.inactiveButtonClass);
+    }
+  }
 
 }
