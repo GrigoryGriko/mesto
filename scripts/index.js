@@ -99,10 +99,8 @@ function clickPopupButtonClose(popup) {
   });
 }
 function pressKeyEscape(popup) {
-  console.log(popup.querySelector('popup_opened'));
   document.addEventListener('keydown', (evt) => {
-    if(evt.code === 'Escape') {
-      console.log('work');
+    if (document.querySelector('.popup_opened') && evt.code === 'Escape') {
       closeEventClick(popup);
     }
   });
