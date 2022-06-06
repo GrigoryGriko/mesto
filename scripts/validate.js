@@ -7,14 +7,45 @@ enableValidation({
   errorClass: 'popup__error_visible'
 });
 
+
 function enableValidation(elementsDocument) {
-  const form = document.querySelector(elementsDocument.formSelector);
-  const formInput = form.querySelector(elementsDocument.inputSelector);
-  const formError = form.querySelector(`.${formInput.id}-error`);
+  function showInputError(formElement, inputElement, errorMessage) {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-  function showInputError(inputElement, errorMessage) {
     inputElement.classList.add(elementsDocument.inputErrorClass);
-
-
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(elementsDocument.errorClass);
   }
+
+  function hideInputError(formElement, inputElement) {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+    inputElement.classList.remove(elementsDocument.inputErrorClass);
+    errorElement.textContent = '';
+    errorElement.classList.remove(elementsDocument.errorClass);
+  }
+
+  function checkInputValidity(formElement, inputElement) {
+    if (!inputElement.validity.valid) {
+      showInputError(formElement, inputElement, inputElement.validationMessage);
+    } else {
+      hideInputError(formElement, inputElement);
+    }
+  }
+
+  function setEventListeners(formElement) {
+    const inputList = Array.from(formElement.querySelectorAll(elementsDocument.inputSelector));
+    inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
+        checkInputValidity(formElement, inputElement);
+      });
+    });
+  }
+
+  const formList = Array.from(document.querySelectorAll(elementsDocument.formSelector));
+
+  formList.forEach((formElement) => {
+    setEventListeners(formElement);
+  });
+
 }
