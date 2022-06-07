@@ -2,13 +2,11 @@ const page = document.querySelector('.page');
 const buttonEdit = page.querySelector('.profile__button-edit');
 const buttonAdd = page.querySelector('.profile__button-add');
 
-
 const popupsArray = {
   popupEditData: page.querySelector('.popup_edit_data'),
   popupAddCard: page.querySelector('.popup_add_card'),
   popupShowImage: page.querySelector('.popup_show_image')
 };
-
 
 const buttonSave = page.querySelector('#button-save-data');
 const buttonAddCard = page.querySelector('#button-add-card');
@@ -82,7 +80,7 @@ function setInputValue() {
 function handlePressEscape(evt) {
   Object.values(popupsArray).find((item) => {
     if (item.classList.contains('popup_opened') && evt.code === 'Escape') {
-      item.classList.contains('popup_opened') ? closeEventClick(item) : false;
+      item.classList.contains('popup_opened') ? closePopup(item) : false;
     }
   });
 }
@@ -92,41 +90,42 @@ function openPopup(popup) {
   document.addEventListener('keydown', handlePressEscape);
 }
 
-function closeEventClick(popup) {
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handlePressEscape);
 }
 
+
 function setEventClickOverlay(popup) {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target === popup) {
-      closeEventClick(popup);
+      closePopup(popup);
     }
   });
 }
 function setEventClickClose(popup) {
   const buttonClose = popup.querySelector('.popup__button-close');
   buttonClose.addEventListener('click', function() {
-    closeEventClick(popup);
+    closePopup(popup);
   });
 }
 
-function closePopup(popup) {
+function setEventClosePopup(popup) {
   setEventClickClose(popup);
   setEventClickOverlay(popup);
 }
 
 
-closePopup(popupsArray.popupEditData);
-closePopup(popupsArray.popupAddCard);
-closePopup(popupsArray.popupShowImage);
+setEventClosePopup(popupsArray.popupEditData);
+setEventClosePopup(popupsArray.popupAddCard);
+setEventClosePopup(popupsArray.popupShowImage);
 
 
 function handleSaveForm(e) {
   e.preventDefault();
   textName.textContent = nameInput.value;
   textJob.textContent = jobInput.value;
-  closeEventClick(popupsArray.popupEditData);
+  closePopup(popupsArray.popupEditData);
 }
 
 function handleAddCardButton(e) {
@@ -138,7 +137,7 @@ function handleAddCardButton(e) {
   };
 
   renderCard(cardInput);
-  closeEventClick(popupsArray.popupAddCard);
+  closePopup(popupsArray.popupAddCard);
 
   popupsArray.popupAddCard.querySelector('.popup__container').reset();
 }
