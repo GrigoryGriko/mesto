@@ -77,19 +77,44 @@ function setInputValue() {
   jobInput.value = textJob.textContent;
 }
 
-function openPopup(popupId) {
-  popupId.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
 function closeEventClick(popup) {
   popup.classList.remove('popup_opened');
 }
-function closePopup(popup) {
+
+function setEventClickOverlay(popup) {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target === popup) {
+      closeEventClick(popup);
+    }
+  });
+}
+function setEventClickClose(popup) {
   const buttonClose = popup.querySelector('.popup__button-close');
   buttonClose.addEventListener('click', function() {
     closeEventClick(popup);
   });
 }
+function setEventPressEscape(popup) {
+  document.addEventListener('keydown', (evt) => {
+    const isPopupOpened = popup.classList.contains('popup_opened');
+
+    if (isPopupOpened && evt.code === 'Escape') {
+      closeEventClick(popup);
+    }
+  });
+}
+
+function closePopup(popup) {
+  setEventClickClose(popup);
+  setEventClickOverlay(popup);
+  setEventPressEscape(popup);
+}
+
+
 
 
 closePopup(popupEditData);
