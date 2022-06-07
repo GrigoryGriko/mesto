@@ -100,7 +100,9 @@ function setEventClickClose(popup) {
 }
 function setEventPressEscape(popup) {
   document.addEventListener('keydown', (evt) => {
-    if (document.querySelector('.popup_opened') && evt.code === 'Escape') { /*исправить */
+    const isPopupOpened = popup.classList.contains('popup_opened');
+
+    if (isPopupOpened && evt.code === 'Escape') {
       closeEventClick(popup);
     }
   });
@@ -111,6 +113,8 @@ function closePopup(popup) {
   setEventClickOverlay(popup);
   setEventPressEscape(popup);
 }
+
+
 
 
 closePopup(popupEditData);
