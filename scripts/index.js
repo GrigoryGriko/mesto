@@ -7,6 +7,7 @@ const popupEditData = page.querySelector('.popup_edit_data');
 const popupAddCard = page.querySelector('.popup_add_card');
 const popupShowImage = page.querySelector('.popup_show_image');
 
+const popupsArray = [popupEditData, popupAddCard, popupShowImage];
 
 const buttonSave = page.querySelector('#button-save-data');
 const buttonAddCard = page.querySelector('#button-add-card');
@@ -100,9 +101,11 @@ function setEventClickClose(popup) {
 }
 function setEventPressEscape(popup) {
   document.addEventListener('keydown', (evt) => {
-    if (evt.code === 'Escape') {
-      popup.classList.contains('popup_opened') ? closeEventClick(popup) : false;
-    }
+    popupsArray.find((item) => {
+      if (item.classList.contains('popup_opened') && evt.code === 'Escape') {
+        item.classList.contains('popup_opened') ? closeEventClick(popup) : false;
+      }
+    });   /*рефакторим и добавим именованный колбэк для снятия слушателя*/
   });
 }
 
@@ -111,8 +114,6 @@ function closePopup(popup) {
   setEventClickOverlay(popup);
   setEventPressEscape(popup);
 }
-
-
 
 
 closePopup(popupEditData);
