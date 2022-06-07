@@ -100,10 +100,8 @@ function setEventClickClose(popup) {
 }
 function setEventPressEscape(popup) {
   document.addEventListener('keydown', (evt) => {
-    const isPopupOpened = popup.classList.contains('popup_opened');
-
-    if (isPopupOpened && evt.code === 'Escape') {
-      closeEventClick(popup);
+    if (evt.code === 'Escape') {
+      popup.classList.contains('popup_opened') ? closeEventClick(popup) : false;
     }
   });
 }
