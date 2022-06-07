@@ -99,14 +99,16 @@ function setEventClickClose(popup) {
     closeEventClick(popup);
   });
 }
-function setEventPressEscape(popup) {
-  document.addEventListener('keydown', (evt) => {
-    popupsArray.find((item) => {
-      if (item.classList.contains('popup_opened') && evt.code === 'Escape') {
-        item.classList.contains('popup_opened') ? closeEventClick(popup) : false;
-      }
-    });   /*рефакторим и добавим именованный колбэк для снятия слушателя*/
+
+function handlePressEscape(evt) {
+  popupsArray.find((item) => {
+    if (item.classList.contains('popup_opened') && evt.code === 'Escape') {
+      item.classList.contains('popup_opened') ? closeEventClick(item) : false;
+    }
   });
+}
+function setEventPressEscape() {
+  document.addEventListener('keydown', handlePressEscape);
 }
 
 function closePopup(popup) {
