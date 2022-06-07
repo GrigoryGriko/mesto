@@ -78,12 +78,22 @@ function setInputValue() {
   jobInput.value = textJob.textContent;
 }
 
+function handlePressEscape(evt) {
+  popupsArray.find((item) => {
+    if (item.classList.contains('popup_opened') && evt.code === 'Escape') {
+      item.classList.contains('popup_opened') ? closeEventClick(item) : false;
+    }
+  });
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handlePressEscape);
 }
 
 function closeEventClick(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handlePressEscape);
 }
 
 function setEventClickOverlay(popup) {
@@ -100,21 +110,9 @@ function setEventClickClose(popup) {
   });
 }
 
-function handlePressEscape(evt) {
-  popupsArray.find((item) => {
-    if (item.classList.contains('popup_opened') && evt.code === 'Escape') {
-      item.classList.contains('popup_opened') ? closeEventClick(item) : false;
-    }
-  });
-}
-function setEventPressEscape() {
-  document.addEventListener('keydown', handlePressEscape);
-}
-
 function closePopup(popup) {
   setEventClickClose(popup);
   setEventClickOverlay(popup);
-  setEventPressEscape(popup);
 }
 
 
