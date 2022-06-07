@@ -78,5 +78,3 @@ enableValidation({
   errorClass: 'popup__error_visible',
   errorModifier: 'popup__input-error_extender_form'
 });
-
-/*даже если кнопка закрыта, форму отправить можно нажатием Enter. Исправить*/
