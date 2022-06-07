@@ -3,5 +3,5 @@
 
   border: 1px #CCCCCC solid;
   background-color: transparent;
-  pointer-events: none;
+  cursor: default;
 }
