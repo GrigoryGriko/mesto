@@ -4,6 +4,10 @@ function enableValidation(elementsDocument) {
 
     inputElement.classList.add(elementsDocument.inputErrorClass);
     errorElement.textContent = errorMessage;
+
+    if (errorElement.clientHeight >= 39) {
+      errorElement.classList.add(elementsDocument.errorModifier);
+    }
     errorElement.classList.add(elementsDocument.errorClass);
   }
 
@@ -12,6 +16,8 @@ function enableValidation(elementsDocument) {
 
     inputElement.classList.remove(elementsDocument.inputErrorClass);
     errorElement.textContent = '';
+
+    errorElement.classList.remove(elementsDocument.errorModifier);
     errorElement.classList.remove(elementsDocument.errorClass);
   }
 
@@ -69,7 +75,8 @@ enableValidation({
   submitButtonSelector: '.popup__button-save',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'form__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__error_visible',
+  errorModifier: 'popup__input-error_extender_form'
 });
 
 /*даже если кнопка закрыта, форму отправить можно нажатием Enter. Исправить*/
