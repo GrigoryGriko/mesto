@@ -8,6 +8,8 @@ const popupsList = {
   popupShowImage: page.querySelector('.popup_show_image')
 };
 
+const popuContainer = popupsList.popupAddCard.querySelector('.popup__container');
+
 const buttonSave = page.querySelector('#button-save-data');
 const buttonAddCard = page.querySelector('#button-add-card');
 
@@ -139,7 +141,7 @@ function handleAddCardButton(e) {
   renderCard(cardInput);
   closePopup(popupsList.popupAddCard);
 
-  popupsList.popupAddCard.querySelector('.popup__container').reset();
+  popuContainer.reset();
 }
 
 popupsList.popupEditData.addEventListener('submit', handleSaveForm);
