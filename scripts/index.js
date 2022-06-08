@@ -80,11 +80,12 @@ function setInputValue() {
 }
 
 function handlePressEscape(evt) {
-  Object.values(popupsList).find((item) => {
-    if (item.classList.contains('popup_opened') && evt.code === 'Escape') {
-      item.classList.contains('popup_opened') ? closePopup(item) : false;
+  const popupOpened = page.querySelector('.popup_opened');
+  if (popupOpened) {
+    if (evt.code === 'Escape') {
+      closePopup(popupOpened);
     }
-  });
+  }
 }
 
 function openPopup(popup) {
