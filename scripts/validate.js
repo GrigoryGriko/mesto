@@ -62,20 +62,20 @@ function isInvalidInput(inputList) {
   });
 }
 
-function lockButton(buttonElement) {
+function lockButton(buttonElement, innactiveButtonClass) {
   buttonElement.disabled = true;
+  buttonElement.classList.add(innactiveButtonClass);
 }
-function unlockButton(buttonElement) {
+function unlockButton(buttonElement, innactiveButtonClass) {
   buttonElement.disabled = false;
+  buttonElement.classList.remove(innactiveButtonClass);
 }
 
 function toggleButtonState(inputList, buttonElement) {
   if ( isInvalidInput(inputList) ) {
-    lockButton(buttonElement);
-    buttonElement.classList.add(elementsDocument.inactiveButtonClass);
+    lockButton(buttonElement, elementsDocument.inactiveButtonClass);
   } else {
-    unlockButton(buttonElement);
-    buttonElement.classList.remove(elementsDocument.inactiveButtonClass);
+    unlockButton(buttonElement, elementsDocument.inactiveButtonClass);
   }
 }
 
