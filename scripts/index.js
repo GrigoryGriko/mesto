@@ -8,7 +8,7 @@ const popupsList = {
   popupShowImage: page.querySelector('.popup_show_image')
 };
 
-const popuContainer = popupsList.popupAddCard.querySelector('.popup__container');
+const popupContainer = popupsList.popupAddCard.querySelector('.popup__container');
 
 const buttonSave = page.querySelector('#button-save-data');
 const buttonAddCard = page.querySelector('#button-add-card');
@@ -23,7 +23,7 @@ const textJob = page.querySelector('.profile__info-descript');
 
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
-
+qwerty();
 
 function deleteCard(evt) {
   evt.target.closest('.elements-grid__item').remove();
@@ -128,6 +128,8 @@ function handleSaveForm(e) {
   textName.textContent = nameInput.value;
   textJob.textContent = jobInput.value;
   closePopup(popupsList.popupEditData);
+
+  lockButton(buttonSave, elementsDocument.inactiveButtonClass);
 }
 
 function handleAddCardButton(e) {
@@ -141,7 +143,8 @@ function handleAddCardButton(e) {
   renderCard(cardInput);
   closePopup(popupsList.popupAddCard);
 
-  popuContainer.reset();
+  popupContainer.reset();
+  lockButton(buttonAddCard, elementsDocument.inactiveButtonClass);
 }
 
 popupsList.popupEditData.addEventListener('submit', handleSaveForm);

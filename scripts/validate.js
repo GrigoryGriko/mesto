@@ -79,6 +79,9 @@ function toggleButtonState(elementsDocument, inputList, buttonElement) {
   }
 }
 
+function qwerty() {
+  console.log(444);
+}
 
 
 function enableValidation(elementsDocument) {
