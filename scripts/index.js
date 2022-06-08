@@ -23,7 +23,6 @@ const textJob = page.querySelector('.profile__info-descript');
 
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
-qwerty();
 
 function deleteCard(evt) {
   evt.target.closest('.elements-grid__item').remove();
@@ -88,7 +87,24 @@ function handlePressEscape(evt) {
   }
 }
 
+function resetAllInputError(popup) {
+  const popupInput = popup.querySelectorAll('.input-general-properties');
+  const popupError = popup.querySelectorAll('.popup__input-error');
+
+  popupInput.forEach((inputElement) => {
+    inputElement.classList.remove(elementsDocument.inputErrorClass);
+  });
+  popupError.forEach((errorElement) => {
+    errorElement.textContent = '';
+
+    errorElement.classList.remove(elementsDocument.errorModifier);
+    errorElement.classList.remove(elementsDocument.errorClass);
+  });
+}
+
 function openPopup(popup) {
+  resetAllInputError(popup);
+
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handlePressEscape);
 }
