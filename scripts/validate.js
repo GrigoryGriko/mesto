@@ -62,12 +62,19 @@ function isInvalidInput(inputList) {
   });
 }
 
+function lockButton(buttonElement) {
+  buttonElement.disabled = true;
+}
+function unlockButton(buttonElement) {
+  buttonElement.disabled = false;
+}
+
 function toggleButtonState(inputList, buttonElement) {
   if ( isInvalidInput(inputList) ) {
-    buttonElement.disabled = true;
+    lockButton(buttonElement);
     buttonElement.classList.add(elementsDocument.inactiveButtonClass);
   } else {
-    buttonElement.disabled = false;
+    unlockButton(buttonElement);
     buttonElement.classList.remove(elementsDocument.inactiveButtonClass);
   }
 }
