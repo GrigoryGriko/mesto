@@ -87,7 +87,7 @@ function handlePressEscape(evt) {
   }
 }
 
-function resetAllInputError(popup) {
+/*function resetAllInputError(popup) {
   const popupInput = popup.querySelectorAll('.input-general-properties');
   const popupError = popup.querySelectorAll('.popup__input-error');
 
@@ -100,10 +100,10 @@ function resetAllInputError(popup) {
     errorElement.classList.remove(elementsDocument.errorModifier);
     errorElement.classList.remove(elementsDocument.errorClass);
   });
-}
+}*/
 
 function openPopup(popup) {
-  resetAllInputError(popup);
+  /*resetAllInputError(popup);*/
 
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handlePressEscape);
@@ -168,6 +168,7 @@ popupsList.popupEditData.addEventListener('submit', handleSaveForm);
 popupsList.popupAddCard.addEventListener('submit', handleAddCardButton);
 
 buttonEdit.addEventListener( 'click', function() {
+  hideInputError(elementsDocument, formElement, inputElement);
   setInputValue();
   openPopup(popupsList.popupEditData);
 }, false);
