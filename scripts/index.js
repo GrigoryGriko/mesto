@@ -1,3 +1,14 @@
+const elementsDocument = {
+  formSelector: '.popup__container',
+  inputSelector: '.input-general-properties',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'popup__error_visible',
+  errorModifier: 'popup__input-error_extender_form'
+};
+
+
 const page = document.querySelector('.page');
 const buttonEdit = page.querySelector('.profile__button-edit');
 const buttonAdd = page.querySelector('.profile__button-add');
@@ -82,10 +93,8 @@ function setInputValue() {
 
 function handlePressEscape(evt) {
   const popupOpened = page.querySelector('.popup_opened');
-  if (popupOpened) {
-    if (evt.code === 'Escape') {
-      closePopup(popupOpened);
-    }
+  if (evt.code === 'Escape') {
+    closePopup(popupOpened);
   }
 }
 
@@ -165,3 +174,6 @@ buttonEdit.addEventListener( 'click', function() {
 buttonAdd.addEventListener( 'click', function() {
   openPopup(popupsList.popupAddCard);
 }, false);
+
+
+enableValidation(elementsDocument);
