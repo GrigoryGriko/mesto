@@ -175,5 +175,4 @@ buttonAdd.addEventListener( 'click', function() {
   openPopup(popupsList.popupAddCard);
 }, false);
 
-
 enableValidation(elementsDocument);
