@@ -20,7 +20,7 @@ function hideInputError(rest, formElement, inputElement) {
   errorElement.classList.remove(rest.errorClass);
 }
 
-function checkInputValidity(rest, formElement, inputElement) {
+function checkInputValidity({validationMessage, ...rest}, formElement, inputElement) {
   if (!inputElement.validity.valid) {
     showInputError(rest, formElement, inputElement, inputElement.validationMessage);
   } else {
