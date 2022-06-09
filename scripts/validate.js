@@ -1,7 +1,3 @@
-
-
-
-
 function showInputError(elementsDocument, formElement, inputElement, errorMessage) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
