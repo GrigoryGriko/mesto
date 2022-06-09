@@ -8,7 +8,9 @@ const popupsList = {
   popupShowImage: page.querySelector('.popup_show_image')
 };
 
-const popupContainer = popupsList.popupAddCard.querySelector('.popup__container');
+const popupContainerEditData = popupsList.popupEditData.querySelector('.popup__container');
+const popupContainerAddCard = popupsList.popupAddCard.querySelector('.popup__container');
+
 
 const buttonSave = page.querySelector('#button-save-data');
 const buttonAddCard = page.querySelector('#button-add-card');
@@ -87,24 +89,8 @@ function handlePressEscape(evt) {
   }
 }
 
-/*function resetAllInputError(popup) {
-  const popupInput = popup.querySelectorAll('.input-general-properties');
-  const popupError = popup.querySelectorAll('.popup__input-error');
-
-  popupInput.forEach((inputElement) => {
-    inputElement.classList.remove(elementsDocument.inputErrorClass);
-  });
-  popupError.forEach((errorElement) => {
-    errorElement.textContent = '';
-
-    errorElement.classList.remove(elementsDocument.errorModifier);
-    errorElement.classList.remove(elementsDocument.errorClass);
-  });
-}*/
 
 function openPopup(popup) {
-  /*resetAllInputError(popup);*/
-
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handlePressEscape);
 }
@@ -160,15 +146,18 @@ function handleAddCardButton(e) {
   renderCard(cardInput);
   closePopup(popupsList.popupAddCard);
 
-  popupContainer.reset();
+  popupContainerAddCard.reset();
   lockButton(buttonAddCard, elementsDocument.inactiveButtonClass);
 }
 
 popupsList.popupEditData.addEventListener('submit', handleSaveForm);
 popupsList.popupAddCard.addEventListener('submit', handleAddCardButton);
 
+
 buttonEdit.addEventListener( 'click', function() {
-  hideInputError(elementsDocument, formElement, inputElement);
+  hideInputError(elementsDocument, popupContainerEditData, nameInput);
+  hideInputError(elementsDocument, popupContainerEditData, jobInput);
+
   setInputValue();
   openPopup(popupsList.popupEditData);
 }, false);
