@@ -24,3 +24,10 @@ const cardsList = [
     link: './images/baikal.jpg'
   }
 ];
+
+class Card {
+  constructor(cardsList, elementsGridTemplate) {
+    this._cardsList = cardsList;
+    this._elementsGridTemplate = elementsGridTemplate;
+  }
+}
