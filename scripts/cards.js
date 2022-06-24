@@ -26,13 +26,14 @@ const cardsList = [
 ];
 
 class Card {
-  constructor(cardsList, elementsGridTemplate) {
+  constructor(cardsList, elementsGridTemplate, popupsList) {
     this._cardsList = cardsList;
     this._elementsGridTemplate = elementsGridTemplate;
+    this._popupsList = popupsList;
   }
 
   _getTemplate() {
-    const cardElement = elementsGridTemplate
+    const cardElement = this._elementsGridTemplate
       .querySelector('.elements-grid__item')
       .cloneNode(true);
 
@@ -41,7 +42,7 @@ class Card {
 
   generateCard() {
     this._cardElement = this._getTemplate();
-    _setEventListeners();
+    this._setEventListeners();
 
     const cardElementImage = this._cardElement.querySelector('.elements-grid__image');
     const cardPlaceName = this._cardElement.querySelector('.elements-grid__place-name');
@@ -54,18 +55,18 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardElement.querySelector('.elements-grid__like').addEventListener('click', this._handlePutCard());
-    this._cardElement.querySelector('.elements-grid__delete').addEventListener('click', this._handleDeleteCard());
+    this._cardElement.querySelector('.elements-grid__like').addEventListener('click', this._handlePutCard);
+    this._cardElement.querySelector('.elements-grid__delete').addEventListener('click', this._handleDeleteCard);
 
-    const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
-    const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
+    const popupImageLink = this._popupsList.popupShowImage.querySelector('.popup__full-image');
+    const popupPlaceName = this._popupsList.popupShowImage.querySelector('.popup__caption');
 
     this._cardElement.querySelector('.elements-grid__image').addEventListener('click', function() {
       popupImageLink.setAttribute('src', this._cardsList.link);
       popupImageLink.setAttribute('alt', this._cardsList.name);
       popupPlaceName.textContent = this._cardsList.name;
 
-      openPopup(popupsList.popupShowImage);
+      openPopup(this._popupsList.popupShowImage);
     });
   }
 
@@ -75,5 +76,7 @@ class Card {
   _handleDeleteCard(evt) {
     evt.target.closest('.elements-grid__item').remove();
   }
-
 }
+
+
+export {cardsList, Card};

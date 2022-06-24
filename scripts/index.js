@@ -1,3 +1,6 @@
+import {cardsList, Card} from './Cards.js';
+
+
 const elementsDocument = {
   formSelector: '.popup__container',
   inputSelector: '.input-general-properties',
@@ -39,7 +42,7 @@ const elementsGridTemplate = document.getElementById('elements-grid__item-templa
 
 
 function renderCard(cardData) {
-  const card = new Card(cardData, elementsGridTemplate);
+  const card = new Card(cardData, elementsGridTemplate, popupsList);
   const elementCard = card.generateCard();
 
   elementsGridContainer.prepend(elementCard);
