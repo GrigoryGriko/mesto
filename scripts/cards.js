@@ -61,6 +61,7 @@ class Card {
     const popupImageLink = this._popupsList.popupShowImage.querySelector('.popup__full-image');
     const popupPlaceName = this._popupsList.popupShowImage.querySelector('.popup__caption');
 
+    console.log(this._cardsList.link);
     this._cardElement.querySelector('.elements-grid__image').addEventListener('click', function() {
       popupImageLink.setAttribute('src', this._cardsList.link);
       popupImageLink.setAttribute('alt', this._cardsList.name);
