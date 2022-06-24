@@ -44,35 +44,7 @@ function putLike(evt) {
   evt.target.classList.toggle('elements-grid__like_active');
 }
 
-function createCard(cardsList) {
 
-  const cardElement = elementsGridTemplate.querySelector('.elements-grid__item').cloneNode(true);
-  const cardElementImage = cardElement.querySelector('.elements-grid__image');
-  const cardPlaceName = cardElement.querySelector('.elements-grid__place-name');
-
-  cardElementImage.setAttribute('src', cardsList.link);
-  cardElementImage.setAttribute('alt', cardsList.name);
-  cardPlaceName.textContent = cardsList.name;
-
-  const buttonLike = cardElement.querySelector('.elements-grid__like');
-  buttonLike.addEventListener('click', putLike);
-
-  const buttonDelete = cardElement.querySelector('.elements-grid__delete');
-  buttonDelete.addEventListener('click', deleteCard);
-
-  const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
-  const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
-
-  cardElementImage.addEventListener('click', function() {
-    popupImageLink.setAttribute('src', cardsList.link);
-    popupImageLink.setAttribute('alt', cardsList.name);
-    popupPlaceName.textContent = cardsList.name;
-
-    openPopup(popupsList.popupShowImage);
-  });
-
-  return cardElement;
-}
 function renderCard(cardData) {
   elementsGridContainer.prepend( createCard(cardData) );
 }
