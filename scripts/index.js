@@ -37,16 +37,12 @@ const textJob = page.querySelector('.profile__info-descript');
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
 
-function deleteCard(evt) {
-  evt.target.closest('.elements-grid__item').remove();
-}
-function putLike(evt) {
-  evt.target.classList.toggle('elements-grid__like_active');
-}
-
 
 function renderCard(cardData) {
-  elementsGridContainer.prepend( createCard(cardData) );
+  const card = new Card(cardData, elementsGridTemplate);
+  const elementCard = card.generateCard();
+
+  elementsGridContainer.prepend(elementCard);
 }
 
 
