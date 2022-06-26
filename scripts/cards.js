@@ -58,13 +58,13 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardElement.querySelector('.elements-grid__like').addEventListener('click', this._handlePutCard);
+    this._cardElement.querySelector('.elements-grid__like').addEventListener('click', this._handlePutLike);
     this._cardElement.querySelector('.elements-grid__delete').addEventListener('click', this._handleDeleteCard);
 
     this._cardElement.querySelector('.elements-grid__image').addEventListener('click', this._handleImageClick);
   }
 
-  _handlePutCard() {
+  _handlePutLike() {
     this._cardElement.querySelector('.elements-grid__like').classList.toggle('elements-grid__like_active');
   }
   _handleDeleteCard() {
