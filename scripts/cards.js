@@ -66,7 +66,7 @@ class Card {
     this._cardElement.querySelector('.elements-grid__like').classList.toggle('elements-grid__like_active');
   }
   _handleDeleteCard = () => {
-    this._cardElement.querySelector('.elements-grid__delete').closest('.elements-grid__item').remove();
+    this._cardElement.remove();
   }
   _handleImageClick = () => {
     this._handleOpenViewPopup({name: this._name, link: this._link});
