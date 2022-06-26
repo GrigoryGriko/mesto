@@ -42,7 +42,7 @@ const elementsGridTemplate = document.getElementById('elements-grid__item-templa
 
 
 function renderCard(cardData) {
-  const card = new Card(cardData, elementsGridTemplate, popupsList);
+  const card = new Card(cardData, elementsGridTemplate, handleOpenViewPopup);
   const elementCard = card.generateCard();
 
   elementsGridContainer.prepend(elementCard);
@@ -69,6 +69,17 @@ function handlePressEscape(evt) {
   }
 }
 
+
+function handleOpenViewPopup({name, link}) {
+  const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
+  const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
+
+  popupImageLink.setAttribute('src', link);
+  popupImageLink.setAttribute('alt', name);
+  popupPlaceName.textContent = name;
+
+  openPopup(popupsList.popupShowImage);
+}
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');

@@ -26,10 +26,12 @@ const cardsList = [
 ];
 
 class Card {
-  constructor(cardsList, elementsGridTemplate, popupsList) {
-    this._cardsList = cardsList;
+  constructor({name, link}, elementsGridTemplate, handeleOpenViewPopup) {
+    this._name = name;
+    this._link = link;
+
     this._elementsGridTemplate = elementsGridTemplate;
-    this._popupsList = popupsList;
+    this._handeleOpenViewPopup = handeleOpenViewPopup;
   }
 
   _getTemplate() {
@@ -47,9 +49,9 @@ class Card {
     const cardElementImage = this._cardElement.querySelector('.elements-grid__image');
     const cardPlaceName = this._cardElement.querySelector('.elements-grid__place-name');
 
-    cardElementImage.setAttribute('src', this._cardsList.link);
-    cardElementImage.setAttribute('alt', this._cardsList.name);
-    cardPlaceName.textContent = this._cardsList.name;
+    cardElementImage.setAttribute('src', this._link);
+    cardElementImage.setAttribute('alt', this._name);
+    cardPlaceName.textContent = this._name;
 
     return this._cardElement;
   }
@@ -58,24 +60,17 @@ class Card {
     this._cardElement.querySelector('.elements-grid__like').addEventListener('click', this._handlePutCard);
     this._cardElement.querySelector('.elements-grid__delete').addEventListener('click', this._handleDeleteCard);
 
-    const popupImageLink = this._popupsList.popupShowImage.querySelector('.popup__full-image');
-    const popupPlaceName = this._popupsList.popupShowImage.querySelector('.popup__caption');
-
-    console.log(this._cardsList.link);
-    this._cardElement.querySelector('.elements-grid__image').addEventListener('click', function() {
-      popupImageLink.setAttribute('src', this._cardsList.link);
-      popupImageLink.setAttribute('alt', this._cardsList.name);
-      popupPlaceName.textContent = this._cardsList.name;
-
-      openPopup(this._popupsList.popupShowImage);
-    });
+    this._cardElement.querySelector('.elements-grid__image').addEventListener('click', this._handleImageClick);
   }
 
-  _handlePutCard(evt) {
-    evt.target.classList.toggle('elements-grid__like_active');
+  _handlePutCard() {
+    this._cardElement.querySelector('.elements-grid__like').classList.toggle('elements-grid__like_active');
   }
-  _handleDeleteCard(evt) {
-    evt.target.closest('.elements-grid__item').remove();
+  _handleDeleteCard() {
+    this._cardElement.querySelector('.elements-grid__delete').closest('.elements-grid__item').remove();
+  }
+  _handleImageClick() {
+    this._handeleOpenViewPopup({name: this._name, link: this._link});
   }
 }
 
