@@ -32,8 +32,9 @@ class Card {
 
     this._elementsGridTemplate = elementsGridTemplate;
     this._handeleOpenViewPopup = handeleOpenViewPopup;
-  }
 
+    console.log(this._handeleOpenViewPopup);
+  }
   _getTemplate() {
     const cardElement = this._elementsGridTemplate
       .querySelector('.elements-grid__item')
@@ -70,6 +71,7 @@ class Card {
     this._cardElement.querySelector('.elements-grid__delete').closest('.elements-grid__item').remove();
   }
   _handleImageClick() {
+    console.log(this._handeleOpenViewPopup);
     this._handeleOpenViewPopup({name: this._name, link: this._link});
   }
 }
