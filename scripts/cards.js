@@ -26,14 +26,12 @@ const cardsList = [
 ];
 
 class Card {
-  constructor({name, link}, elementsGridTemplate, handeleOpenViewPopup) {
+  constructor({name, link}, elementsGridTemplate, handleOpenViewPopup) {
     this._name = name;
     this._link = link;
 
     this._elementsGridTemplate = elementsGridTemplate;
-    this._handeleOpenViewPopup = handeleOpenViewPopup;
-
-    console.log(this._handeleOpenViewPopup);
+    this._handleOpenViewPopup = handleOpenViewPopup;
   }
   _getTemplate() {
     const cardElement = this._elementsGridTemplate
@@ -64,15 +62,14 @@ class Card {
     this._cardElement.querySelector('.elements-grid__image').addEventListener('click', this._handleImageClick);
   }
 
-  _handlePutLike() {
+  _handlePutLike = () => {
     this._cardElement.querySelector('.elements-grid__like').classList.toggle('elements-grid__like_active');
   }
-  _handleDeleteCard() {
+  _handleDeleteCard = () => {
     this._cardElement.querySelector('.elements-grid__delete').closest('.elements-grid__item').remove();
   }
-  _handleImageClick() {
-    console.log(this._handeleOpenViewPopup);
-    this._handeleOpenViewPopup({name: this._name, link: this._link});
+  _handleImageClick = () => {
+    this._handleOpenViewPopup({name: this._name, link: this._link});
   }
 }
 
