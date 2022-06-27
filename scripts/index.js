@@ -118,6 +118,11 @@ setEventClosePopup(popupsList.popupAddCard);
 setEventClosePopup(popupsList.popupShowImage);
 
 
+function lockButton(buttonElement, innactiveButtonClass) {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(innactiveButtonClass);
+}
+
 function handleSaveForm(e) {
   e.preventDefault();
   textName.textContent = nameInput.value;
