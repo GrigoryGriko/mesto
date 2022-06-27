@@ -76,4 +76,3 @@ class FormValidator {
 
 
 export {FormValidator};
-/**/
