@@ -147,13 +147,24 @@ function handleAddCardButton(e) {
   lockButton(buttonAddCard, elementsDocument.inactiveButtonClass);
 }
 
+
+function hideInputError({inputErrorClass, errorClass, errorModifier}, formElement, inputElement) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.textContent = '';
+
+  errorElement.classList.remove(errorModifier);
+  errorElement.classList.remove(errorClass);
+}
+
 popupsList.popupEditData.addEventListener('submit', handleSaveForm);
 popupsList.popupAddCard.addEventListener('submit', handleAddCardButton);
 
 
 buttonEdit.addEventListener( 'click', function() {
-  /*hideInputError(elementsDocument, popupContainerEditData);  // nameInput
-  hideInputError(elementsDocument, popupContainerEditData);  //jobInput*/
+  hideInputError(elementsDocument, popupContainerEditData, nameInput);
+  hideInputError(elementsDocument, popupContainerEditData, jobInput);
 
   setInputValue();
   openPopup(popupsList.popupEditData);
@@ -164,14 +175,14 @@ buttonAdd.addEventListener( 'click', function() {
 }, false);
 
 
-const validatorNameInput = new FormValidator(elementsDocument, nameInput);
+const validatorNameInput = new FormValidator(elementsDocument, nameInput, lockButton, hideInputError);
 validatorNameInput.enableValidation();
 
-const validatorJobInput = new FormValidator(elementsDocument, jobInput);
+const validatorJobInput = new FormValidator(elementsDocument, jobInput, lockButton, hideInputError);
 validatorJobInput.enableValidation();
 
-const validatorLinkInput = new FormValidator(elementsDocument, page.querySelector('#card-link-input'));
+const validatorLinkInput = new FormValidator(elementsDocument, page.querySelector('#card-link-input'), lockButton, hideInputError);
 validatorLinkInput.enableValidation();
 
-const validatorCardNameInput = new FormValidator(elementsDocument, page.querySelector('#card-name-input'));
+const validatorCardNameInput = new FormValidator(elementsDocument, page.querySelector('#card-name-input'), lockButton, hideInputError);
 validatorCardNameInput.enableValidation();

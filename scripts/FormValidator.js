@@ -1,5 +1,13 @@
 class FormValidator {
-  constructor({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass, errorModifier}, inputElement, lockButton) {
+  constructor({
+      formSelector,
+      inputSelector,
+      submitButtonSelector,
+      inactiveButtonClass,
+      inputErrorClass,
+      errorClass,
+      errorModifier}, inputElement, lockButton, hideInputError) {
+
     this._formSelector = formSelector;
     this._inputSelector = inputSelector;
     this._submitButtonSelector = submitButtonSelector;
@@ -11,6 +19,7 @@ class FormValidator {
     this._inputElement = inputElement;
 
     this._lockButton = lockButton;
+    this._hideInputError = hideInputError;
   }
 
   _showInputError(formElement) {
@@ -25,21 +34,11 @@ class FormValidator {
     errorElement.classList.add(this._errorClass);
   }
 
-  _hideInputError(formElement) {
-    const errorElement = formElement.querySelector(`.${this._inputElement.id}-error`);
-
-    this._inputElement.classList.remove(this._inputErrorClass);
-    errorElement.textContent = '';
-
-    errorElement.classList.remove(this._errorModifier);
-    errorElement.classList.remove(this._errorClass);
-  }
-
   _checkInputValidity(formElement) {
     if (!this._inputElement.validity.valid) {
       this._showInputError(formElement);
     } else {
-      this._hideInputError(formElement);
+      this._hideInputError({inputErrorClass: this._inputErrorClass, errorClass: this._errorClass, errorModifier: this._errorModifier}, formElement, this._inputElement);
     }
   }
 
