@@ -61,7 +61,7 @@ function setInputValue() {
   nameInput.value = textName.textContent;
   jobInput.value = textJob.textContent;
 }
-/**/
+
 function handlePressEscape(evt) {
   const popupOpened = page.querySelector('.popup_opened');
   if (evt.code === 'Escape') {
