@@ -146,8 +146,8 @@ popupsList.popupAddCard.addEventListener('submit', handleAddCardButton);
 
 
 buttonEdit.addEventListener( 'click', function() {
-  hideInputError(elementsDocument, popupContainerEditData, nameInput);
-  hideInputError(elementsDocument, popupContainerEditData, jobInput);
+  hideInputError(elementsDocument, popupContainerEditData);  // nameInput
+  hideInputError(elementsDocument, popupContainerEditData);  //jobInput
 
   setInputValue();
   openPopup(popupsList.popupEditData);
@@ -157,4 +157,15 @@ buttonAdd.addEventListener( 'click', function() {
   openPopup(popupsList.popupAddCard);
 }, false);
 
-enableValidation(elementsDocument);
+
+const formValidator = new FormValidator(elementsDocument, nameInput);
+formValidator.enableValidation();
+
+const formValidator = new FormValidator(elementsDocument, jobInput);
+formValidator.enableValidation();
+
+const formValidator = new FormValidator(elementsDocument, page.querySelector('#card-link-input'));
+formValidator.enableValidation();
+
+const formValidator = new FormValidator(elementsDocument, page.querySelector('#card-name-input'));
+formValidator.enableValidation();
