@@ -26,6 +26,7 @@ class FormValidator {
     const errorElement = formElement.querySelector(`.${this._inputElement.id}-error`);
 
     this._inputElement.classList.add(this._inputErrorClass);
+    console.log(this._inputElement);
     errorElement.textContent = this._inputElement.validationMessage;
 
     if (errorElement.clientHeight >= 39) {
