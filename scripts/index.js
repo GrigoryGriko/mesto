@@ -1,4 +1,5 @@
 import {cardsList, Card} from './Cards.js';
+import {FormValidator} from './FormValidator.js';
 
 
 const elementsDocument = {
@@ -146,8 +147,8 @@ popupsList.popupAddCard.addEventListener('submit', handleAddCardButton);
 
 
 buttonEdit.addEventListener( 'click', function() {
-  hideInputError(elementsDocument, popupContainerEditData);  // nameInput
-  hideInputError(elementsDocument, popupContainerEditData);  //jobInput
+  /*hideInputError(elementsDocument, popupContainerEditData);  // nameInput
+  hideInputError(elementsDocument, popupContainerEditData);  //jobInput*/
 
   setInputValue();
   openPopup(popupsList.popupEditData);
@@ -167,5 +168,5 @@ validatorJobInput.enableValidation();
 const validatorLinkInput = new FormValidator(elementsDocument, page.querySelector('#card-link-input'));
 validatorLinkInput.enableValidation();
 
-const validatorNameInput = new FormValidator(elementsDocument, page.querySelector('#card-name-input'));
-validatorNameInput.enableValidation();
+const validatorCardNameInput = new FormValidator(elementsDocument, page.querySelector('#card-name-input'));
+validatorCardNameInput.enableValidation();

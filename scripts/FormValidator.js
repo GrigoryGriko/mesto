@@ -80,5 +80,7 @@ class FormValidator {
       this._setEventListeners(formElement);
     });
   }
-
 }
+
+
+export {FormValidator};
