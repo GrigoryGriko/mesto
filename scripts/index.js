@@ -12,7 +12,6 @@ const elementsDocument = {
   errorModifier: 'popup__input-error_extender_form'
 };
 
-
 const page = document.querySelector('.page');
 const buttonEdit = page.querySelector('.profile__button-edit');
 const buttonAdd = page.querySelector('.profile__button-add');
@@ -175,14 +174,8 @@ buttonAdd.addEventListener( 'click', function() {
 }, false);
 
 
-const validatorNameInput = new FormValidator(elementsDocument, nameInput, lockButton, hideInputError);
-validatorNameInput.enableValidation();
+const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData, lockButton, hideInputError);
+validatorEditData.enableValidation();
 
-const validatorJobInput = new FormValidator(elementsDocument, jobInput, lockButton, hideInputError);
-validatorJobInput.enableValidation();
-
-const validatorLinkInput = new FormValidator(elementsDocument, page.querySelector('#card-link-input'), lockButton, hideInputError);
-validatorLinkInput.enableValidation();
-
-const validatorCardNameInput = new FormValidator(elementsDocument, page.querySelector('#card-name-input'), lockButton, hideInputError);
-validatorCardNameInput.enableValidation();
+const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard, lockButton, hideInputError);
+validatorAddCard.enableValidation();
