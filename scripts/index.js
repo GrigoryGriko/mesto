@@ -158,14 +158,14 @@ buttonAdd.addEventListener( 'click', function() {
 }, false);
 
 
-const formValidator = new FormValidator(elementsDocument, nameInput);
-formValidator.enableValidation();
+const validatorNameInput = new FormValidator(elementsDocument, nameInput);
+validatorNameInput.enableValidation();
 
-const formValidator = new FormValidator(elementsDocument, jobInput);
-formValidator.enableValidation();
+const validatorJobInput = new FormValidator(elementsDocument, jobInput);
+validatorJobInput.enableValidation();
 
-const formValidator = new FormValidator(elementsDocument, page.querySelector('#card-link-input'));
-formValidator.enableValidation();
+const validatorLinkInput = new FormValidator(elementsDocument, page.querySelector('#card-link-input'));
+validatorLinkInput.enableValidation();
 
-const formValidator = new FormValidator(elementsDocument, page.querySelector('#card-name-input'));
-formValidator.enableValidation();
+const validatorNameInput = new FormValidator(elementsDocument, page.querySelector('#card-name-input'));
+validatorNameInput.enableValidation();
