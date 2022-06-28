@@ -8,6 +8,7 @@ class Card {
   }
   _getTemplate() {
     const cardElement = this._elementsGridTemplate
+      .content
       .querySelector('.elements-grid__item')
       .cloneNode(true);
 

@@ -52,6 +52,9 @@ const popupsList = {
 const popupContainerEditData = popupsList.popupEditData.querySelector('.popup__container');
 const popupContainerAddCard = popupsList.popupAddCard.querySelector('.popup__container');
 
+const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
+const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
+
 
 const buttonSave = page.querySelector('#button-save-data');
 const buttonAddCard = page.querySelector('#button-add-card');
@@ -65,7 +68,7 @@ const textJob = page.querySelector('.profile__info-descript');
 
 
 const elementsGridContainer = page.querySelector('.elements-grid__list');
-const elementsGridTemplate = document.getElementById('elements-grid__item-template').content;
+const elementsGridTemplate = document.getElementById('elements-grid__item-template');   //.content;
 
 
 function renderCard(cardData) {
@@ -95,9 +98,6 @@ function handlePressEscape(evt) {
     closePopup(popupOpened);
   }
 }
-
-const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
-const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
 
 function handleOpenViewPopup({name, link}) {
 
