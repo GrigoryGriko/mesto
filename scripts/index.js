@@ -145,18 +145,13 @@ setEventClosePopup(popupsList.popupAddCard);
 setEventClosePopup(popupsList.popupShowImage);
 
 
-function lockButton(buttonElement, innactiveButtonClass) {
-  buttonElement.disabled = true;
-  buttonElement.classList.add(innactiveButtonClass);
-}
-
 function handleSaveForm(e) {
   e.preventDefault();
   textName.textContent = nameInput.value;
   textJob.textContent = jobInput.value;
   closePopup(popupsList.popupEditData);
 
-  lockButton(buttonSave, elementsDocument.inactiveButtonClass);
+  validatorEditData.lockButton();
 }
 
 function handleAddCardButton(e) {
@@ -171,27 +166,19 @@ function handleAddCardButton(e) {
   closePopup(popupsList.popupAddCard);
 
   popupContainerAddCard.reset();
-  lockButton(buttonAddCard, elementsDocument.inactiveButtonClass);
+  validatorAddCard.lockButton();
 }
 
 
-function hideInputError({inputErrorClass, errorClass, errorModifier}, formElement, inputElement) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-  inputElement.classList.remove(inputErrorClass);
-  errorElement.textContent = '';
-
-  errorElement.classList.remove(errorModifier);
-  errorElement.classList.remove(errorClass);
-}
 
 popupsList.popupEditData.addEventListener('submit', handleSaveForm);
 popupsList.popupAddCard.addEventListener('submit', handleAddCardButton);
 
 
 buttonEdit.addEventListener( 'click', function() {
-  hideInputError(elementsDocument, popupContainerEditData, nameInput);
-  hideInputError(elementsDocument, popupContainerEditData, jobInput);
+  validatorEditData.hideInputError(nameInput);
+  validatorEditData.hideInputError(jobInput);
 
   setInputValue();
   openPopup(popupsList.popupEditData);
@@ -202,8 +189,8 @@ buttonAdd.addEventListener( 'click', function() {
 }, false);
 
 
-const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData, lockButton, hideInputError);
+const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData);
 validatorEditData.enableValidation();
 
-const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard, lockButton, hideInputError);
+const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
 validatorAddCard.enableValidation();
