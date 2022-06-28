@@ -37,7 +37,7 @@ class FormValidator {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
     } else {
-      this.hideInputError({inputErrorClass: this._inputErrorClass, errorClass: this._errorClass, errorModifier: this._errorModifier}, this._formElement, inputElement);
+      this.hideInputError(inputElement);
     }
   }
 
