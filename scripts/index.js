@@ -70,7 +70,7 @@ const textJob = page.querySelector('.profile__info-descript');
 const elementsGridContainer = page.querySelector('.elements-grid__list');
 const elementsGridTemplate = document.getElementById('elements-grid__item-template');   //.content;
 
-function createCard() {
+function createCard(cardData) {
   const card = new Card(cardData, elementsGridTemplate, handleOpenViewPopup);
   const elementCard = card.generateCard();
 }
