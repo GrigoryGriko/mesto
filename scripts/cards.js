@@ -42,6 +42,7 @@ class Card {
   }
   _handleDeleteCard = () => {
     this._cardElement.remove();
+    this._cardElement = null;
   }
   _handleImageClick = () => {
     this._handleOpenViewPopup({name: this._name, link: this._link});

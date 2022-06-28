@@ -90,16 +90,17 @@ function setInputValue() {
 }
 
 function handlePressEscape(evt) {
-  const popupOpened = page.querySelector('.popup_opened');
   if (evt.code === 'Escape') {
+    const popupOpened = page.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
 }
 
+const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
+const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
 
 function handleOpenViewPopup({name, link}) {
-  const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
-  const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
+
 
   popupImageLink.setAttribute('src', link);
   popupImageLink.setAttribute('alt', name);
