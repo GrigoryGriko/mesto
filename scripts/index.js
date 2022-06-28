@@ -73,11 +73,12 @@ const elementsGridTemplate = document.getElementById('elements-grid__item-templa
 function createCard(cardData) {
   const card = new Card(cardData, elementsGridTemplate, handleOpenViewPopup);
   const elementCard = card.generateCard();
+
+  return elementCard;
 }
 
 function renderCard(cardData) {
-  createCard(cardData);
-  elementsGridContainer.prepend(elementCard);
+  elementsGridContainer.prepend(createCard(cardData));
 }
 
 
