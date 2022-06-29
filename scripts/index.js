@@ -56,9 +56,6 @@ const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-ima
 const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
 
 
-const buttonSave = page.querySelector('#button-save-data');
-const buttonAddCard = page.querySelector('#button-add-card');
-
 const nameInput = page.querySelector('#name-input');
 const jobInput = page.querySelector('#job-input');
 
