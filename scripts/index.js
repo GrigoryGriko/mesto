@@ -182,4 +182,3 @@ validatorEditData.enableValidation();
 
 const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
 validatorAddCard.enableValidation();
-/**/
