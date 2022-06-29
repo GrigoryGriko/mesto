@@ -3,14 +3,11 @@ class Card {
     this._name = name;
     this._link = link;
 
-    this._elementsGridTemplate = elementsGridTemplate;
+    this._elementsGridTemplate = elementsGridTemplate.content.querySelector('.elements-grid__item');
     this._handleOpenViewPopup = handleOpenViewPopup;
   }
   _getTemplate() {
-    const cardElement = this._elementsGridTemplate
-      .content
-      .querySelector('.elements-grid__item')
-      .cloneNode(true);
+    const cardElement = this._elementsGridTemplate.cloneNode(true);
 
     return cardElement;
   }
