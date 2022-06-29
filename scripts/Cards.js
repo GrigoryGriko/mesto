@@ -7,9 +7,7 @@ class Card {
     this._handleOpenViewPopup = handleOpenViewPopup;
   }
   _getTemplate() {
-    const cardElement = this._elementsGridTemplate.cloneNode(true);
-
-    return cardElement;
+    return this._elementsGridTemplate.cloneNode(true);
   }
 
   generateCard() {
