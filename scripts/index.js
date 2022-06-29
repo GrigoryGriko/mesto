@@ -160,10 +160,8 @@ function handleAddCardButton(e) {
 }
 
 
-
-
-popupsList.popupEditData.addEventListener('submit', handleSaveForm);
-popupsList.popupAddCard.addEventListener('submit', handleAddCardButton);
+popupContainerEditData.addEventListener('submit', handleSaveForm);
+popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
 
 buttonEdit.addEventListener( 'click', function() {
