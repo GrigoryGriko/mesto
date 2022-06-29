@@ -165,14 +165,14 @@ popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
 
 buttonEdit.addEventListener( 'click', function() {
-  validatorEditData.hideInputError(nameInput);
-  validatorEditData.hideInputError(jobInput);
+  validatorEditData.resetValidation();
 
   setInputValue();
   openPopup(popupsList.popupEditData);
 }, false);
 
 buttonAdd.addEventListener( 'click', function() {
+  validatorAddCard.resetValidation();
   openPopup(popupsList.popupAddCard);
 }, false);
 
