@@ -122,30 +122,17 @@ function closePopup(popup) {
   document.removeEventListener('keydown', handlePressEscape);
 }
 
-
-function setEventClickOverlay(popup) {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target === popup) {
-      closePopup(popup);
-    }
-  });
-}
-function setEventClickClose(popup) {
-  const buttonClose = popup.querySelector('.popup__button-close');
-  buttonClose.addEventListener('click', function() {
-    closePopup(popup);
+function setEventClosePopup() {
+  document.querySelectorAll('.popup').forEach( popup => {
+    popup.addEventListener('mousedown', (evt) => {
+      if (evt.target === popup || evt.target.classList.contains('popup__button-close')) {
+        closePopup(popup);
+      };
+    });
   });
 }
 
-function setEventClosePopup(popup) {
-  setEventClickClose(popup);
-  setEventClickOverlay(popup);
-}
-
-
-setEventClosePopup(popupsList.popupEditData);
-setEventClosePopup(popupsList.popupAddCard);
-setEventClosePopup(popupsList.popupShowImage);
+setEventClosePopup();
 
 
 function handleSaveForm(e) {
