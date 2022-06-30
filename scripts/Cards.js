@@ -1,13 +1,16 @@
 class Card {
-  constructor({name, link}, elementsGridTemplate, handleOpenViewPopup) {
+  constructor({name, link}, gridTemplateSelector, handleOpenViewPopup) {
     this._name = name;
     this._link = link;
 
-    this._elementsGridTemplate = elementsGridTemplate.content.querySelector('.elements-grid__item');
+    this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleOpenViewPopup = handleOpenViewPopup;
   }
   _getTemplate() {
-    return this._elementsGridTemplate.cloneNode(true);
+    return this._elementGridTemplate
+    .content
+    .querySelector('.elements-grid__item')
+    .cloneNode(true);
   }
 
   generateCard() {
