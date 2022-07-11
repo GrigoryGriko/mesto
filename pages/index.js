@@ -1,89 +1,28 @@
-import {Card} from './Cards.js';
-import {FormValidator} from './FormValidator.js';
-
-
-const cardsList = [
-  {
-    name: 'Архыз',
-    link: './images/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: './images/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: './images/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: './images/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: './images/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: './images/baikal.jpg'
-  }
-];
-
-const elementsDocument = {
-  formSelector: '.popup__container',
-  inputSelector: '.input-general-properties',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button-save_disabled',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'popup__error_visible',
-  errorModifier: 'popup__input-error_extender_form'
-};
-
-const page = document.querySelector('.page');
-const buttonEdit = page.querySelector('.profile__button-edit');
-const buttonAdd = page.querySelector('.profile__button-add');
-
-const popupsList = {
-  popupEditData: page.querySelector('.popup_edit_data'),
-  popupAddCard: page.querySelector('.popup_add_card'),
-  popupShowImage: page.querySelector('.popup_show_image')
-};
-
-const popupContainerEditData = popupsList.popupEditData.querySelector('.popup__container');
-const popupContainerAddCard = popupsList.popupAddCard.querySelector('.popup__container');
-
-const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
-const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
-
-
-const nameInput = page.querySelector('#name-input');
-const jobInput = page.querySelector('#job-input');
-
-
-const textName = page.querySelector('.profile__info-name');
-const textJob = page.querySelector('.profile__info-descript');
-
-
-const elementsGridContainer = page.querySelector('.elements-grid__list');
-const selectorGridTemplate = '#elements-grid__item-template';
+import {Card} from '../components/Cards.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {
+  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsList, popupContainerEditData,
+  popupContainerAddCard, popupImageLink, popupPlaceName, nameInput, jobInput, textName,
+  textJob, elementsGridContainer, selectorGridTemplate
+} from '../utils/constants.js';
 
 function createCard(cardData) {
   const card = new Card(cardData, selectorGridTemplate, handleOpenViewPopup);
   const elementCard = card.generateCard();
 
   return elementCard;
-}
+}   //переписать создание экземпляра класса
 
 function renderCard(cardData) {
   elementsGridContainer.prepend(createCard(cardData));
-}
+}   //в class Section в addItems()
 
 
 function initialCards(cardsList=[]) {
   cardsList.forEach(function (item) {
     renderCard(item);
   })
-}
+}   //в class Section в renderItems()
 
 initialCards(cardsList);
 
