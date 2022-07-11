@@ -10,9 +10,9 @@ import {
 /*function createCard(cardData) {*/
 
 const CardList = new Section({
-  data: data,
+  data: cardsList,
   renderer: (item) => {
-    const card = new Card(cardData, selectorGridTemplate, hadleOpenViewPopup);
+    const card = new Card(item, selectorGridTemplate, handleOpenViewPopup);
     const elementCard = card.generateCard();
 
     CardList.addItem(elementCard);
