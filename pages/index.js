@@ -10,7 +10,7 @@ import {
 /*function createCard(cardData) {*/
 
 const CardList = new Section({
-  data: cardsList,
+  items: cardsList,
   renderer: (item) => {
     const card = new Card(item, selectorGridTemplate, handleOpenViewPopup);
     const elementCard = card.generateCard();
@@ -20,6 +20,7 @@ const CardList = new Section({
 }, elementsGridContainer);
 //переписать создание экземпляра класса
 
+CardList.renderItems();
 
 /*function renderCard(cardData) {
   elementsGridContainer.prepend(createCard(cardData));
