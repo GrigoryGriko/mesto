@@ -32,7 +32,7 @@ function initialCards(cardsList=[]) {
   })
 }   //в class Section в renderItems()*/
 
-initialCards(cardsList);
+//initialCards(cardsList);
 
 function setInputValue() {
   nameInput.value = textName.textContent;

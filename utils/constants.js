@@ -60,5 +60,5 @@ export const textName = page.querySelector('.profile__info-name');
 export const textJob = page.querySelector('.profile__info-descript');
 
 
-export const elementsGridContainer = page.querySelector('.elements-grid__list');
+export const elementsGridContainer = '.elements-grid__list';
 export const selectorGridTemplate = '#elements-grid__item-template';
