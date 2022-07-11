@@ -25,7 +25,7 @@ function setInputValue() {
   jobInput.value = textJob.textContent;
 }
 
-function handlePressEscape(evt) {
+function handlePressEscape(evt) {   //popup
   if (evt.code === 'Escape') {
     const popupOpened = page.querySelector('.popup_opened');
     closePopup(popupOpened);
@@ -42,17 +42,17 @@ function handleOpenViewPopup({name, link}) {
   openPopup(popupsList.popupShowImage);
 }
 
-function openPopup(popup) {
+function openPopup(popup) {   //popup
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handlePressEscape);
 }
 
-function closePopup(popup) {
+function closePopup(popup) {   //popup
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handlePressEscape);
 }
 
-function setEventClosePopup() {
+function setEventClosePopup() {   //popup
   document.querySelectorAll('.popup').forEach( popup => {
     popup.addEventListener('mousedown', (evt) => {
       if (evt.target === popup || evt.target.classList.contains('popup__button-close')) {
