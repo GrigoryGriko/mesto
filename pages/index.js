@@ -7,8 +7,6 @@ import {
   textJob, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
 
-/*function createCard(cardData) {*/
-
 const CardList = new Section({
   items: cardsList,
   renderer: (item) => {
@@ -18,22 +16,9 @@ const CardList = new Section({
     CardList.addItem(elementCard);
   }
 }, elementsGridContainer);
-//переписать создание экземпляра класса
 
 CardList.renderItems();
 
-/*function renderCard(cardData) {
-  elementsGridContainer.prepend(createCard(cardData));
-}   //в class Section в addItems()
-
-
-function initialCards(cardsList=[]) {
-  cardsList.forEach(function (item) {
-    renderCard(item);
-  })
-}   //в class Section в renderItems()*/
-
-//initialCards(cardsList);
 
 function setInputValue() {
   nameInput.value = textName.textContent;
