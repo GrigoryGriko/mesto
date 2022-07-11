@@ -1,19 +1,27 @@
 import {Card} from '../components/Cards.js';
 import {FormValidator} from '../components/FormValidator.js';
+import Section from '../components/Section.js';
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsList, popupContainerEditData,
   popupContainerAddCard, popupImageLink, popupPlaceName, nameInput, jobInput, textName,
   textJob, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
 
-function createCard(cardData) {
-  const card = new Card(cardData, selectorGridTemplate, handleOpenViewPopup);
-  const elementCard = card.generateCard();
+/*function createCard(cardData) {*/
 
-  return elementCard;
-}   //переписать создание экземпляра класса
+const CardList = new Section({
+  data: data,
+  renderer: (item) => {
+    const card = new Card(cardData, selectorGridTemplate, hadleOpenViewPopup);
+    const elementCard = card.generateCard();
 
-function renderCard(cardData) {
+    CardList.addItem(elementCard);
+  }
+}, elementsGridContainer);
+//переписать создание экземпляра класса
+
+
+/*function renderCard(cardData) {
   elementsGridContainer.prepend(createCard(cardData));
 }   //в class Section в addItems()
 
@@ -22,7 +30,7 @@ function initialCards(cardsList=[]) {
   cardsList.forEach(function (item) {
     renderCard(item);
   })
-}   //в class Section в renderItems()
+}   //в class Section в renderItems()*/
 
 initialCards(cardsList);
 
