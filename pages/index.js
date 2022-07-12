@@ -3,7 +3,7 @@ import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import {
-  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsList, popupContainerEditData,
+  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, popupContainerEditData,
   popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, textName,
   textJob, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
@@ -35,7 +35,7 @@ function handlePressEscape(evt) {   //popup
 }
 
 function handleCardClick({name, link}) {
-  const popupWithImage = new PopupWithImage(popupsList.popupShowImageSelector, fullImage, captionImage, name, link);
+  const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImage, captionImage, name, link);
   popupWithImage.open();
 }
 
@@ -62,14 +62,14 @@ function setEventClosePopup() {   //popup
 setEventClosePopup();
 
 
-function handleSaveForm(e) {    //PopupWithForm
+/*function handleSaveForm(e) {    //PopupWithForm
   e.preventDefault();
   textName.textContent = nameInput.value;
   textJob.textContent = jobInput.value;
-  closePopup(popupsList.popupEditData);
+  closePopup(popupsListSelector.popupEditData);
 
   validatorEditData.lockButton();
-}
+}*/
 
 function handleAddCardButton(e) {
   e.preventDefault();
@@ -80,25 +80,25 @@ function handleAddCardButton(e) {
   };
 
   renderCard(cardInput);
-  closePopup(popupsList.popupAddCard);
+  closePopup(popupsListSelector.popupAddCard);
 
   popupContainerAddCard.reset();
   validatorAddCard.lockButton();
 }
 
 
-popupContainerEditData.addEventListener('submit', handleSaveForm);
+//popupContainerEditData.addEventListener('submit', handleSaveForm);    //PopupWithForm
 popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
 const editData = new PopupWithForm(   //PopupWithForm
-  popupContainerEditData,
-  handleSubmitForm = (e) => {
+  popupsListSelector.popupEditDataSelector,
+  (e) => {
     e.preventDefault();
-    textName.textContent = nameInput.value;
-    textJob.textContent = jobInput.value;
+
+    editData._getInputValues();
     editData.close();
 
-    validatorEditData.lockButton();
+    validatorEditData.lockButton();   //возможно экземпляр validatorEditData надо передавать параметром
   }
 );
 
@@ -117,12 +117,12 @@ buttonEdit.addEventListener( 'click', function() {
   validatorEditData.resetValidation();
 
   setInputValue();
-  openPopup(popupsList.popupEditData);
+  openPopup(popupsListSelector.popupEditData);
 }, false);
 
 buttonAdd.addEventListener( 'click', function() {
   validatorAddCard.resetValidation();
-  openPopup(popupsList.popupAddCard);
+  openPopup(popupsListSelector.popupAddCard);
 }, false);
 
 

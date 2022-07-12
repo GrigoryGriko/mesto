@@ -39,17 +39,17 @@ export const page = document.querySelector('.page');
 export const buttonEdit = page.querySelector('.profile__button-edit');
 export const buttonAdd = page.querySelector('.profile__button-add');
 
-export const popupsList = {   //popupListSelector
-  popupEditData: page.querySelector('.popup_edit_data'),
-  popupAddCard: page.querySelector('.popup_add_card'),
+export const popupsListSelector = {
+  popupEditDataSelector: '.popup_edit_data',
+  popupAddCardSelector: '.popup_add_card',
   popupShowImageSelector: '.popup_show_image'
 };
 
-export const popupContainerEditData = popupsList.popupEditData.querySelector('.popup__container');
-export const popupContainerAddCard = popupsList.popupAddCard.querySelector('.popup__container');
+export const popupContainerEditData = page.querySelector(popupsListSelector.popupEditDataSelector).querySelector('.popup__container');
+export const popupContainerAddCard = page.querySelector(popupsListSelector.popupAddCardSelector).querySelector('.popup__container');
 
-export const fullImage = page.querySelector(popupsList.popupShowImageSelector).querySelector('.popup__full-image');
-export const captionImage = page.querySelector(popupsList.popupShowImageSelector).querySelector('.popup__caption');
+export const fullImage = page.querySelector(popupsListSelector.popupShowImageSelector).querySelector('.popup__full-image');
+export const captionImage = page.querySelector(popupsListSelector.popupShowImageSelector).querySelector('.popup__caption');
 
 
 export const nameInput = page.querySelector('#name-input');

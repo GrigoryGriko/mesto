@@ -4,14 +4,17 @@ import Popup from './Popup.js';
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleSubmitForm) {
     super(popupSelector);
+    this._popup = document.querySelector(popupSelector);
+
     this._handleSubmitForm = handleSubmitForm;
   }
 
   _getInputValues() {
-
+    textName.textContent = nameInput.value;
+    textJob.textContent = jobInput.value;
   }
 
-  setEventListeners() {     //но и добавлять обработчик сабмита формы
+  setEventListeners() {
     this._popup.addEventListener('mousedown', (evt) => {
       if (evt.target === popup || evt.target.classList.contains('popup__button-close')) {
         close();
@@ -20,8 +23,9 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  close() {   //так как при закрытии попапа форма должна ещё и сбрасываться
+  close() {
     this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._handleEscClose); //удаление слушателя нажатия на Esc
+    document.removeEventListener('keydown', this._handleEscClose);
+    this._popup.reset();
   }
 }
