@@ -1,10 +1,10 @@
 class Card {
-  constructor({name, link}, gridTemplateSelector, handleOpenViewPopup) {
+  constructor({name, link}, gridTemplateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
-    this._handleOpenViewPopup = handleOpenViewPopup;
+    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
     return this._elementGridTemplate
@@ -44,7 +44,7 @@ class Card {
     this._cardElement = null;
   }
   _handleImageClick = () => {
-    this._handleOpenViewPopup({name: this._name, link: this._link});
+    this._handleCardClick({name: this._name, link: this._link});
   }
 }
 

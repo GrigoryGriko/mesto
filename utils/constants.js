@@ -39,17 +39,17 @@ export const page = document.querySelector('.page');
 export const buttonEdit = page.querySelector('.profile__button-edit');
 export const buttonAdd = page.querySelector('.profile__button-add');
 
-export const popupsList = {
+export const popupsList = {   //popupListSelector
   popupEditData: page.querySelector('.popup_edit_data'),
   popupAddCard: page.querySelector('.popup_add_card'),
-  popupShowImage: page.querySelector('.popup_show_image')
+  popupShowImageSelector: '.popup_show_image'
 };
 
 export const popupContainerEditData = popupsList.popupEditData.querySelector('.popup__container');
 export const popupContainerAddCard = popupsList.popupAddCard.querySelector('.popup__container');
 
-export const popupImageLink = popupsList.popupShowImage.querySelector('.popup__full-image');
-export const popupPlaceName = popupsList.popupShowImage.querySelector('.popup__caption');
+export const fullImage = page.querySelector(popupsList.popupShowImageSelector).querySelector('.popup__full-image');
+export const captionImage = page.querySelector(popupsList.popupShowImageSelector).querySelector('.popup__caption');
 
 
 export const nameInput = page.querySelector('#name-input');

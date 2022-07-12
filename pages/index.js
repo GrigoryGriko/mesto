@@ -5,7 +5,7 @@ import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsList, popupContainerEditData,
-  popupContainerAddCard, popupImageLink, popupPlaceName, nameInput, jobInput, textName,
+  popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, textName,
   textJob, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
 
@@ -34,17 +34,9 @@ function handlePressEscape(evt) {   //popup
   }
 }
 
-function handleCardClick({name, link}) {    //PopupWidthImage
-
-  const popupWithImage = new PopupWithImage(popupSelector, fullImage, imageCaption, imageName, imageLink);    //подсктавить атрибуты
+function handleCardClick({name, link}) {
+  const popupWithImage = new PopupWithImage(popupsList.popupShowImageSelector, fullImage, captionImage, name, link);    //подставить атрибуты
   popupWithImage.open();
-
-
-  /*popupImageLink.setAttribute('src', link);
-  popupImageLink.setAttribute('alt', name);
-  popupPlaceName.textContent = name;
-
-  openPopup(popupsList.popupShowImage);*/
 }
 
 function openPopup(popup) {   //popup
