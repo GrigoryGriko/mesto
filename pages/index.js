@@ -7,18 +7,19 @@ import {
   popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, textName,
   textJob, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 
-const CardList = new Section({
+const cardList = new Section({
   items: cardsList,
   renderer: (item) => {
     const card = new Card(item, selectorGridTemplate, handleCardClick);
     const elementCard = card.generateCard();
 
-    CardList.addItem(elementCard);
+    cardList.addItem(elementCard);
   }
 }, elementsGridContainer);
 
-CardList.renderItems();
+cardList.renderItems();
 
 
 function setInputValue() {
@@ -61,7 +62,7 @@ function setEventClosePopup() {   //popup
 setEventClosePopup();
 
 
-function handleSaveForm(e) {
+function handleSaveForm(e) {    //PopupWithForm
   e.preventDefault();
   textName.textContent = nameInput.value;
   textJob.textContent = jobInput.value;
@@ -88,6 +89,28 @@ function handleAddCardButton(e) {
 
 popupContainerEditData.addEventListener('submit', handleSaveForm);
 popupContainerAddCard.addEventListener('submit', handleAddCardButton);
+
+const editData = new PopupWithForm(   //PopupWithForm
+  popupContainerEditData,
+  handleSubmitForm = (e) => {
+    e.preventDefault();
+    textName.textContent = nameInput.value;
+    textJob.textContent = jobInput.value;
+    editData.close();
+
+    validatorEditData.lockButton();
+  }
+);
+
+/*const CardList = new Section({
+  items: cardsList,
+  renderer: (item) => {
+    const card = new Card(item, selectorGridTemplate, handleCardClick);
+    const elementCard = card.generateCard();
+
+    CardList.addItem(elementCard);
+  }
+}, elementsGridContainer);*/
 
 
 buttonEdit.addEventListener( 'click', function() {
