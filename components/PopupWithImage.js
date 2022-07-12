@@ -2,24 +2,22 @@ import Popup from './Popup.js';
 
 
 export default class PopupWithImage extends Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, fullImage, imageCaption, imageName, imageLink) {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
+
+    this._fullImage = fullImage;
+    this._imageCaption = imageCaption;
+    this._imageName = imageName;
+    this._imageLink = imageLink;
   }
 
   open() {
-    //В методе open класса PopupWithImage нужно вставлять в попап картинку с src изображения и подписью к картинке
-    /*
-    popupImageLink.setAttribute('src', link);
-    popupImageLink.setAttribute('alt', name);
-    popupPlaceName.textContent = name;
-    */
-   /* this._popup.setAttribute('src', link);
-    this._popup.setAttribute('alt', name);
-    popupPlaceName.textContent = name;*/
+    this._image.setAttribute('src', this._imageLink);
+    this._image.setAttribute('alt', this._imageName);
+    this._caption.textContent = this._imageName;
 
     this._popup.classList.add('popup_opened');
     document.addEventListener('keydown', this._handleEscClose);
-
   }
 }

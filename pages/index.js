@@ -1,6 +1,8 @@
 import {Card} from '../components/Cards.js';
 import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
+import Popup from '../components/Popup.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsList, popupContainerEditData,
   popupContainerAddCard, popupImageLink, popupPlaceName, nameInput, jobInput, textName,
@@ -10,7 +12,7 @@ import {
 const CardList = new Section({
   items: cardsList,
   renderer: (item) => {
-    const card = new Card(item, selectorGridTemplate, handleOpenViewPopup);
+    const card = new Card(item, selectorGridTemplate, handleCardClick);
     const elementCard = card.generateCard();
 
     CardList.addItem(elementCard);
@@ -32,14 +34,17 @@ function handlePressEscape(evt) {   //popup
   }
 }
 
-function handleOpenViewPopup({name, link}) {
+function handleCardClick({name, link}) {    //PopupWidthImage
+
+  const popupWithImage = new PopupWithImage(popupSelector, fullImage, imageCaption, imageName, imageLink);    //подсктавить атрибуты
+  popupWithImage.open();
 
 
-  popupImageLink.setAttribute('src', link);
+  /*popupImageLink.setAttribute('src', link);
   popupImageLink.setAttribute('alt', name);
   popupPlaceName.textContent = name;
 
-  openPopup(popupsList.popupShowImage);
+  openPopup(popupsList.popupShowImage);*/
 }
 
 function openPopup(popup) {   //popup
