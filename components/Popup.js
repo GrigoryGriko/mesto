@@ -13,10 +13,9 @@ export default class Popup {
     document.removeEventListener('keydown', this._handleEscClose); //удаление слушателя нажатия на Esc
   }
 
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     if (evt.code === 'Escape') {
-      //const popupOpened = page.querySelector('.popup_opened');    //открытый popup
-      this.close();   //нужно закрыть открытый popup
+      this.close();
     }
   }
 

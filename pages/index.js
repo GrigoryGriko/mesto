@@ -1,7 +1,6 @@
 import {Card} from '../components/Cards.js';
 import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsList, popupContainerEditData,
