@@ -116,9 +116,9 @@ const editData = new PopupWithForm(   //PopupWithForm
 buttonEdit.addEventListener( 'click', function() {
   validatorEditData.resetValidation();
 
-  setInputValue();  //наверное событие клика привязывать в классе, а validatorEditData как-то привязывать к нему
+  setInputValue();   //наверное событие клика привязывать в классе, а validatorEditData как-то привязывать к нему
   editData.open();
-  //(popupsListSelector.popupEditData);
+  //openPopup(popupsListSelector.popupEditData);
 }, false);
 
 buttonAdd.addEventListener( 'click', function() {
