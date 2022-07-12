@@ -98,7 +98,7 @@ const editData = new PopupWithForm(   //PopupWithForm
     editData._getInputValues();
     editData.close();
 
-    validatorEditData.lockButton();   //возможно экземпляр validatorEditData надо передавать параметром
+    validatorEditData.lockButton();         //возможно экземпляр validatorEditData надо передавать параметром
   }
 );
 
