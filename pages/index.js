@@ -35,7 +35,7 @@ function handlePressEscape(evt) {   //popup
 }
 
 function handleCardClick({name, link}) {
-  const popupWithImage = new PopupWithImage(popupsList.popupShowImageSelector, fullImage, captionImage, name, link);    //подставить атрибуты
+  const popupWithImage = new PopupWithImage(popupsList.popupShowImageSelector, fullImage, captionImage, name, link);
   popupWithImage.open();
 }
 
