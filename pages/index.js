@@ -27,19 +27,19 @@ function setInputValue() {
   jobInput.value = textJob.textContent;
 }
 
-function handlePressEscape(evt) {   //popup
+/*function handlePressEscape(evt) {   //popup
   if (evt.code === 'Escape') {
     const popupOpened = page.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
-}
+}*/
 
 function handleCardClick({name, link}) {
   const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImage, captionImage, name, link);
   popupWithImage.open();
 }
 
-function openPopup(popup) {   //popup
+/*function openPopup(popup) {   //popup
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handlePressEscape);
 }
@@ -60,7 +60,7 @@ function setEventClosePopup() {   //popup
 }
 
 setEventClosePopup();
-
+*/
 
 /*function handleSaveForm(e) {    //PopupWithForm
   e.preventDefault();
@@ -116,8 +116,9 @@ const editData = new PopupWithForm(   //PopupWithForm
 buttonEdit.addEventListener( 'click', function() {
   validatorEditData.resetValidation();
 
-  setInputValue();
-  openPopup(popupsListSelector.popupEditData);
+  setInputValue();  //наверное событие клика привязывать в классе, а validatorEditData как-то привязывать к нему
+  editData.open();
+  //(popupsListSelector.popupEditData);
 }, false);
 
 buttonAdd.addEventListener( 'click', function() {
