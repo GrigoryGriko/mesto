@@ -6,14 +6,18 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
 
+    this._handleSubmitForm = handleSubmitForm;    //отдельной функцией в index.js. вызывает UserInfo.setUserInfo()
+
     this._nameInput = document.querySelector(nameInputSelector);
     this._jobInput = document.querySelector(jobInputSelector);
-
-    this._handleSubmitForm = handleSubmitForm;
   }
 
-  _getInputValues() {   //получили значения с инпутов
-    return {nameInputValue: this._nameInput.value, jobInputValue: this._jobInput.value};
+  _getInputValues() {
+    return {nameInput: this._nameInput.value, jobInput: this._jobInput.value};
+  }
+
+  _handleSubmitForm(evt) {
+    evt.preventDefault();
   }
 
   setEventListeners() {

@@ -92,13 +92,15 @@ popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
 const editData = new PopupWithForm(   //PopupWithForm
   popupsListSelector.popupEditDataSelector,
-  (e) => {
-    e.preventDefault();
+  (evt) => {
+    evt.preventDefault();
 
-    editData._getInputValues();
+    textName.textContent = editData._getInputValues().nameInput;
+    textJob.textContent = editData._getInputValues().jobInput;
+
     editData.close();
 
-    validatorEditData.lockButton();         //возможно экземпляр validatorEditData надо передавать параметром
+    validatorEditData.lockButton();
   }
 );
 

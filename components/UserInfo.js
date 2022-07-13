@@ -1,13 +1,16 @@
 export default class UserInfo {
-  constructor({userName, userInfo}) {
-
+  constructor({userNameSelector, userInfoSelector}) {
+    this._elementUserName = document.querySelector(userNameSelector);
+    this._elementUserInfo = document.querySelector(userInfoSelector)
   }
 
   getUserInfo() {
-    //получет значения со страницы и возвращает объект, который используется для вставки в поля при открытии формы
+    return {UserName: this._elementUserName.textContent, UserInfo: this._elementUserInfo.textContent}
   }
 
   setUserInfo() {
     //значения с полей принимает и заменяет их на странице
+    textName.textContent =
+    textJob.textContent =
   }
 }
