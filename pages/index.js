@@ -91,6 +91,13 @@ function handleAddCardButton(e) {
 //popupContainerEditData.addEventListener('submit', handleSaveForm);    //PopupWithForm
 popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
+const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
+validatorAddCard.enableValidation();
+
+
+const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData);
+validatorEditData.enableValidation();
+
 function handleSaveForm({nameInputValue, jobInputValue}) {
   textName.textContent = nameInputValue;
   textJob.textContent = jobInputValue;
@@ -131,10 +138,3 @@ buttonAdd.addEventListener( 'click', function() {
   validatorAddCard.resetValidation();
   openPopup(popupsListSelector.popupAddCard);
 }, false);
-
-
-const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData);
-validatorEditData.enableValidation();
-
-const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
-validatorAddCard.enableValidation();
