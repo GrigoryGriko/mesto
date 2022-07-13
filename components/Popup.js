@@ -10,7 +10,7 @@ export default class Popup {
 
   close() {
     this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._handleEscClose); //удаление слушателя нажатия на Esc
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   _handleEscClose = (evt) => {
@@ -21,8 +21,8 @@ export default class Popup {
 
   setEventListeners() {
     this._popup.addEventListener('mousedown', (evt) => {
-      if (evt.target === popup || evt.target.classList.contains('popup__button-close')) {
-        close();
+      if (evt.target === this._popup || evt.target.classList.contains('popup__button-close')) {
+        this.close();
       };
     });
   }

@@ -26,7 +26,7 @@ export default class PopupWithForm extends Popup {
       if (evt.target === popup || evt.target.classList.contains('popup__button-close')) {
         close();
       }
-      this._popup.addEventListener('submit', this._handleSubmitForm);
+      this._popup.addEventListener('submit', this._handleFormSubmit);
     });
   }
 
