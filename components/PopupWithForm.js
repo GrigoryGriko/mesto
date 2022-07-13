@@ -12,7 +12,16 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    return {nameInput: this._nameInput.value, jobInput: this._jobInput.value};
+    this._nameInput = document.querySelector('#name-input');    //поиск полей
+    this._jobInput = document.querySelector('#job-input');
+
+    return {nameInput: this._nameInput.value, jobInput: this._jobInput.value};    //нужно найти инпуты
+  }
+
+  _setInputValue() {
+    this._getUserInfo.setUserInfo();
+    /*this._nameInput.value = textName.textContent;
+    this._jobInput.value = textJob.textContent;*/   //нужно найти инпуты
   }
 
   _handleFormSubmit = (evt) => {
@@ -28,6 +37,18 @@ export default class PopupWithForm extends Popup {
       }
       this._popup.addEventListener('submit', this._handleFormSubmit);
     });
+  }
+
+  open() {
+    if (getUserInfo !== null) {
+      this._setInputValue();
+    } else {
+      this._popup.reset();
+      //вызвать метод сброса ошибок
+      super.popup();
+    }
+
+
   }
 
   close() {
