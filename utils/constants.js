@@ -55,6 +55,9 @@ export const captionImage = page.querySelector(popupsListSelector.popupShowImage
 export const nameInput = page.querySelector('#name-input');
 export const jobInput = page.querySelector('#job-input');
 
+export const nameInputSelector = '#name-input';
+export const jobInputSelector = '#job-input';
+
 
 export const textName = page.querySelector('.profile__info-name');
 export const textJob = page.querySelector('.profile__info-descript');

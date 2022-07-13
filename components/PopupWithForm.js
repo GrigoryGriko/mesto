@@ -2,16 +2,18 @@ import Popup from './Popup.js';
 
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleSubmitForm) {
+  constructor(popupSelector, handleSubmitForm, nameInputSelector, jobInputSelector) {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
+
+    this._nameInput = document.querySelector(nameInputSelector);
+    this._jobInput = document.querySelector(jobInputSelector);
 
     this._handleSubmitForm = handleSubmitForm;
   }
 
-  _getInputValues() {
-    textName.textContent = nameInput.value;
-    textJob.textContent = jobInput.value;
+  _getInputValues() {   //получили значения с инпутов
+    return {nameInputValue: this._nameInput.value, jobInputValue: this._jobInput.value};
   }
 
   setEventListeners() {

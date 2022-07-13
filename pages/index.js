@@ -4,7 +4,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, popupContainerEditData,
-  popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, textName,
+  popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, nameInputSelector, jobInputSelector, textName,
   textJob, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
 import PopupWithForm from '../components/PopupWithForm.js';
