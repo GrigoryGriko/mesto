@@ -5,9 +5,10 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, popupContainerEditData,
   popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, nameInputSelector, jobInputSelector, textName,
-  textJob, elementsGridContainer, selectorGridTemplate
+  textJob, textNameSelector, textJobSelector, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
 const cardList = new Section({
   items: cardsList,
@@ -90,7 +91,20 @@ function handleAddCardButton(e) {
 //popupContainerEditData.addEventListener('submit', handleSaveForm);    //PopupWithForm
 popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
-const editData = new PopupWithForm(   //PopupWithForm
+function handleSaveForm({nameInputValue, jobInputValue}) {
+  textName.textContent = nameInputValue;
+  textJob.textContent = jobInputValue;
+
+  editData.close();
+
+  validatorEditData.lockButton();
+}
+
+const userInfo = new UserInfo({textNameSelector, textJobSelector});
+
+const editData = new PopupWithForm(popupsListSelector.popupEditDataSelector, handleSaveForm, validatorEditData.resetValidation, userInfo.getUserInfo);  //PopupWithForm
+
+/*const editData = new PopupWithForm(   //PopupWithForm
   popupsListSelector.popupEditDataSelector,
   (evt) => {
     evt.preventDefault();
@@ -102,17 +116,7 @@ const editData = new PopupWithForm(   //PopupWithForm
 
     validatorEditData.lockButton();
   }
-);
-
-/*const CardList = new Section({
-  items: cardsList,
-  renderer: (item) => {
-    const card = new Card(item, selectorGridTemplate, handleCardClick);
-    const elementCard = card.generateCard();
-
-    CardList.addItem(elementCard);
-  }
-}, elementsGridContainer);*/
+);*/
 
 
 buttonEdit.addEventListener( 'click', function() {

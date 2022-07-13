@@ -5,12 +5,12 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return {UserName: this._elementUserName.textContent, UserInfo: this._elementUserInfo.textContent}
+    return {UserName: this._elementUserName.textContent, UserInfo: this._elementUserInfo.textContent};
   }
 
-  setUserInfo() {
+  setUserInfo() {   //?Инпуты находить прямо здесь, или передавать параметрами?
     //значения с полей принимает и заменяет их на странице
-    textName.textContent =
-    textJob.textContent =
+    textName.textContent = document.querySelector('#name-input');
+    textJob.textContent = document.querySelector('#job-input');
   }
 }
