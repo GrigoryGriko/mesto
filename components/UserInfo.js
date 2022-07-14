@@ -5,7 +5,7 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return {UserName: this._elementUserName.textContent, UserInfo: this._elementUserInfo.textContent};
+    return {userName: this._elementUserName.textContent, userInfo: this._elementUserInfo.textContent};
   }
 
   setUserInfo() {   //?Инпуты находить прямо здесь, или передавать параметрами?

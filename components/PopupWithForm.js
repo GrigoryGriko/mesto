@@ -18,8 +18,9 @@ export default class PopupWithForm extends Popup {
     return {nameInput: this._nameInput.value, jobInput: this._jobInput.value};    //нужно найти инпуты
   }
 
-  _setInputValue() {
-    this._getUserInfo.setUserInfo();
+  _setInputValues() {
+    this._getInputValues().nameInput = this._getUserInfo().userName;
+    this._getInputValues().jobInput = this._getUserInfo().userInfo;
     /*this._nameInput.value = textName.textContent;
     this._jobInput.value = textJob.textContent;*/   //нужно найти инпуты
   }
@@ -40,7 +41,7 @@ export default class PopupWithForm extends Popup {
   }
 
   open() {
-    if (getUserInfo !== null) {
+    if (this._getUserInfo !== null) {
       this._setInputValue();
     } else {
       this._popup.reset();
