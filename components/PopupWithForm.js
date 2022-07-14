@@ -5,6 +5,8 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler, resetValidation, getUserInfo = null) {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
+    this._formElement = this._popup.querySelector('.popup__container');
+
 
     this._submitHandler = submitHandler;    //отдельной функцией в index.js. вызывает UserInfo.setUserInfo()
     this._resetValidation = resetValidation;
@@ -36,7 +38,7 @@ export default class PopupWithForm extends Popup {
       if (evt.target === this._popup || evt.target.classList.contains('popup__button-close')) {
         this.close();
       }
-      this._popup.addEventListener('submit', this._handleFormSubmit);
+      this._formElement.addEventListener('submit', this._handleFormSubmit);
     });
   }
 
@@ -44,7 +46,7 @@ export default class PopupWithForm extends Popup {
     if (this._getUserInfo !== null) {
       this._setInputValues();
     } else {
-      this._popup.reset();
+      this._formElement.reset();
       //вызвать метод сброса ошибок
 
     }
@@ -56,6 +58,6 @@ export default class PopupWithForm extends Popup {
   close() {
     this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this._handleEscClose);
-    this._popup.reset();
+    this._formElement.reset();
   }
 }
