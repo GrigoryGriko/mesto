@@ -81,8 +81,8 @@ function handleAddCardButton(e) {
 
 const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
-  formListValidation[item.getAttribute(name)] = new FormValidator(elementsDocument, item);
-  item.getAttribute(name).enableValidation();
+  formListValidation[item.name] = new FormValidator(elementsDocument, item);
+  item.name.enableValidation();
 });   //определяем объект с валидациями всех форм
 
 
