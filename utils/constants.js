@@ -45,6 +45,8 @@ export const popupsListSelector = {
   popupShowImageSelector: '.popup_show_image'
 };
 
+export const formElementSelector = '.popup__container';
+
 export const popupContainerEditData = page.querySelector(popupsListSelector.popupEditDataSelector).querySelector('.popup__container');
 export const popupContainerAddCard = page.querySelector(popupsListSelector.popupAddCardSelector).querySelector('.popup__container');
 

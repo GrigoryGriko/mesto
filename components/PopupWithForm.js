@@ -2,10 +2,10 @@ import Popup from './Popup.js';
 
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, submitHandler, resetValidation, getUserInfo = null) {
+  constructor(popupSelector, formElementSelector, submitHandler, resetValidation, getUserInfo = null) {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
-    this._formElement = this._popup.querySelector('.popup__container');   //передать его из constants
+    this._formElement = this._popup.querySelector(formElementSelector);   //передать его из constants
 
 
     this._submitHandler = submitHandler;    //отдельной функцией в index.js. вызывает UserInfo.setUserInfo()
@@ -47,11 +47,10 @@ export default class PopupWithForm extends Popup {
       this._setInputValues();
     } else {
       this._formElement.reset();
-      //вызвать метод сброса ошибок
-
     }
-
+    this._resetValidation();
     this.setEventListeners();
+
     super.open();
   }
 

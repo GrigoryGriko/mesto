@@ -1,5 +1,9 @@
 class FormValidator {
-  constructor({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass, errorModifier}, formElement, lockButton, hideInputError) {
+  constructor({
+    formSelector, inputSelector, submitButtonSelector, inactiveButtonClass,
+    inputErrorClass, errorClass, errorModifier
+  }, formElement) {
+
     this._formSelector = formSelector;
     this._inputSelector = inputSelector;
     this._submitButtonSelector = submitButtonSelector;

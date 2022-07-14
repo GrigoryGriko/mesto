@@ -3,7 +3,7 @@ import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import {
-  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, popupContainerEditData,
+  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, formElementSelector, popupContainerEditData,
   popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, nameInputSelector, jobInputSelector, textName,
   textJob, textNameSelector, textJobSelector, elementsGridContainer, selectorGridTemplate
 } from '../utils/constants.js';
@@ -98,7 +98,10 @@ function handleSaveForm({nameInputValue, jobInputValue}) {
 
 const userInfo = new UserInfo({textNameSelector, textJobSelector});
 
-const editData = new PopupWithForm(popupsListSelector.popupEditDataSelector, handleSaveForm, validatorEditData.resetValidation, userInfo.getUserInfo);
+const editData = new PopupWithForm(
+  popupsListSelector.popupEditDataSelector, formElementSelector,
+  handleSaveForm, validatorEditData.resetValidation, userInfo.getUserInfo
+);
 editData.setEventListeners();
 
 buttonEdit.addEventListener( 'click', function() {//PopupWithForm
