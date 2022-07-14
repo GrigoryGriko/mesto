@@ -79,6 +79,13 @@ function handleAddCardButton(e) {
 }
 
 
+const formListValidation = {};
+Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
+  formListValidation[item.getAttribute(name)] = new FormValidator(elementsDocument, item);
+  item.getAttribute(name).enableValidation();
+});   //определяем объект с валидациями всех форм
+
+
 popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
 const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
