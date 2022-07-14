@@ -5,7 +5,7 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler, resetValidation, getUserInfo = null) {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
-    this._formElement = this._popup.querySelector('.popup__container');
+    this._formElement = this._popup.querySelector('.popup__container');   //передать его из constants
 
 
     this._submitHandler = submitHandler;    //отдельной функцией в index.js. вызывает UserInfo.setUserInfo()
@@ -19,7 +19,7 @@ export default class PopupWithForm extends Popup {
     this._nameInput = document.querySelector('#name-input');    //поиск полей
     this._jobInput = document.querySelector('#job-input');
 
-    return {nameInput: this._nameInput.value, jobInput: this._jobInput.value};    //нужно найти инпуты
+    return {nameInputValue: this._nameInput.value, jobInputValue: this._jobInput.value};    //нужно найти инпуты
   }
 
   _setInputValues() {
