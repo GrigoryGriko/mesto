@@ -21,8 +21,6 @@ export default class PopupWithForm extends Popup {
   _setInputValues() {
     this._getInputValues().nameInput = this._getUserInfo().userName;
     this._getInputValues().jobInput = this._getUserInfo().userInfo;
-    /*this._nameInput.value = textName.textContent;
-    this._jobInput.value = textJob.textContent;*/   //нужно найти инпуты
   }
 
   _handleFormSubmit = (evt) => {

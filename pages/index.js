@@ -99,8 +99,7 @@ const validatorEditData = new FormValidator(elementsDocument, popupContainerEdit
 validatorEditData.enableValidation();
 
 function handleSaveForm({nameInputValue, jobInputValue}) {
-  textName.textContent = nameInputValue;
-  textJob.textContent = jobInputValue;
+  userInfo.setUserInfo();
 
   editData.close();
 

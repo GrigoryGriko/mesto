@@ -10,7 +10,7 @@ export default class UserInfo {
 
   setUserInfo() {   //?Инпуты находить прямо здесь, или передавать параметрами?
     //значения с полей принимает и заменяет их на странице
-    textName.textContent = document.querySelector('#name-input');
-    textJob.textContent = document.querySelector('#job-input');
+    textName.textContent = document.querySelector('#name-input').value;
+    textJob.textContent = document.querySelector('#job-input').value;
   }
 }
