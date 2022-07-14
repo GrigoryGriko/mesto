@@ -8,8 +8,6 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    console.log('UserInfo.getUserInfo().\nthis:');
-    console.dir(this);
     return {textName: this._elementTextName.textContent, textJob: this._elementTextJob.textContent};
   }
 

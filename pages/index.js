@@ -63,15 +63,6 @@ function setEventClosePopup() {   //popup
 setEventClosePopup();
 */
 
-/*function handleSaveForm(e) {    //PopupWithForm
-  e.preventDefault();
-  textName.textContent = nameInput.value;
-  textJob.textContent = jobInput.value;
-  closePopup(popupsListSelector.popupEditData);
-
-  validatorEditData.lockButton();
-}*/
-
 function handleAddCardButton(e) {
   e.preventDefault();
 
@@ -88,7 +79,6 @@ function handleAddCardButton(e) {
 }
 
 
-//popupContainerEditData.addEventListener('submit', handleSaveForm);    //PopupWithForm
 popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 
 const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
@@ -109,33 +99,11 @@ function handleSaveForm({nameInputValue, jobInputValue}) {
 const userInfo = new UserInfo({textNameSelector, textJobSelector});
 
 const editData = new PopupWithForm(popupsListSelector.popupEditDataSelector, handleSaveForm, validatorEditData.resetValidation, userInfo.getUserInfo);
+editData.setEventListeners();
 
 buttonEdit.addEventListener( 'click', function() {//PopupWithForm
   editData.open();
 }, false);
-
-/*const editData = new PopupWithForm(   //PopupWithForm
-  popupsListSelector.popupEditDataSelector,
-  (evt) => {
-    evt.preventDefault();
-
-    textName.textContent = editData._getInputValues().nameInput;
-    textJob.textContent = editData._getInputValues().jobInput;
-
-    editData.close();
-
-    validatorEditData.lockButton();
-  }
-);*/
-
-
-/*buttonEdit.addEventListener( 'click', function() {
-  validatorEditData.resetValidation();
-
-  setInputValues();   //наверное событие клика привязывать в классе, а validatorEditData как-то привязывать к нему
-  editData.open();
-  //openPopup(popupsListSelector.popupEditData);
-}, false);*/
 
 buttonAdd.addEventListener( 'click', function() {
   validatorAddCard.resetValidation();

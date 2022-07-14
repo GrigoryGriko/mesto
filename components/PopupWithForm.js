@@ -21,9 +21,8 @@ export default class PopupWithForm extends Popup {
   }
 
   _setInputValues() {
-
-    this._getInputValues().nameInput = this._getUserInfo().textName;
-    this._getInputValues().jobInput = this._getUserInfo().textJob;
+    document.querySelector('#name-input').value = this._getUserInfo().textName;   //нужно получать другим способо поля
+    document.querySelector('#job-input').value = this._getUserInfo().textJob;
   }
 
   _handleFormSubmit = (evt) => {
@@ -34,26 +33,24 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     this._popup.addEventListener('mousedown', (evt) => {
-      if (evt.target === popup || evt.target.classList.contains('popup__button-close')) {
-        close();
+      if (evt.target === this._popup || evt.target.classList.contains('popup__button-close')) {
+        this.close();
       }
       this._popup.addEventListener('submit', this._handleFormSubmit);
     });
   }
 
   open() {
-    console.log('PopupWithForm-open: START');
-    console.log('this-open: ');
-    console.dir( open() );
     if (this._getUserInfo !== null) {
       this._setInputValues();
     } else {
       this._popup.reset();
       //вызвать метод сброса ошибок
-      super.popup();
+
     }
 
-
+    this.setEventListeners();
+    super.open();
   }
 
   close() {
