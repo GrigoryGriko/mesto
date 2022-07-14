@@ -23,7 +23,7 @@ const cardList = new Section({
 cardList.renderItems();
 
 
-function setInputValue() {
+function setInputValues() {
   nameInput.value = textName.textContent;
   jobInput.value = textJob.textContent;
 }
@@ -99,7 +99,7 @@ const validatorEditData = new FormValidator(elementsDocument, popupContainerEdit
 validatorEditData.enableValidation();
 
 function handleSaveForm({nameInputValue, jobInputValue}) {
-  userInfo.setUserInfo();
+  userInfo.setUserInfo({nameInputValue, jobInputValue});   //передать сюда {nameInputValue, jobInputValue}
 
   editData.close();
 
@@ -108,7 +108,11 @@ function handleSaveForm({nameInputValue, jobInputValue}) {
 
 const userInfo = new UserInfo({textNameSelector, textJobSelector});
 
-const editData = new PopupWithForm(popupsListSelector.popupEditDataSelector, handleSaveForm, validatorEditData.resetValidation, userInfo.getUserInfo);  //PopupWithForm
+const editData = new PopupWithForm(popupsListSelector.popupEditDataSelector, handleSaveForm, validatorEditData.resetValidation, userInfo.getUserInfo);
+
+buttonEdit.addEventListener( 'click', function() {//PopupWithForm
+  editData.open();
+}, false);
 
 /*const editData = new PopupWithForm(   //PopupWithForm
   popupsListSelector.popupEditDataSelector,
@@ -125,13 +129,13 @@ const editData = new PopupWithForm(popupsListSelector.popupEditDataSelector, han
 );*/
 
 
-buttonEdit.addEventListener( 'click', function() {
+/*buttonEdit.addEventListener( 'click', function() {
   validatorEditData.resetValidation();
 
-  setInputValue();   //наверное событие клика привязывать в классе, а validatorEditData как-то привязывать к нему
+  setInputValues();   //наверное событие клика привязывать в классе, а validatorEditData как-то привязывать к нему
   editData.open();
   //openPopup(popupsListSelector.popupEditData);
-}, false);
+}, false);*/
 
 buttonAdd.addEventListener( 'click', function() {
   validatorAddCard.resetValidation();

@@ -1,16 +1,21 @@
 export default class UserInfo {
-  constructor({userNameSelector, userInfoSelector}) {
-    this._elementUserName = document.querySelector(userNameSelector);
-    this._elementUserInfo = document.querySelector(userInfoSelector)
+  constructor({textNameSelector, textJobSelector}) {
+    this._elementTextName = document.querySelector(textNameSelector);
+    this._elementTextJob = document.querySelector(textJobSelector);
+
+    this.getUserInfo = this.getUserInfo.bind(this);
+
   }
 
   getUserInfo() {
-    return {userName: this._elementUserName.textContent, userInfo: this._elementUserInfo.textContent};
+    console.log('UserInfo.getUserInfo().\nthis:');
+    console.dir(this);
+    return {textName: this._elementTextName.textContent, textJob: this._elementTextJob.textContent};
   }
 
-  setUserInfo() {   //?Инпуты находить прямо здесь, или передавать параметрами?
+  setUserInfo({nameInputValue, jobInputValue}) {   //?Инпуты находить прямо здесь, или передавать параметрами?
     //значения с полей принимает и заменяет их на странице
-    textName.textContent = document.querySelector('#name-input').value;
-    textJob.textContent = document.querySelector('#job-input').value;
+    textName.textContent = nameInputValue;
+    textJob.textContent = jobInputValue;
   }
 }

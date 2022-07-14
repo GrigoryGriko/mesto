@@ -9,6 +9,8 @@ export default class PopupWithForm extends Popup {
     this._submitHandler = submitHandler;    //отдельной функцией в index.js. вызывает UserInfo.setUserInfo()
     this._resetValidation = resetValidation;
     this._getUserInfo = getUserInfo;
+
+    this.open = this.open.bind(this);
   }
 
   _getInputValues() {
@@ -19,8 +21,9 @@ export default class PopupWithForm extends Popup {
   }
 
   _setInputValues() {
-    this._getInputValues().nameInput = this._getUserInfo().userName;
-    this._getInputValues().jobInput = this._getUserInfo().userInfo;
+
+    this._getInputValues().nameInput = this._getUserInfo().textName;
+    this._getInputValues().jobInput = this._getUserInfo().textJob;
   }
 
   _handleFormSubmit = (evt) => {
@@ -39,8 +42,11 @@ export default class PopupWithForm extends Popup {
   }
 
   open() {
+    console.log('PopupWithForm-open: START');
+    console.log('this-open: ');
+    console.dir( open() );
     if (this._getUserInfo !== null) {
-      this._setInputValue();
+      this._setInputValues();
     } else {
       this._popup.reset();
       //вызвать метод сброса ошибок
