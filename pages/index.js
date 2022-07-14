@@ -82,7 +82,7 @@ function handleAddCardButton(e) {
 const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
   formListValidation[item.name] = new FormValidator(elementsDocument, item);
-  item.name.enableValidation();
+  formListValidation[item.name].enableValidation();
 });   //определяем объект с валидациями всех форм
 
 
@@ -92,8 +92,8 @@ const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCa
 validatorAddCard.enableValidation();
 
 
-const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData);
-validatorEditData.enableValidation();
+/*const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData);
+validatorEditData.enableValidation();*/
 
 function handleSaveForm({nameInputValue, jobInputValue}) {
   userInfo.setUserInfo({nameInputValue, jobInputValue});   //передать сюда {nameInputValue, jobInputValue}
@@ -107,7 +107,7 @@ const userInfo = new UserInfo({textNameSelector, textJobSelector});
 
 const editData = new PopupWithForm(
   popupsListSelector.popupEditDataSelector, formElementSelector,
-  handleSaveForm, validatorEditData.resetValidation, userInfo.getUserInfo
+  handleSaveForm, formListValidation[form-edit-info].resetValidation, userInfo.getUserInfo
 );
 editData.setEventListeners();
 
