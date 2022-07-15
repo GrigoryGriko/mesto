@@ -57,12 +57,12 @@ const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCa
 validatorAddCard.enableValidation();
 
 
-function handleSaveForm({nameInputValue, jobInputValue}) {
-  userInfo.setUserInfo({nameInputValue, jobInputValue});
+function handleSaveForm({nameInput, jobInput}) {
+  userInfo.setUserInfo({nameInput, jobInput});
 
   editData.close();
 
-  formListValidation['form-edit-info'].lockButton();
+  formListValidation['form-edit-info'].lockButton();    //['form-edit-info'] - это ужасно, что-то надо придумать, константу создать или циклом вызывать
 }
 
 const userInfo = new UserInfo({textNameSelector, textJobSelector});
@@ -73,11 +73,17 @@ const editData = new PopupWithForm(
 );
 editData.setEventListeners();
 
+const addCard = new PopupWithForm(
+  popupsListSelector.popupAddCardSelector, formElementSelector,
+  handleAddCardButton, formListValidation['form-add-card'].resetValidation
+);
+addCard.setEventListeners();
+
+
 buttonEdit.addEventListener( 'click', function() {
   editData.open();
 }, false);
 
 buttonAdd.addEventListener( 'click', function() {
-  validatorAddCard.resetValidation();
-  openPopup(popupsListSelector.popupAddCard);
+  addCard.open();
 }, false);
