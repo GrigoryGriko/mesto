@@ -61,8 +61,8 @@ export const nameInputSelector = '#name-input';
 export const jobInputSelector = '#job-input';
 
 
-export const textName = page.querySelector('.profile__info-name');  //вместо элемента будет селектор
-export const textJob = page.querySelector('.profile__info-descript'); //вместо элемента будет селектор
+export const textName = page.querySelector('.profile__info-name');
+export const textJob = page.querySelector('.profile__info-descript');
 
 export const textNameSelector = '.profile__info-name';
 export const textJobSelector = '.profile__info-descript';

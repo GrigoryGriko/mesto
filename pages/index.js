@@ -1,4 +1,4 @@
-import {Card} from '../components/Cards.js';
+import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -33,22 +33,19 @@ function handleSaveForm({nameInput, jobInput}) {
 
   editData.close();
 
-  formListValidation['form-edit-info'].lockButton();    //['form-edit-info'] - это ужасно, что-то надо придумать, константу создать или циклом вызывать
+  formListValidation['form-edit-info'].lockButton();
 }
 
 function handleAddCardButton(e) {
-  e.preventDefault();
-
   const cardInput = {
     name: page.querySelector('#card-name-input').value,
     link: page.querySelector('#card-link-input').value
   };
 
-  renderCard(cardInput);
-  closePopup(popupsListSelector.popupAddCard);
+  renderCard(cardInput);    //теперь надо думать как сделать систему добавления карт
+  addData.close();
 
-  popupContainerAddCard.reset();
-  validatorAddCard.lockButton();
+  formListValidation['form-edit-info'].lockButton();
 }
 
 
