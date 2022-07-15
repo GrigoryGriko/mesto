@@ -8,7 +8,7 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return {textName: this._elementTextName.textContent, textJob: this._elementTextJob.textContent};
+    return {nameInput: this._elementTextName.textContent, jobInput: this._elementTextJob.textContent};
   }
 
   setUserInfo({nameInputValue, jobInputValue}) {

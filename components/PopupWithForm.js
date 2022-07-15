@@ -12,7 +12,7 @@ export default class PopupWithForm extends Popup {
     this._resetValidation = resetValidation;
     this._getUserInfo = getUserInfo;
 
-    this._inputElements = this._formElement.querySelectorAll('input');
+    this._inputElements = this._formElement.querySelectorAll('input-general-properties');
 
     this.open = this.open.bind(this);
   }
@@ -22,21 +22,18 @@ export default class PopupWithForm extends Popup {
     Array.from(this._inputElements).forEach((item) => {
       this._formValues[item.id] = item.value;
     });
-    console.log(this._formValues);
     return this._formValues;
   }
 
-  _setInputValues() {
-    document.querySelector('#name-input').value = this._getUserInfo().textName;   //нужно получать другим способо поля
-    document.querySelector('#job-input').value = this._getUserInfo().textJob;
-
-    /*this._inputElements.forEach((item) => {
-      item.value = this._getUserInfo();
-    });*/
+  _setInputValues(data) {
+    this._inputElements.forEach((item) => {
+      item.value = data[input.id];
+    });
   }
 
   _handleFormSubmit = (evt) => {
     evt.preventDefault();
+    console.dir(this._getInputValues())
     this._submitHandler(this._getInputValues());
   }
 
@@ -51,7 +48,7 @@ export default class PopupWithForm extends Popup {
 
   open() {
     if (this._getUserInfo !== null) {
-      this._setInputValues();
+      this._setInputValues(this._getUserInfo());
     } else {
       this._formElement.reset();
     }
