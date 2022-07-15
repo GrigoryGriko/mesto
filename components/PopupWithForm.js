@@ -46,14 +46,12 @@ export default class PopupWithForm extends Popup {
   }
 
   open() {
-    this._resetValidation();
-
     if (this._getUserInfo !== null) {
       this._setInputValues(this._getUserInfo());
     } else {
       this._formElement.reset();
     }
-
+    this._resetValidation();
     this.setEventListeners();
 
     super.open();

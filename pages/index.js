@@ -28,6 +28,14 @@ function handleCardClick({name, link}) {
   popupWithImage.open();
 }
 
+function handleSaveForm({nameInput, jobInput}) {
+  userInfo.setUserInfo({nameInput, jobInput});
+
+  editData.close();
+
+  formListValidation['form-edit-info'].lockButton();    //['form-edit-info'] - это ужасно, что-то надо придумать, константу создать или циклом вызывать
+}
+
 function handleAddCardButton(e) {
   e.preventDefault();
 
@@ -56,15 +64,6 @@ popupContainerAddCard.addEventListener('submit', handleAddCardButton);
 const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
 validatorAddCard.enableValidation();
 
-
-function handleSaveForm({nameInput, jobInput}) {
-  userInfo.setUserInfo({nameInput, jobInput});
-
-  editData.close();
-
-  formListValidation['form-edit-info'].lockButton();    //['form-edit-info'] - это ужасно, что-то надо придумать, константу создать или циклом вызывать
-}
-
 const userInfo = new UserInfo({textNameSelector, textJobSelector});
 
 const editData = new PopupWithForm(
@@ -72,6 +71,7 @@ const editData = new PopupWithForm(
   handleSaveForm, formListValidation['form-edit-info'].resetValidation, userInfo.getUserInfo
 );
 editData.setEventListeners();
+
 
 const addCard = new PopupWithForm(
   popupsListSelector.popupAddCardSelector, formElementSelector,
