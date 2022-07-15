@@ -11,9 +11,8 @@ export default class UserInfo {
     return {textName: this._elementTextName.textContent, textJob: this._elementTextJob.textContent};
   }
 
-  setUserInfo({nameInputValue, jobInputValue}) {   //?Инпуты находить прямо здесь, или передавать параметрами?
-    //значения с полей принимает и заменяет их на странице
+  setUserInfo({nameInputValue, jobInputValue}) {
     this._elementTextName.textContent = nameInputValue;
-    this._elementTextJob .textContent = jobInputValue;
+    this._elementTextJob.textContent = jobInputValue;
   }
 }

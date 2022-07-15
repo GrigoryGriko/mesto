@@ -86,7 +86,7 @@ class FormValidator {
     this._buttonSubmit.classList.add(this._inactiveButtonClass);
   }
 
-  resetValidation() {
+  resetValidation = () => {
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {

@@ -28,40 +28,10 @@ function setInputValues() {
   jobInput.value = textJob.textContent;
 }
 
-/*function handlePressEscape(evt) {   //popup
-  if (evt.code === 'Escape') {
-    const popupOpened = page.querySelector('.popup_opened');
-    closePopup(popupOpened);
-  }
-}*/
-
 function handleCardClick({name, link}) {
   const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImage, captionImage, name, link);
   popupWithImage.open();
 }
-
-/*function openPopup(popup) {   //popup
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', handlePressEscape);
-}
-
-function closePopup(popup) {   //popup
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', handlePressEscape);
-}
-
-function setEventClosePopup() {   //popup
-  document.querySelectorAll('.popup').forEach( popup => {
-    popup.addEventListener('mousedown', (evt) => {
-      if (evt.target === popup || evt.target.classList.contains('popup__button-close')) {
-        closePopup(popup);
-      };
-    });
-  });
-}
-
-setEventClosePopup();
-*/
 
 function handleAddCardButton(e) {
   e.preventDefault();
@@ -83,7 +53,7 @@ const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
   formListValidation[item.name] = new FormValidator(elementsDocument, item);
   formListValidation[item.name].enableValidation();
-});   //определяем объект с валидациями всех форм
+});
 
 
 popupContainerAddCard.addEventListener('submit', handleAddCardButton);
@@ -92,26 +62,23 @@ const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCa
 validatorAddCard.enableValidation();
 
 
-/*const validatorEditData = new FormValidator(elementsDocument, popupContainerEditData);
-validatorEditData.enableValidation();*/
-
 function handleSaveForm({nameInputValue, jobInputValue}) {
-  userInfo.setUserInfo({nameInputValue, jobInputValue});   //передать сюда {nameInputValue, jobInputValue}
+  userInfo.setUserInfo({nameInputValue, jobInputValue});
 
   editData.close();
 
-  validatorEditData.lockButton();
+  formListValidation['form-edit-info'].lockButton();
 }
 
 const userInfo = new UserInfo({textNameSelector, textJobSelector});
 
 const editData = new PopupWithForm(
   popupsListSelector.popupEditDataSelector, formElementSelector,
-  handleSaveForm, formListValidation[form-edit-info].resetValidation, userInfo.getUserInfo
+  handleSaveForm, formListValidation['form-edit-info'].resetValidation, userInfo.getUserInfo
 );
 editData.setEventListeners();
 
-buttonEdit.addEventListener( 'click', function() {//PopupWithForm
+buttonEdit.addEventListener( 'click', function() {
   editData.open();
 }, false);
 
