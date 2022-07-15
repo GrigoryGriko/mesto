@@ -23,11 +23,6 @@ const cardList = new Section({
 cardList.renderItems();
 
 
-function setInputValues() {
-  nameInput.value = textName.textContent;
-  jobInput.value = textJob.textContent;
-}
-
 function handleCardClick({name, link}) {
   const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImage, captionImage, name, link);
   popupWithImage.open();

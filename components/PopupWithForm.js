@@ -12,19 +12,27 @@ export default class PopupWithForm extends Popup {
     this._resetValidation = resetValidation;
     this._getUserInfo = getUserInfo;
 
+    this._inputElements = this._formElement.querySelectorAll('input');
+
     this.open = this.open.bind(this);
   }
 
   _getInputValues() {
-    this._nameInput = document.querySelector('#name-input');    //поиск полей
-    this._jobInput = document.querySelector('#job-input');
-
-    return {nameInputValue: this._nameInput.value, jobInputValue: this._jobInput.value};    //нужно найти инпуты
+    this._formValues = {}
+    Array.from(this._inputElements).forEach((item) => {
+      this._formValues[item.id] = item.value;
+    });
+    console.log(this._formValues);
+    return this._formValues;
   }
 
   _setInputValues() {
     document.querySelector('#name-input').value = this._getUserInfo().textName;   //нужно получать другим способо поля
     document.querySelector('#job-input').value = this._getUserInfo().textJob;
+
+    /*this._inputElements.forEach((item) => {
+      item.value = this._getUserInfo();
+    });*/
   }
 
   _handleFormSubmit = (evt) => {
