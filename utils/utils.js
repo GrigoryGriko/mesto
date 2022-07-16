@@ -20,13 +20,8 @@ export function handleSaveForm({nameInput, jobInput}) {
   formListValidation['form-edit-info'].lockButton();
 }
 
-export function handleAddCardButton() {
-  const cardInput = {
-    name: page.querySelector('#card-name-input').value,
-    link: page.querySelector('#card-link-input').value
-  };
-
-  const cardUser = new Card(cardInput, selectorGridTemplate, handleCardClick);
+export function handleAddCardButton({nameInput: name, linkInput: link}) {
+  const cardUser = new Card({name, link}, selectorGridTemplate, handleCardClick);
   const elementCardUser = cardUser.generateCard();
   cardList.addItem(elementCardUser);
 
