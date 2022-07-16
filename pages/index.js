@@ -57,4 +57,3 @@ buttonAdd.addEventListener( 'click', function() {
 
 
 export {userInfo, editData, addCard, formListValidation, cardList};
-/**/
