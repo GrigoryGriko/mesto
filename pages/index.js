@@ -1,14 +1,17 @@
-import {Card} from '../components/Card.js';
-import {FormValidator} from '../components/FormValidator.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import {
-  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, formElementSelector, popupContainerEditData,
-  popupContainerAddCard, fullImage, captionImage, nameInput, jobInput, nameInputSelector, jobInputSelector, textName,
-  textJob, textNameSelector, textJobSelector, elementsGridContainer, selectorGridTemplate
-} from '../utils/constants.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+
+import {
+  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, formElementSelector,
+  textNameSelector, textJobSelector, elementsGridContainer, selectorGridTemplate
+} from '../utils/constants.js';
+
+import  {handleCardClick, handleSaveForm, handleAddCardButton} from '../utils/utils.js';
+
+
 
 const cardList = new Section({
   items: cardsList,
@@ -21,35 +24,6 @@ const cardList = new Section({
 }, elementsGridContainer);
 
 cardList.renderItems();
-
-
-function handleCardClick({name, link}) {
-  const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImage, captionImage, name, link);
-  popupWithImage.open();
-}
-
-function handleSaveForm({nameInput, jobInput}) {
-  userInfo.setUserInfo({nameInput, jobInput});
-
-  editData.close();
-
-  formListValidation['form-edit-info'].lockButton();
-}
-
-function handleAddCardButton() {
-  const cardInput = {
-    name: page.querySelector('#card-name-input').value,
-    link: page.querySelector('#card-link-input').value
-  };
-
-  const cardUser = new Card(cardInput, selectorGridTemplate, handleCardClick);
-  const elementCardUser = cardUser.generateCard();
-  cardList.addItem(elementCardUser);
-
-  addCard.close();
-
-  formListValidation['form-add-card'].lockButton();
-}
 
 
 const formListValidation = {};
@@ -81,3 +55,7 @@ buttonEdit.addEventListener( 'click', function() {
 buttonAdd.addEventListener( 'click', function() {
   addCard.open();
 }, false);
+
+
+
+export {userInfo, editData, addCard, formListValidation, cardList};

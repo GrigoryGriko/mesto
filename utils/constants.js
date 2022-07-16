@@ -47,22 +47,10 @@ export const popupsListSelector = {
 
 export const formElementSelector = '.popup__container';
 
-export const popupContainerEditData = page.querySelector(popupsListSelector.popupEditDataSelector).querySelector('.popup__container');
-export const popupContainerAddCard = page.querySelector(popupsListSelector.popupAddCardSelector).querySelector('.popup__container');
 
-export const fullImage = page.querySelector(popupsListSelector.popupShowImageSelector).querySelector('.popup__full-image');
-export const captionImage = page.querySelector(popupsListSelector.popupShowImageSelector).querySelector('.popup__caption');
+export const fullImageSelector = '.popup__full-image';
+export const captionImageSelector = '.popup__caption';
 
-
-export const nameInput = page.querySelector('#name-input');
-export const jobInput = page.querySelector('#job-input');
-
-export const nameInputSelector = '#name-input';
-export const jobInputSelector = '#job-input';
-
-
-export const textName = page.querySelector('.profile__info-name');
-export const textJob = page.querySelector('.profile__info-descript');
 
 export const textNameSelector = '.profile__info-name';
 export const textJobSelector = '.profile__info-descript';

@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
   constructor({name, link}, gridTemplateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
@@ -47,6 +47,3 @@ class Card {
     this._handleCardClick({name: this._name, link: this._link});
   }
 }
-
-
-export {Card};
