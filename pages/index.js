@@ -36,16 +36,19 @@ function handleSaveForm({nameInput, jobInput}) {
   formListValidation['form-edit-info'].lockButton();
 }
 
-function handleAddCardButton(e) {
+function handleAddCardButton() {
   const cardInput = {
     name: page.querySelector('#card-name-input').value,
     link: page.querySelector('#card-link-input').value
   };
 
-  renderCard(cardInput);    //теперь надо думать как сделать систему добавления карт
-  addData.close();
+  const cardUser = new Card(cardInput, selectorGridTemplate, handleCardClick);
+  const elementCardUser = cardUser.generateCard();
+  cardList.addItem(elementCardUser);
 
-  formListValidation['form-edit-info'].lockButton();
+  addCard.close();
+
+  formListValidation['form-add-card'].lockButton();
 }
 
 
@@ -54,12 +57,6 @@ Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
   formListValidation[item.name] = new FormValidator(elementsDocument, item);
   formListValidation[item.name].enableValidation();
 });
-
-
-popupContainerAddCard.addEventListener('submit', handleAddCardButton);
-
-const validatorAddCard = new FormValidator(elementsDocument, popupContainerAddCard);
-validatorAddCard.enableValidation();
 
 const userInfo = new UserInfo({textNameSelector, textJobSelector});
 
