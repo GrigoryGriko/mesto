@@ -12,7 +12,6 @@ import {
 import  {handleCardClick, handleSaveForm, handleAddCardButton} from '../utils/utils.js';
 
 
-
 const cardList = new Section({
   items: cardsList,
   renderer: (item) => {
@@ -55,7 +54,6 @@ buttonEdit.addEventListener( 'click', function() {
 buttonAdd.addEventListener( 'click', function() {
   addCard.open();
 }, false);
-
 
 
 export {userInfo, editData, addCard, formListValidation, cardList};

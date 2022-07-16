@@ -47,15 +47,11 @@ export const popupsListSelector = {
 
 export const formElementSelector = '.popup__container';
 
-
 export const fullImageSelector = '.popup__full-image';
 export const captionImageSelector = '.popup__caption';
 
-
 export const textNameSelector = '.profile__info-name';
 export const textJobSelector = '.profile__info-descript';
-
-
 
 export const elementsGridContainer = '.elements-grid__list';
 export const selectorGridTemplate = '#elements-grid__item-template';

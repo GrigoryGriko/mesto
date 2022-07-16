@@ -1,10 +1,9 @@
 import PopupWithImage from '../components/PopupWithImage.js';
 import Card from '../components/Card.js';
 
-import {page, popupsListSelector,  selectorGridTemplate, fullImageSelector, captionImageSelector} from './constants.js';
+import {popupsListSelector,  selectorGridTemplate, fullImageSelector, captionImageSelector} from './constants.js';
 
 import {userInfo, editData, addCard, formListValidation, cardList} from '../pages/index.js';
-
 
 
 export function handleCardClick({name, link}) {
