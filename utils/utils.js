@@ -3,7 +3,7 @@ import Card from '../components/Card.js';
 
 import {popupsListSelector,  selectorGridTemplate, fullImageSelector, captionImageSelector} from './constants.js';
 
-import {userInfo, editData, addCard, formListValidation, cardList} from '../src/index.js';
+import {userInfo, editData, addCard, formListValidation, cardList} from '../pages/index.js';
 
 
 export function handleCardClick({name, link}) {
