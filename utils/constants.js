@@ -1,27 +1,35 @@
+const arkhyz = new URL('../images/arkhyz.jpg', import.meta.url);
+const chelyabinskOblast = new URL('../images/chelyabinsk-oblast.jpg', import.meta.url);
+const ivanovo = new URL('../images/ivanovo.jpg', import.meta.url);
+const kamchatka = new URL('../images/kamchatka.jpg', import.meta.url);
+const kholmogorskyRayon = new URL('../images/kholmogorsky-rayon.jpg', import.meta.url);
+const baikal = new URL('../images/baikal.jpg', import.meta.url);
+
+
 export const cardsList = [
   {
     name: 'Архыз',
-    link: './images/arkhyz.jpg'
+    link: arkhyz
   },
   {
     name: 'Челябинская область',
-    link: './images/chelyabinsk-oblast.jpg'
+    link: chelyabinskOblast
   },
   {
     name: 'Иваново',
-    link: './images/ivanovo.jpg'
+    link: ivanovo
   },
   {
     name: 'Камчатка',
-    link: './images/kamchatka.jpg'
+    link: kamchatka
   },
   {
     name: 'Холмогорский район',
-    link: './images/kholmogorsky-rayon.jpg'
+    link: kholmogorskyRayon
   },
   {
     name: 'Байкал',
-    link: './images/baikal.jpg'
+    link: baikal
   }
 ];
 
