@@ -8,6 +8,7 @@ import {userInfo, editData, addCard, formListValidation, cardList} from '../page
 
 export function handleCardClick({name, link}) {
   const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImageSelector, captionImageSelector, name, link);
+  popupWithImage.setEventListeners();
   popupWithImage.open();
 }
 
