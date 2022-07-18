@@ -37,12 +37,8 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    this._popup.addEventListener('mousedown', (evt) => {
-      if (evt.target === this._popup || evt.target.classList.contains('popup__button-close')) {
-        this.close();
-      }
-      this._formElement.addEventListener('submit', this._handleFormSubmit);
-    });
+    super.setEventListeners();
+    this._formElement.addEventListener('submit', this._handleFormSubmit);
   }
 
   open() {
@@ -58,8 +54,7 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-    this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._handleEscClose);
+    super.close();
     this._formElement.reset();
   }
 }
