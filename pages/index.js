@@ -3,11 +3,14 @@ import '../pages/index.css';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 
 import {
-  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, formElementSelector,
-  textNameSelector, textJobSelector, elementsGridContainer} from '../utils/constants.js';
+  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
+  formElementSelector, textNameSelector, textJobSelector, elementsGridContainer,
+  fullImageSelector, captionImageSelector
+} from '../utils/constants.js';
 
 import  {handleSaveForm, handleAddCardButton, createCard} from '../utils/utils.js';
 
@@ -43,6 +46,10 @@ const addCard = new PopupWithForm(
   handleAddCardButton, formListValidation['form-add-card'].resetValidation
 );
 addCard.setEventListeners();
+
+
+export const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImageSelector, captionImageSelector);
+popupWithImage.setEventListeners();
 
 
 buttonEdit.addEventListener( 'click', function() {

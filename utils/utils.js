@@ -1,14 +1,11 @@
-import PopupWithImage from '../components/PopupWithImage.js';
 import Card from '../components/Card.js';
 
-import {popupsListSelector,  selectorGridTemplate, fullImageSelector, captionImageSelector} from './constants.js';
+import {selectorGridTemplate} from './constants.js';
 
-import {userInfo, editData, addCard, formListValidation, cardList} from '../pages/index.js';
+import {userInfo, editData, addCard, formListValidation, cardList, popupWithImage} from '../pages/index.js';
 
 
 export function handleCardClick({name, link}) {
-  const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImageSelector, captionImageSelector);
-  popupWithImage.setEventListeners();
   popupWithImage.open(name, link);
 }
 
