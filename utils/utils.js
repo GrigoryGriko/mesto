@@ -7,9 +7,9 @@ import {userInfo, editData, addCard, formListValidation, cardList} from '../page
 
 
 export function handleCardClick({name, link}) {
-  const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImageSelector, captionImageSelector, name, link);
+  const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImageSelector, captionImageSelector);
   popupWithImage.setEventListeners();
-  popupWithImage.open();
+  popupWithImage.open(name, link);
 }
 
 export function handleSaveForm({nameInput, jobInput}) {
@@ -21,11 +21,15 @@ export function handleSaveForm({nameInput, jobInput}) {
 }
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
-  const cardUser = new Card({name, link}, selectorGridTemplate, handleCardClick);
-  const elementCardUser = cardUser.generateCard();
-  cardList.addItem(elementCardUser);
+  cardList.addItem( createCard({name, link}) );
 
   addCard.close();
 
   formListValidation['form-add-card'].lockButton();
+}
+
+export function createCard({name, link}) {
+  const card = new Card({name, link}, selectorGridTemplate, handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
 }

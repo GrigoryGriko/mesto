@@ -1,6 +1,5 @@
 import '../pages/index.css';
 
-import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -8,19 +7,16 @@ import UserInfo from '../components/UserInfo.js';
 
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector, formElementSelector,
-  textNameSelector, textJobSelector, elementsGridContainer, selectorGridTemplate
-} from '../utils/constants.js';
+  textNameSelector, textJobSelector, elementsGridContainer} from '../utils/constants.js';
 
-import  {handleCardClick, handleSaveForm, handleAddCardButton} from '../utils/utils.js';
+import  {handleSaveForm, handleAddCardButton, createCard} from '../utils/utils.js';
+
 
 
 const cardList = new Section({
   items: cardsList,
   renderer: (item) => {
-    const card = new Card(item, selectorGridTemplate, handleCardClick);
-    const elementCard = card.generateCard();
-
-    cardList.addItem(elementCard);
+    cardList.addItem(createCard(item));
   }
 }, elementsGridContainer);
 
