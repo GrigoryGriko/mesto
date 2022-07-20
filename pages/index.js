@@ -9,17 +9,20 @@ import UserInfo from '../components/UserInfo.js';
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
   formElementSelector, textNameSelector, textJobSelector, elementsGridContainer,
-  fullImageSelector, captionImageSelector
+  fullImageSelector, captionImageSelector, selectorGridTemplate
 } from '../utils/constants.js';
 
-import  {handleSaveForm, handleAddCardButton, createCard} from '../utils/utils.js';
+import  {handleSaveForm, handleAddCardButton, createCard, handleCardClick} from '../utils/utils.js';
 
 
 
 const cardList = new Section({
   items: cardsList,
-  renderer: (item) => {
-    cardList.addItem(createCard(item));
+  renderer: () => {
+    const allCardNodes = cardsList.reverse().map((item) => {
+      return createCard(item);
+    });
+    cardList.addItem(...allCardNodes);
   }
 }, elementsGridContainer);
 
