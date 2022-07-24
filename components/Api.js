@@ -5,20 +5,19 @@ export default class Api {
   }
 
   getInitialCards() {
-    console.log(this._baseUrl);
     return fetch(this._baseUrl, {
       headers: this._headers
     })
       .then((res) => {
         if (res.ok) {
           return res.json();
+        } else {
+          Promise.reject(`Ошибка ${res.status}`);
         }
-
-        return Promise.reject(`Ошибка ${res.status}`);
       });
   }
 
-  putAddCard() {
+  addCard() {
 
   }
 
