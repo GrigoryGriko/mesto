@@ -5,6 +5,7 @@ import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 
 import {
   cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
@@ -14,9 +15,32 @@ import {
 
 import  {handleSaveForm, handleAddCardButton, createCard, handleCardClick} from '../utils/utils.js';
 
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46/cards',
+  headers: {
+    authorization: '110d7e44-821c-45aa-84e8-91b557d72ac5'
+  }
+});
 
+api.getInitialCards()
+  .then((cardsList) => {
+    const cardList = new Section({
+      items: cardsList,
+      renderer: () => {
+        const allCardNodes = cardsList.reverse().map((item) => {
+          return createCard(item);
+        });
+        cardList.addItem(...allCardNodes);
+      }
+    }, elementsGridContainer);
 
-const cardList = new Section({
+    cardList.renderItems();
+  })
+  .catch((err) => {
+    console.log(`Ошибка загрузки карточек ${err}`);
+  });
+
+/*const cardList = new Section({
   items: cardsList,
   renderer: () => {
     const allCardNodes = cardsList.reverse().map((item) => {
@@ -26,7 +50,7 @@ const cardList = new Section({
   }
 }, elementsGridContainer);
 
-cardList.renderItems();
+cardList.renderItems();*/
 
 
 const formListValidation = {};
@@ -64,4 +88,4 @@ buttonAdd.addEventListener( 'click', function() {
 }, false);
 
 
-export {userInfo, editData, addCard, formListValidation, cardList};
+export {userInfo, editData, addCard, formListValidation/*, cardList*/};

@@ -6,6 +6,7 @@ const kholmogorskyRayon = new URL('../images/kholmogorsky-rayon.jpg', import.met
 const baikal = new URL('../images/baikal.jpg', import.meta.url);
 
 
+
 export const cardsList = [
   {
     name: 'Архыз',

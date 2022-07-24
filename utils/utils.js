@@ -2,7 +2,7 @@ import Card from '../components/Card.js';
 
 import {selectorGridTemplate} from './constants.js';
 
-import {userInfo, editData, addCard, formListValidation, cardList, popupWithImage} from '../pages/index.js';
+import {userInfo, editData, addCard, formListValidation,/* cardList, */popupWithImage} from '../pages/index.js';
 
 
 export function handleCardClick({name, link}) {
