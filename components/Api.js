@@ -28,10 +28,10 @@ export default class Api {
         name: nameInput,
         about: jobInput
       })
-    }); 
+    });
   }
 
-  addCard() {
+  addCard(urlKey, {nameInput, jobInput}) {
 
   }
 
