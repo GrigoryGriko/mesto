@@ -10,7 +10,7 @@ export function handleCardClick({name, link}) {
   popupWithImage.open(name, link);
 }
 
-export function initUserData() {
+export function initUserData() {  //не нужна
   api.getInitial('users/me')    //инициализация данных пользователя
   .then((userData) => {
     userInfo.setUserInfo({name: userData.name, about: userData.about});
@@ -31,9 +31,15 @@ export function initUserAvatar() {
 }
 
 export function handleSaveForm({nameInput, jobInput}) {
-  api.editDataUser('users/me', {nameInput, jobInput});
+  api.editDataUser('users/me', {nameInput, jobInput})
+  .then((userData) => {
+    userInfo.setUserInfo({name: userData.name, about: userData.about});
+  })
+  .catch((err) => {
+    console.log(`Ошибка изменения данных пользователя ${err}`);
+  });
 
-  initUserData();
+  //initUserData();
 
 
   //userInfo.setUserInfo({nameInput, jobInput});
