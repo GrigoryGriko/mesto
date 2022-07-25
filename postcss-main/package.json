@@ -1,0 +1,171 @@
+{
+  "name": "postcss",
+  "version": "8.4.14",
+  "description": "Tool for transforming styles with JS plugins",
+  "engines": {
+    "node": "^10 || ^12 || >=14"
+  },
+  "exports": {
+    ".": {
+      "require": "./lib/postcss.js",
+      "import": "./lib/postcss.mjs",
+      "types": "./lib/postcss.d.ts"
+    },
+    "./lib/at-rule": "./lib/at-rule.js",
+    "./lib/comment": "./lib/comment.js",
+    "./lib/container": "./lib/container.js",
+    "./lib/css-syntax-error": "./lib/css-syntax-error.js",
+    "./lib/declaration": "./lib/declaration.js",
+    "./lib/fromJSON": "./lib/fromJSON.js",
+    "./lib/input": "./lib/input.js",
+    "./lib/lazy-result": "./lib/lazy-result.js",
+    "./lib/no-work-result": "./lib/no-work-result.js",
+    "./lib/list": "./lib/list.js",
+    "./lib/map-generator": "./lib/map-generator.js",
+    "./lib/node": "./lib/node.js",
+    "./lib/parse": "./lib/parse.js",
+    "./lib/parser": "./lib/parser.js",
+    "./lib/postcss": "./lib/postcss.js",
+    "./lib/previous-map": "./lib/previous-map.js",
+    "./lib/processor": "./lib/processor.js",
+    "./lib/result": "./lib/result.js",
+    "./lib/root": "./lib/root.js",
+    "./lib/rule": "./lib/rule.js",
+    "./lib/stringifier": "./lib/stringifier.js",
+    "./lib/stringify": "./lib/stringify.js",
+    "./lib/symbols": "./lib/symbols.js",
+    "./lib/terminal-highlight": "./lib/terminal-highlight.js",
+    "./lib/tokenize": "./lib/tokenize.js",
+    "./lib/warn-once": "./lib/warn-once.js",
+    "./lib/warning": "./lib/warning.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/postcss.js",
+  "types": "./lib/postcss.d.ts",
+  "keywords": [
+    "css",
+    "postcss",
+    "rework",
+    "preprocessor",
+    "parser",
+    "source map",
+    "transform",
+    "manipulation",
+    "transpiler"
+  ],
+  "scripts": {
+    "test": "c8 pnpm unit && eslint . && node ./test/version.js && check-dts && node ./test/integration.js && size-limit",
+    "unit": "uvu -r ts-node/register/transpile-only test \"\\.test\\.(ts|js)$\""
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/postcss/"
+    },
+    {
+      "type": "tidelift",
+      "url": "https://tidelift.com/funding/github/npm/postcss"
+    }
+  ],
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "license": "MIT",
+  "homepage": "https://postcss.org/",
+  "repository": "postcss/postcss",
+  "bugs": {
+    "url": "https://github.com/postcss/postcss/issues"
+  },
+  "dependencies": {
+    "nanoid": "^3.3.4",
+    "picocolors": "^1.0.0",
+    "source-map-js": "^1.0.2"
+  },
+  "devDependencies": {
+    "@logux/eslint-config": "^47.2.0",
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "c8": "^7.11.3",
+    "check-dts": "^0.6.7",
+    "clean-publish": "^4.0.0",
+    "concat-with-sourcemaps": "^1.1.0",
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "fs-extra": "^10.1.0",
+    "nanodelay": "^1.0.8",
+    "nanospy": "^0.5.0",
+    "postcss-parser-tests": "^8.5.1",
+    "simple-git-hooks": "^2.7.0",
+    "size-limit": "^7.0.8",
+    "strip-ansi": "^6.0.1",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2",
+    "uvu": "^0.5.3"
+  },
+  "c8": {
+    "exclude": [
+      "**/*.test.*",
+      "lib/map-generator.js"
+    ],
+    "lines": 100,
+    "reporter": "lcov",
+    "check-coverage": true
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./test/version.js"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "jsxSingleQuote": false,
+    "quoteProps": "consistent",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "browser": {
+    "./lib/terminal-highlight": false,
+    "source-map-js": false,
+    "path": false,
+    "url": false,
+    "fs": false
+  },
+  "size-limit": [
+    {
+      "path": "lib/postcss.js",
+      "limit": "17 KB"
+    }
+  ],
+  "eslintConfig": {
+    "extends": "@logux/eslint-config/ts",
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "consistent-return": "off",
+      "global-require": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.test.*"
+        ],
+        "rules": {
+          "@typescript-eslint/no-unused-expressions": "off",
+          "no-unused-expressions": "off",
+          "no-console": "off",
+          "func-style": "off"
+        }
+      }
+    ]
+  },
+  "eslintIgnore": [
+    "docs/api/assets/",
+    "errors.ts"
+  ],
+  "clean-publish": {
+    "cleanDocs": true
+  }
+}

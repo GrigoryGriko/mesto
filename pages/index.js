@@ -8,7 +8,7 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
 import {
-  cardsList, elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
+  elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
   formElementSelector, textNameSelector, textJobSelector, elementsGridContainer,
   fullImageSelector, captionImageSelector, selectorGridTemplate
 } from '../utils/constants.js';
@@ -26,19 +26,19 @@ const config = {
 
 const api = new Api(config);
 
+
+const cardSection = new Section(
+  (cardsList) => {
+    const allCardNodes = cardsList.reverse().map((item) => {
+      return createCard(item);
+    });
+    cardSection.addItem(...allCardNodes);
+  } , elementsGridContainer);
+
+
 api.getInitialCards()
   .then((cardsList) => {
-    const cardList = new Section({
-      items: cardsList,
-      renderer: () => {
-        const allCardNodes = cardsList.reverse().map((item) => {
-          return createCard(item);
-        });
-        cardList.addItem(...allCardNodes);
-      }
-    }, elementsGridContainer);
-
-    cardList.renderItems();
+    cardSection.renderItems(cardsList);
   })
   .catch((err) => {
     console.log(`Ошибка загрузки карточек ${err}`);
