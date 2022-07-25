@@ -13,23 +13,28 @@ export function handleCardClick({name, link}) {
 export function initUserData() {
   api.getInitial('users/me')    //инициализация данных пользователя
   .then((userData) => {
-    document.querySelector(userAvatarSelector).setAttribute('src', userData.avatar);
-    document.querySelector(userAvatarSelector).setAttribute('alt', 'аватарка');
-
-    document.querySelector(userNameSelector).textContent = userData.name;
-    document.querySelector(userAboutSelector).textContent = userData.about;
+    userInfo.setUserInfo({name: userData.name, about: userData.about});
   })
   .catch((err) => {
     console.log(`Ошибка инициализации данных пользователя ${err}`);
   });
 }
 
+export function initUserAvatar() {
+  api.getInitial('users/me')    //инициализация аватара пользователя
+  .then((userData) => {
+    userInfo.setUserAvatar(userData.avatar);
+  })
+  .catch((err) => {
+    console.log(`Ошибка инициализации аватара пользователя ${err}`);
+  });
+}
+
 export function handleSaveForm({nameInput, jobInput}) {
-  /*api.editDataUser('users/me', {nameInput, jobInput});
+  api.editDataUser('users/me', {nameInput, jobInput});
 
-  initUserData();*/
+  initUserData();
 
-  userInfo.setUserInfo({nameInput, jobInput}, initUserData);
 
   //userInfo.setUserInfo({nameInput, jobInput});
 

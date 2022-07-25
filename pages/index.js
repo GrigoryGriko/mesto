@@ -10,12 +10,11 @@ import Api from '../components/Api.js';
 import {
   elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
   formElementSelector, textNameSelector, textJobSelector, elementsGridContainer,
-  fullImageSelector, captionImageSelector, selectorGridTemplate, userAvatarSelector, 
-  userNameSelector, userAboutSelector 
+  fullImageSelector, captionImageSelector, selectorGridTemplate, userAvatarSelector,
+  userNameSelector, userAboutSelector
 } from '../utils/constants.js';
 
-import  {handleSaveForm, handleAddCardButton, createCard, initUserData, handleCardClick} from '../utils/utils.js';
-
+import  {handleSaveForm, handleAddCardButton, createCard, initUserData, initUserAvatar, handleCardClick} from '../utils/utils.js';
 
 
 const config = {
@@ -46,6 +45,7 @@ api.getInitial('cards')
   });
 
 initUserData();
+initUserAvatar();
 
 const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
@@ -53,7 +53,8 @@ Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
   formListValidation[item.name].enableValidation();
 });
 
-const userInfo = new UserInfo({textNameSelector, textJobSelector}, api.editDataUser);
+
+const userInfo = new UserInfo({textNameSelector, textJobSelector, userAvatarSelector});
 
 const editData = new PopupWithForm(
   popupsListSelector.popupEditDataSelector, formElementSelector,
