@@ -18,17 +18,14 @@ export default class Api {
   }
 
   editDataUser(urlKey, {nameInput, jobInput}) {
-    fetch((this._baseUrl + urlKey), {
+    return fetch((this._baseUrl + urlKey), {
       method: 'PATCH',
       headers: {
         authorization: '110d7e44-821c-45aa-84e8-91b557d72ac5',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: nameInput,
-        about: jobInput
-      })
-    });
+      body: JSON.stringify({name: nameInput, about: jobInput})
+    }).then(res => res.ok ? res.json() : Promise.reject(`Cannot add a record ${res.status} ${res.statusText}`));
   }
 
   addCard(urlKey, {nameInput, jobInput}) {
