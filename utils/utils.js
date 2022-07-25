@@ -25,9 +25,11 @@ export function initUserData() {
 }
 
 export function handleSaveForm({nameInput, jobInput}) {
-  api.editDataUser('users/me', {nameInput, jobInput});
+  /*api.editDataUser('users/me', {nameInput, jobInput});
 
-  initUserData();
+  initUserData();*/
+
+  userInfo.setUserInfo({nameInput, jobInput}, initUserData);
 
   //userInfo.setUserInfo({nameInput, jobInput});
 

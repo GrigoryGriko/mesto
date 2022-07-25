@@ -53,7 +53,7 @@ Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
   formListValidation[item.name].enableValidation();
 });
 
-const userInfo = new UserInfo({textNameSelector, textJobSelector});
+const userInfo = new UserInfo({textNameSelector, textJobSelector}, api.editDataUser);
 
 const editData = new PopupWithForm(
   popupsListSelector.popupEditDataSelector, formElementSelector,
