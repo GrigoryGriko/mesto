@@ -14,7 +14,7 @@ import {
   userNameSelector, userAboutSelector 
 } from '../utils/constants.js';
 
-import  {handleSaveForm, handleAddCardButton, createCard, handleCardClick} from '../utils/utils.js';
+import  {handleSaveForm, handleAddCardButton, createCard, initUserData, handleCardClick} from '../utils/utils.js';
 
 
 
@@ -45,17 +45,7 @@ api.getInitial('cards')
     console.log(`Ошибка загрузки карточек ${err}`);
   });
 
-api.getInitial('users/me')    //инициализация данных пользователя
-  .then((userData) => {
-    document.querySelector(userAvatarSelector).setAttribute('src', userData.avatar);
-    document.querySelector(userAvatarSelector).setAttribute('alt', 'аватарка');
-
-    document.querySelector(userNameSelector).textContent = userData.name;
-    document.querySelector(userAboutSelector).textContent = userData.about;
-  })
-  .catch((err) => {
-    console.log(`Ошибка инициализации данных пользователя ${err}`);
-  });
+initUserData();
 
 const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
@@ -92,4 +82,4 @@ buttonAdd.addEventListener( 'click', function() {
 }, false);
 
 
-export {userInfo, editData, addCard, formListValidation, cardSection};
+export {userInfo, editData, addCard, formListValidation, cardSection, api};

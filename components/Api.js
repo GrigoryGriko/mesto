@@ -17,16 +17,16 @@ export default class Api {
       });
   }
 
-  editDataUser(urlKey) {
-    fetch('https://mesto.nomoreparties.co/v1/cohortId/users/me', {
+  editDataUser(urlKey, {nameInput, jobInput}) {
+    fetch((this._baseUrl + urlKey), {
       method: 'PATCH',
       headers: {
-        authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6',
+        authorization: '110d7e44-821c-45aa-84e8-91b557d72ac5',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: 'Marie Skłodowska Curie',
-        about: 'Physicist and Chemist'
+        name: nameInput,
+        about: jobInput
       })
     }); 
   }
