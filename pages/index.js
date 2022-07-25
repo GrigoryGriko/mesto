@@ -45,7 +45,6 @@ api.getInitial('cards')
   });
 
 initUserData();
-initUserAvatar();
 
 const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {

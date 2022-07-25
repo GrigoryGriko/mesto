@@ -10,23 +10,14 @@ export function handleCardClick({name, link}) {
   popupWithImage.open(name, link);
 }
 
-export function initUserData() {  //не нужна
-  api.getInitial('users/me')    //инициализация данных пользователя
+export function initUserData() {
+  api.getInitial('users/me')    //первичная инициализация данных пользователя
   .then((userData) => {
-    userInfo.setUserInfo({name: userData.name, about: userData.about});
-  })
-  .catch((err) => {
-    console.log(`Ошибка инициализации данных пользователя ${err}`);
-  });
-}
-
-export function initUserAvatar() {
-  api.getInitial('users/me')    //инициализация аватара пользователя
-  .then((userData) => {
+    userInfo.setUserInfo({name: userData.name, about: userData.about});   //создать еще функцию и объеденить весь объект пользователя
     userInfo.setUserAvatar(userData.avatar);
   })
   .catch((err) => {
-    console.log(`Ошибка инициализации аватара пользователя ${err}`);
+    console.log(`Ошибка инициализации данных пользователя ${err}`);
   });
 }
 
@@ -39,8 +30,6 @@ export function handleSaveForm({nameInput, jobInput}) {
     console.log(`Ошибка изменения данных пользователя ${err}`);
   });
 
-  //initUserData();
-
 
   //userInfo.setUserInfo({nameInput, jobInput});
 
@@ -50,6 +39,11 @@ export function handleSaveForm({nameInput, jobInput}) {
 }
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
+  /*api.addCard('cards', {name, link})
+  .then((cardData) => {
+
+  })*/  //чекпоинт
+
   cardSection.addItem( createCard({name, link}) );
 
   addCard.close();
