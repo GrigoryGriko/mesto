@@ -7,33 +7,6 @@ const baikal = new URL('../images/baikal.jpg', import.meta.url);
 
 
 
-export const cardsList = [
-  {
-    name: 'Архыз',
-    link: arkhyz
-  },
-  {
-    name: 'Челябинская область',
-    link: chelyabinskOblast
-  },
-  {
-    name: 'Иваново',
-    link: ivanovo
-  },
-  {
-    name: 'Камчатка',
-    link: kamchatka
-  },
-  {
-    name: 'Холмогорский район',
-    link: kholmogorskyRayon
-  },
-  {
-    name: 'Байкал',
-    link: baikal
-  }
-];
-
 export const elementsDocument = {
   formSelector: '.popup__container',
   inputSelector: '.input-general-properties',
@@ -64,3 +37,7 @@ export const textJobSelector = '.profile__info-descript';
 
 export const elementsGridContainer = '.elements-grid__list';
 export const selectorGridTemplate = '#elements-grid__item-template';
+
+export const userAvatarSelector = '.profile__avatar';
+export const userNameSelector = 'profile__info-name';
+export const userAboutSelector = 'profile__info-descript';

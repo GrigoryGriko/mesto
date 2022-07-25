@@ -10,7 +10,8 @@ import Api from '../components/Api.js';
 import {
   elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
   formElementSelector, textNameSelector, textJobSelector, elementsGridContainer,
-  fullImageSelector, captionImageSelector, selectorGridTemplate
+  fullImageSelector, captionImageSelector, selectorGridTemplate, userAvatarSelector, 
+  userNameSelector, userAboutSelector 
 } from '../utils/constants.js';
 
 import  {handleSaveForm, handleAddCardButton, createCard, handleCardClick} from '../utils/utils.js';
@@ -18,7 +19,7 @@ import  {handleSaveForm, handleAddCardButton, createCard, handleCardClick} from 
 
 
 const config = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46/cards',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46/',
   headers: {
     authorization: '110d7e44-821c-45aa-84e8-91b557d72ac5'
   }
@@ -27,7 +28,7 @@ const config = {
 const api = new Api(config);
 
 
-const cardSection = new Section(
+const cardSection = new Section(    //инициализация карточек
   (cardsList) => {
     const allCardNodes = cardsList.reverse().map((item) => {
       return createCard(item);
@@ -36,7 +37,7 @@ const cardSection = new Section(
   } , elementsGridContainer);
 
 
-api.getInitialCards()
+api.getInitial('cards')
   .then((cardsList) => {
     cardSection.renderItems(cardsList);
   })
@@ -44,18 +45,17 @@ api.getInitialCards()
     console.log(`Ошибка загрузки карточек ${err}`);
   });
 
-/*const cardList = new Section({
-  items: cardsList,
-  renderer: () => {
-    const allCardNodes = cardsList.reverse().map((item) => {
-      return createCard(item);
-    });
-    cardList.addItem(...allCardNodes);
-  }
-}, elementsGridContainer);
+api.getInitial('users/me')    //инициализация данных пользователя
+  .then((userData) => {
+    document.querySelector(userAvatarSelector).setAttribute('src', userData.avatar);
+    document.querySelector(userAvatarSelector).setAttribute('alt', 'аватарка');
 
-cardList.renderItems();*/
-
+    document.querySelector(userNameSelector).textContent = userData.name;
+    document.querySelector(userAboutSelector).textContent = userData.about;
+  })
+  .catch((err) => {
+    console.log(`Ошибка инициализации данных пользователя ${err}`);
+  });
 
 const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
@@ -92,4 +92,4 @@ buttonAdd.addEventListener( 'click', function() {
 }, false);
 
 
-export {userInfo, editData, addCard, formListValidation/*, cardList*/};
+export {userInfo, editData, addCard, formListValidation, cardSection};
