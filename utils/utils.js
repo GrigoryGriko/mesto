@@ -27,7 +27,7 @@ export function handleSaveForm({nameInput, jobInput}) {
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   api.addCard('cards', {name, link})
-    .then(({name, link, link}) => {
+    .then(({name, link}) => {
       cardSection.addItem( createCard({name, link}) );
     })
     .catch((err) => {

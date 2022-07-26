@@ -15,7 +15,10 @@ import {
   userNameSelector, userAboutSelector
 } from '../utils/constants.js';
 
-import  {handleSaveForm, handleAddCardButton, createCard, initUserData, initUserAvatar, handleCardClick} from '../utils/utils.js';
+import  {
+  handleSaveForm, handleAddCardButton, createCard,
+  initUserData, initUserAvatar, handleCardClick, handleDeleteCard
+} from '../utils/utils.js';
 
 
 const config = {
@@ -69,7 +72,7 @@ const addCard = new PopupWithForm(
 addCard.setEventListeners();
 
 export const confirmDeleteCard = new PopupWithConfirmation(   //экземпляр класса попапа подтверждения удаления
-  popupListSelector.popupDeleteCardSelector, formElementSelector,
+  popupsListSelector.popupDeleteCardSelector, formElementSelector,
   handleDeleteCard
 );
 confirmDeleteCard.setEventListeners();
