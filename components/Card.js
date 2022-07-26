@@ -2,7 +2,7 @@ export default class Card {
   constructor({name, link, likes}, gridTemplateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
-    this._likes = likes;
+    this._likesCount = likes.length;
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;
@@ -18,13 +18,16 @@ export default class Card {
     this._cardElement = this._getTemplate();
 
     this._cardElementImage = this._cardElement.querySelector('.elements-grid__image');
-    const cardPlaceName = this._cardElement.querySelector('.elements-grid__place-name');
+    this._cardPlaceName = this._cardElement.querySelector('.elements-grid__place-name');
+    this._cardLikeCounter = this._cardElement.querySelector('.elements-grid__like-counter');
 
     this._setEventListeners();
 
     this._cardElementImage.setAttribute('src', this._link);
     this._cardElementImage.setAttribute('alt', this._name);
-    cardPlaceName.textContent = this._name;
+    this._cardPlaceName.textContent = this._name;
+
+    this._cardLikeCounter.textContent = this._likesCount; //чекпоинт
 
     return this._cardElement;
   }
