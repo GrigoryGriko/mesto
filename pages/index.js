@@ -11,13 +11,11 @@ import Api from '../components/Api.js';
 import {
   elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
   formElementSelector, textNameSelector, textJobSelector, elementsGridContainer,
-  fullImageSelector, captionImageSelector, selectorGridTemplate, userAvatarSelector,
-  userNameSelector, userAboutSelector
+  fullImageSelector, captionImageSelector, userAvatarSelector
 } from '../utils/constants.js';
 
 import  {
-  handleSaveForm, handleAddCardButton, createCard,
-  initUserData, initUserAvatar, handleCardClick, handleDeleteCard
+  handleSaveForm, handleAddCardButton, createCard, handleDeleteCard
 } from '../utils/utils.js';
 
 

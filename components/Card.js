@@ -1,9 +1,12 @@
 export default class Card {
-  constructor({name, link, likes, _id}, gridTemplateSelector, handleCardClick, openPopupConfirmation) {
+  constructor({name, link, likes, _id, ownerId}, gridTemplateSelector, handleCardClick, openPopupConfirmation) {
     this._name = name;
     this._link = link;
     this._likesCount = likes.length;
     this._id = _id;
+    this._ownerId = ownerId;
+
+    console.dir(this._ownerId);
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;
