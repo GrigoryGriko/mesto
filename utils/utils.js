@@ -28,7 +28,7 @@ export function handleSaveForm({nameInput, jobInput}) {
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   api.addCard('cards', {name, link})
     .then(({name, link}) => {
-      cardSection.addItem( createCard({name, link}) );
+      cardSection.addItem( createCard({name, link}) );    //надо еще айдишник добавить наверное
     })
     .catch((err) => {
       console.log(`Ошибка добавления карточки ${err}`);
@@ -53,8 +53,8 @@ export function handleDeleteCard(_id) {    //функция самого зап�
   //card.deleteCard();                                  //не все, не все, нужен обработчик запроса (а чужие карточки чтобы не удалялись) в верстке убирать значки удаления, где _id не совпадает с нашим
 }   //card не откда взять, он находится в другой локальной области видимости
 
-export function createCard({name, link, likes = 0}) {
-  const card = new Card({name, link, likes}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open());    //вынести в глобальную область видимости
+export function createCard({name, link, likes = 0, _id}) {
+  const card = new Card({name, link, likes, _id}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open);    //вынести в глобальную область видимости
 
   const cardElement = card.generateCard();
   return cardElement;
