@@ -43,8 +43,8 @@ export default class Card {
   _handlePutLike = () => {
     this._cardElementLike.classList.toggle('elements-grid__like_active');
   }
-  _handleDeleteCard = () => {
-    this._cardElement.remove();
+  _handleDeleteCard = () => {   //удаление карточки-1 не удалять карточку сразу, а открывать popup с подтверждением
+    this._cardElement.remove();   //1 открывать форму подтверждения. сделать слабое связывание с методом
     this._cardElement = null;
   }
   _handleImageClick = () => {

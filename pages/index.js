@@ -25,7 +25,7 @@ const config = {
 const api = new Api(config);
 
 
-const cardSection = new Section(    //инициализация карточек 
+const cardSection = new Section(
   (cardsList) => {
     const allCardNodes = cardsList.reverse().map((item) => {
       return createCard(item);
@@ -37,7 +37,7 @@ const cardSection = new Section(    //инициализация карточе�
 Promise.all([api.getInitCards(), api.getInitUserData()])
   .then(([cards, user]) => {
     cardSection.renderItems(cards);
-    
+
     userInfo.setUserInfo({name: user.name, about: user.about});   //создать еще функцию и объеденить весь объект пользователя
     userInfo.setUserAvatar(user.avatar);
   })
