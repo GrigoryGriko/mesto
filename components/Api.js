@@ -45,7 +45,14 @@ export default class Api {
   }
 
   deleteCard() {
-
+    return fetch((this._baseUrl + urlKey + cardId), {
+      method: 'DELETE',
+      headers: {
+        authorization: this._keyAuth,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(_id)
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));    //чекпоинт
   }
 
   putLike() {

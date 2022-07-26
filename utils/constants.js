@@ -24,6 +24,7 @@ export const buttonAdd = page.querySelector('.profile__button-add');
 export const popupsListSelector = {
   popupEditDataSelector: '.popup_edit_data',
   popupAddCardSelector: '.popup_add_card',
+  popupDeleteCardSelector: '.popup_delete_card',
   popupShowImageSelector: '.popup_show_image'
 };
 
