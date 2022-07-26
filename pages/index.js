@@ -68,14 +68,17 @@ const addCard = new PopupWithForm(
 );
 addCard.setEventListeners();
 
-export const confirmDeleteCard = new PopupWithConfirmation(   //экзмпляр класса попапа подтверждения удаления
+export const confirmDeleteCard = new PopupWithConfirmation(   //экземпляр класса попапа подтверждения удаления
   popupListSelector.popupDeleteCardSelector, formElementSelector,
   handleDeleteCard
 );
 confirmDeleteCard.setEventListeners();
 
 
-export const popupWithImage = new PopupWithImage(popupsListSelector.popupShowImageSelector, fullImageSelector, captionImageSelector);
+export const popupWithImage = new PopupWithImage(
+  popupsListSelector.popupShowImageSelector,
+  fullImageSelector, captionImageSelector
+);
 popupWithImage.setEventListeners();
 
 

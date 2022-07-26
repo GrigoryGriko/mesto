@@ -1,8 +1,9 @@
 export default class Card {
-  constructor({name, link, likes}, gridTemplateSelector, handleCardClick, openPopup) {
+  constructor({name, link, likes, _id}, gridTemplateSelector, handleCardClick, openPopupConfirmation) {
     this._name = name;
     this._link = link;
     this._likesCount = likes.length;
+    this._id = _id;
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;
@@ -52,7 +53,7 @@ export default class Card {
   }
 
   _handleDeleteCard = () => {   //удаление карточки-1 не удалять карточку сразу, а открывать popup с подтверждением
-    this._openPopupConfirmation();
+    this._openPopupConfirmation(this._id);
 
     /*this._cardElement.remove();   //1 открывать форму подтверждения. сделать слабое связывание с методом. Это удаление локальное, поэтому его надо делать...
     this._cardElement = null;*/   //короче это содержимое вынести в отдельный метод этого класса и вызывать при api запросе

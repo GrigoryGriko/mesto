@@ -9,11 +9,17 @@ export default class PopupWithConfirmation extends Popup {
 
     this._formElement = this._popup.querySelector(formElementSelector);
     this._submitHandler = submitHandler;
+
+    this._inputElement = this._formElement.querySelector('.input-general-properties');
+  }
+
+  _getInputValues() {   //получаем _id из невидимой формы
+    return this._inputElements.value;
   }
 
   _handleFormSubmit = (evt) => {
     evt.preventDefault();
-    this._submitHandler();    //сюда значит передаем в submitHandler функцию, которая делает запрос через api, без аргумента
+    this._submitHandler(_getInputValues());    //сюда значит передаем в submitHandler функцию, которая делает запрос через api, без аргумента
   }   //надо понимать, это уже запрос на удаление, назад пути нет, не забыть, что он должен быть после отправки сабмита
 
   setEventListeners() {   //навешиваем лапшу на уши, а также слушатели закрытия, открытия
@@ -21,6 +27,10 @@ export default class PopupWithConfirmation extends Popup {
     this._formElement.addEventListener('submit', this._handleFormSubmit);   //вешаем слушатель, колюбэк которого - обработчик удаления карточки
   }
 
+  open(_id) {
+    this._inputElement.value = _id;   //в скрытое поле для ввода добавляем id карточки
+    super.open();
+  }
   //есть методы open, close - они наследуются от popup
 }
 

@@ -39,8 +39,18 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   formListValidation['form-add-card'].lockButton();
 }
 
-export function handleDeleteCard() {    //функция самого запроса на удаление
-  card.deleteCard();                                  //не все, не все, нужен обработчик запроса (а чужие карточки чтобы не удалялись) в верстке убирать значки удаления, где _id не совпадает с нашим
+export function handleDeleteCard(_id) {    //функция самого запроса на удаление. ХА-ХА, сейчас у меня будет айдишник
+  api.deleteCard(`cards/${_id}`)
+    .then((_id) => {
+      //удаление карточки из разметки
+    })
+    .catch((err) => {
+      console.log(`Ошибка удаления карточки ${err}`);
+    });
+
+    confirmDeleteCard.close();
+
+  //card.deleteCard();                                  //не все, не все, нужен обработчик запроса (а чужие карточки чтобы не удалялись) в верстке убирать значки удаления, где _id не совпадает с нашим
 }   //card не откда взять, он находится в другой локальной области видимости
 
 export function createCard({name, link, likes = 0}) {

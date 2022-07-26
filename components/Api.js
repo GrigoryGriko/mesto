@@ -44,7 +44,7 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  deleteCard() {
+  deleteCard(cardId) {
     return fetch((this._baseUrl + urlKey + cardId), {
       method: 'DELETE',
       headers: {
