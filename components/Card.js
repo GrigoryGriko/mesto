@@ -47,7 +47,7 @@ export default class Card {
     this._cardElementLike.classList.toggle('elements-grid__like_active');
   }
 
-  removeCard() {
+  removeCard = () => {
     this._cardElement.remove();
     this._cardElement = null;
   }
