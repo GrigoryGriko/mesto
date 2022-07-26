@@ -5,7 +5,7 @@ export default class Api {
   }
 
   getInitCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}cards`, {
       headers: {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: nameInput, about: jobInput})
-    }).then(res => res.ok ? res.json() : Promise.reject(`Cannot add a record ${res.status} ${res.statusText}`));
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
   addCard(urlKey, {name, link}) {
@@ -41,7 +41,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: name, link: link})
-    }).then(res => res.ok ? res.json() : Promise.reject(`Cannot add a record ${res.status} ${res.statusText}`));
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
   deleteCard() {

@@ -3,7 +3,6 @@ import Card from '../components/Card.js';
 import {selectorGridTemplate, userAvatarSelector, userNameSelector, userAboutSelector } from './constants.js';
 
 import {userInfo, editData, addCard, formListValidation, cardSection, popupWithImage, api} from '../pages/index.js';
-import Api from '../components/Api.js';
 
 
 export function handleCardClick({name, link}) {
@@ -13,8 +12,8 @@ export function handleCardClick({name, link}) {
 
 export function handleSaveForm({nameInput, jobInput}) {
   api.editDataUser('users/me', {nameInput, jobInput})
-  .then((userData) => {
-    userInfo.setUserInfo({name: userData.name, about: userData.about});
+  .then(({name, about}) => {
+    userInfo.setUserInfo({name, about});
   })
   .catch((err) => {
     console.log(`Ошибка изменения данных пользователя ${err}`);
@@ -27,12 +26,13 @@ export function handleSaveForm({nameInput, jobInput}) {
 }
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
-  /*api.addCard('cards', {name, link})
-  .then((cardData) => {
-
-  })*/  //чекпоинт
-
-  cardSection.addItem( createCard({name, link}) );
+  api.addCard('cards', {name, link})
+    .then(({name, link}) => {
+      cardSection.addItem( createCard({name, link}) );
+    })
+    .catch((err) => {
+      console.log(`Ошибка добавления карточки ${err}`);
+    });
 
   addCard.close();
 
