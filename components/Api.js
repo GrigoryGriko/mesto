@@ -49,7 +49,7 @@ export default class Api {
       method: 'DELETE',
       headers: {
         authorization: this._keyAuth,
-        'Content-Type': 'application/json'  //удаление заголовка частично помогает
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(cardId)
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));    //чекпоинт

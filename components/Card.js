@@ -3,7 +3,7 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._likesCount = likes.length;
-    this._id = _id;   //при создании карточки id не передается, но после перезагрузки появляется
+    this._id = _id;
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;
@@ -30,7 +30,7 @@ export default class Card {
     this._cardElementImage.setAttribute('alt', this._name);
     this._cardPlaceName.textContent = this._name;
 
-    this._cardLikeCounter.textContent = this._likesCount; //чекпоинт
+    this._cardLikeCounter.textContent = this._likesCount;
 
     return this._cardElement;
   }
@@ -52,11 +52,8 @@ export default class Card {
     this._cardElement = null;
   }
 
-  _handleDeleteCard = () => {   //удаление карточки-1 не удалять карточку сразу, а открывать popup с подтверждением
+  _handleDeleteCard = () => {
     this._openPopupConfirmation(this._id, this.removeCard);
-
-    /*this._cardElement.remove();   //1 открывать форму подтверждения. сделать слабое связывание с методом. Это удаление локальное, поэтому его надо делать...
-    this._cardElement = null;*/   //короче это содержимое вынести в отдельный метод этого класса и вызывать при api запросе
   }
   _handleImageClick = () => {
     this._handleCardClick({name: this._name, link: this._link});

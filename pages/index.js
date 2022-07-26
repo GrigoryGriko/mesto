@@ -71,7 +71,7 @@ const addCard = new PopupWithForm(
 );
 addCard.setEventListeners();
 
-export const confirmDeleteCard = new PopupWithConfirmation(   //экземпляр класса попапа подтверждения удаления
+export const confirmDeleteCard = new PopupWithConfirmation(
   popupsListSelector.popupDeleteCardSelector, formElementSelector,
   handleDeleteCard
 );
