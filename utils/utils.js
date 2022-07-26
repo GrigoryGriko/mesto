@@ -1,6 +1,6 @@
 import Card from '../components/Card.js';
 
-import {selectorGridTemplate, userAvatarSelector, userNameSelector, userAboutSelector } from './constants.js';
+import {selectorGridTemplate} from './constants.js';
 
 import {userInfo, editData, addCard, formListValidation, cardSection, popupWithImage, api} from '../pages/index.js';
 
