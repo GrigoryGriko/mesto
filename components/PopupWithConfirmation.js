@@ -13,7 +13,7 @@ export default class PopupWithConfirmation extends Popup {
 
   _handleFormSubmit = (evt) => {
     evt.preventDefault();
-    this._submitHandler(this._getInputValues());    //сюда значит передаем в submitHandler функцию, которая делает запрос через api, без аргумента
+    this._submitHandler();    //сюда значит передаем в submitHandler функцию, которая делает запрос через api, без аргумента
   }   //надо понимать, это уже запрос на удаление, назад пути нет, не забыть, что он должен быть после отправки сабмита
 
   setEventListeners() {   //навешиваем лапшу на уши, а также слушатели закрытия, открытия

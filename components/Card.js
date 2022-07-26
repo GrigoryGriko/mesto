@@ -1,11 +1,13 @@
 export default class Card {
-  constructor({name, link, likes}, gridTemplateSelector, handleCardClick) {
+  constructor({name, link, likes}, gridTemplateSelector, handleCardClick, openPopup) {
     this._name = name;
     this._link = link;
     this._likesCount = likes.length;
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;
+
+    this._openPopup = openPopup
   }
   _getTemplate() {
     return this._elementGridTemplate
@@ -43,9 +45,17 @@ export default class Card {
   _handlePutLike = () => {
     this._cardElementLike.classList.toggle('elements-grid__like_active');
   }
-  _handleDeleteCard = () => {   //удаление карточки-1 не удалять карточку сразу, а открывать popup с подтверждением
-    this._cardElement.remove();   //1 открывать форму подтверждения. сделать слабое связывание с методом
+
+  deleteCard() {
+    this._cardElement.remove();
     this._cardElement = null;
+  }
+
+  _handleDeleteCard = () => {   //удаление карточки-1 не удалять карточку сразу, а открывать popup с подтверждением
+    this._openPopup();
+
+    /*this._cardElement.remove();   //1 открывать форму подтверждения. сделать слабое связывание с методом. Это удаление локальное, поэтому его надо делать...
+    this._cardElement = null;*/   //короче это содержимое вынести в отдельный метод этого класса и вызывать при api запросе
   }
   _handleImageClick = () => {
     this._handleCardClick({name: this._name, link: this._link});
