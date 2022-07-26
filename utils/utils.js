@@ -27,7 +27,7 @@ export function handleSaveForm({nameInput, jobInput}) {
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   api.addCard('cards', {name, link})
-    .then(({name, link}) => {
+    .then(({name, link, link}) => {
       cardSection.addItem( createCard({name, link}) );
     })
     .catch((err) => {
@@ -40,16 +40,11 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
 }
 
 export function handleDeleteCard() {    //функция самого запроса на удаление
-  card.deleteCard()   //не все, не все нужен обработчик запроса (а чужие карточки чтобы не удалялись) в верстке убирать значки удаления, где _id не совпадает с нашим
-}
+  card.deleteCard();                                  //не все, не все, нужен обработчик запроса (а чужие карточки чтобы не удалялись) в верстке убирать значки удаления, где _id не совпадает с нашим
+}   //card не откда взять, он находится в другой локальной области видимости
 
-export function createCard({name, link, likes}) {
-  const card = new Card({name, link, likes},
-    selectorGridTemplate,
-    handleCardClick,
-    () => {   //колбэк, в котором передается функционал открытия popupConfirmation
-      confirmDeleteCard.open();   //навесили? И все что ли?
-    });
+export function createCard({name, link, likes = 0}) {
+  const card = new Card({name, link, likes}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open());    //вынести в глобальную область видимости
 
   const cardElement = card.generateCard();
   return cardElement;

@@ -4,6 +4,7 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
@@ -67,7 +68,7 @@ const addCard = new PopupWithForm(
 );
 addCard.setEventListeners();
 
-export const confirmDeleteCard = new PopupWidthConfirmation(   //экзмпляр класса попапа подтверждения удаления
+export const confirmDeleteCard = new PopupWithConfirmation(   //экзмпляр класса попапа подтверждения удаления
   popupListSelector.popupDeleteCardSelector, formElementSelector,
   handleDeleteCard
 );
