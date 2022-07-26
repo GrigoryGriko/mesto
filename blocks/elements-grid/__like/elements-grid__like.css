@@ -1,14 +1,14 @@
 .elements-grid__like {
-  position: relative;
-  min-width: 22px;
   height: 19px;
-  right: 20px;
-
+  width: 100%;
+  
   background-color: transparent;
   background-image: url(../../../images/like.svg);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center;
+
+  margin-bottom: 3px;
 
   border: none;
   outline: none;

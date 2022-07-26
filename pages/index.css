@@ -9,6 +9,8 @@
 @import url(../blocks/elements-grid/__delete/elements-grid__delete.css);
 @import url(../blocks/elements-grid/__image/elements-grid__image.css);
 @import url(../blocks/elements-grid/__item/elements-grid__item.css);
+@import url(../blocks/elements-grid/__like-container/elements-grid__like-container.css);
+@import url(../blocks/elements-grid/__like-counter/elements-grid__like-counter.css);
 @import url(../blocks/elements-grid/__like/elements-grid__like.css);
 @import url(../blocks/elements-grid/__like/_active/elements-grid__like_active.css);
 @import url(../blocks/elements-grid/__list/elements-grid__list.css);
