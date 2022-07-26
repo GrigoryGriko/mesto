@@ -1,7 +1,8 @@
 export default class Card {
-  constructor({name, link}, gridTemplateSelector, handleCardClick) {
+  constructor({name, link, likes}, gridTemplateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
+    this._likes = likes;
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;

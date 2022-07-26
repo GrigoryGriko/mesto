@@ -39,8 +39,8 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   formListValidation['form-add-card'].lockButton();
 }
 
-export function createCard({name, link}) {
-  const card = new Card({name, link}, selectorGridTemplate, handleCardClick);
+export function createCard({name, link, likes}) {
+  const card = new Card({name, link, likes}, selectorGridTemplate, handleCardClick);
   const cardElement = card.generateCard();
   return cardElement;
 }
