@@ -25,7 +25,7 @@ const config = {
 const api = new Api(config);
 
 
-const cardSection = new Section(    //инициализация карточек
+const cardSection = new Section(    //инициализация карточек 
   (cardsList) => {
     const allCardNodes = cardsList.reverse().map((item) => {
       return createCard(item);
