@@ -40,8 +40,9 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
 }
 
 export function handleDeleteCard(_id) {    //функция самого запроса на удаление. ХА-ХА, сейчас у меня будет айдишник
-  api.deleteCard(`cards/${_id}`)
+  api.deleteCard('cards', _id)
     .then((_id) => {
+      console.log('Удалено из БД');
       //удаление карточки из разметки
     })
     .catch((err) => {

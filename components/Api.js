@@ -44,14 +44,15 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  deleteCard(cardId) {
-    return fetch((this._baseUrl + urlKey + cardId), {
+  deleteCard(urlKey, cardId) {
+    console.log(this._baseUrl + urlKey + '/' + cardId);
+    return fetch((this._baseUrl + urlKey + '/' + cardId), {
       method: 'DELETE',
       headers: {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(_id)
+      body: JSON.stringify(cardId)
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));    //чекпоинт
   }
 
