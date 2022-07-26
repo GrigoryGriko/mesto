@@ -1,20 +1,32 @@
 export default class Api {
-  constructor({baseUrl, headers}) {
+  constructor({baseUrl, keyAuth}) {
     this._baseUrl = baseUrl;
-    this._headers = headers
+    this._keyAuth = keyAuth;
   }
 
-  getInitial(urlKey) {
-    return fetch((this._baseUrl + urlKey), {
-      headers: this._headers
+  getInitCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: {
+        authorization: this._keyAuth,
+        'Content-Type': 'application/json'
+      }
     }).then(res => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status} ${res.statusText}`));
-  }     //реализовать Promise.all
+  }
+
+  getInitUserData() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        authorization: this._keyAuth,
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status} ${res.statusText}`));
+  }
 
   editDataUser(urlKey, {nameInput, jobInput}) {
     return fetch((this._baseUrl + urlKey), {
       method: 'PATCH',
       headers: {
-        authorization: '110d7e44-821c-45aa-84e8-91b557d72ac5',
+        authorization: this._keyAuth,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: nameInput, about: jobInput})
@@ -25,7 +37,7 @@ export default class Api {
     return fetch((this._baseUrl + urlKey), {
       method: 'POST',
       headers: {
-        authorization: '110d7e44-821c-45aa-84e8-91b557d72ac5',
+        authorization: this._keyAuth,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: name, link: link})

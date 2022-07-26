@@ -19,9 +19,7 @@ import  {handleSaveForm, handleAddCardButton, createCard, initUserData, initUser
 
 const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46/',
-  headers: {
-    authorization: '110d7e44-821c-45aa-84e8-91b557d72ac5'
-  }
+  keyAuth: '110d7e44-821c-45aa-84e8-91b557d72ac5'
 }
 
 const api = new Api(config);
@@ -36,15 +34,16 @@ const cardSection = new Section(    //инициализация карточе�
   } , elementsGridContainer);
 
 
-api.getInitial('cards')
-  .then((cardsList) => {
-    cardSection.renderItems(cardsList);
+Promise.all([api.getInitCards(), api.getInitUserData()])
+  .then(([cards, user]) => {
+    cardSection.renderItems(cards);
+    
+    userInfo.setUserInfo({name: user.name, about: user.about});   //создать еще функцию и объеденить весь объект пользователя
+    userInfo.setUserAvatar(user.avatar);
   })
   .catch((err) => {
-    console.log(`Ошибка загрузки карточек ${err}`);
+    console.log(`Ошибка загрузки данных пользователя ${err}`);
   });
-
-initUserData();
 
 const formListValidation = {};
 Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
