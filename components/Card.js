@@ -3,7 +3,7 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._likesCount = likes.length;
-    this._id = _id;
+    this._id = _id;   //при создании карточки id не передается, но после перезагрузки появляется
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;

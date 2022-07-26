@@ -17,8 +17,8 @@ export default class PopupWithConfirmation extends Popup {
     return this._inputElement.value;
   }*/
 
-_getInputValues() {
-  return {_id: this._id, deleteCard: this._deleteCard};
+_getInputValues = () => {
+  return {_id: this._id, removeCard: this._removeCard};
 }
 
   _handleFormSubmit = (evt) => {
@@ -31,10 +31,10 @@ _getInputValues() {
     this._formElement.addEventListener('submit', this._handleFormSubmit);   //вешаем слушатель, колюбэк которого - обработчик удаления карточки
   }
 
-  open = (_id, deleteCard) => {
+  open = (_id, removeCard) => {   //_id не передается сначала сюда при создании
     //this._inputElement.value = _id;   //в скрытое поле для ввода добавляем id карточки
-    this._id = _id
-    this._deleteCard = deleteCard;
+    this._id = _id;
+    this._removeCard = removeCard;
 
     super.open();
   }

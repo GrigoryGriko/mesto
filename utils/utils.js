@@ -27,8 +27,8 @@ export function handleSaveForm({nameInput, jobInput}) {
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   api.addCard('cards', {name, link})
-    .then(({name, link}) => {
-      cardSection.addItem( createCard({name, link}) );    //надо еще айдишник добавить наверное
+    .then(({name, link, _id}) => {
+      cardSection.addItem( createCard({name, link, like: 0, _id}) );    //надо еще айдишник добавить наверное
     })
     .catch((err) => {
       console.log(`Ошибка добавления карточки ${err}`);
@@ -40,8 +40,10 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
 }
 
 export function handleDeleteCard({_id, removeCard}) {    //функция самого запроса на удаление. ХА-ХА, сейчас у меня будет айдишник
+  console.log('handleDeleteCard ' + _id);
   api.deleteCard('cards', _id)
     .then((_id) => {
+      console.log('удаление с разметки');
       removeCard();
       //удаление карточки из разметки
     })
