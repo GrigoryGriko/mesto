@@ -12,8 +12,6 @@ export default class Card {
     this._openPopupConfirmation = openPopupConfirmation;
 
     this._userId = userId;
-
-    console.log(this._userId);
   }
   _getTemplate() {
     return this._elementGridTemplate
