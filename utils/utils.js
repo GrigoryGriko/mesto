@@ -13,7 +13,6 @@ export function handleCardClick({name, link}) {
 export function handleSaveForm({nameInput, jobInput}) {
   api.editDataUser('users/me', {nameInput, jobInput})
   .then((userData) => {
-    console.dir(userInfo);
     userInfo.setUserInfo(userData);
   })
   .catch((err) => {
@@ -52,9 +51,30 @@ export function handleDeleteCard({_id, removeCard}) {
     confirmDeleteCard.close();
 }
 
+export function handlePutLike(_id, likeState) {
+  if (likeState) {
+    api.putLike('cards', _id)
+    .then((_id) => {
+      ///обновление количества
+    })
+    .catch((err) => {
+      console.log(`Ошибка постановки лайка ${err}`);
+    });
+
+  } else {
+    api.deleteLike('cards', _id)
+    .then((_id) => {
+      ///обновление количества
+    })
+    .catch((err) => {
+      console.log(`Ошибка постановки лайка ${err}`);
+    });
+  }
+}
+
 export function createCard({name, link, likes, _id, owner: {_id: ownerId}}) {
   const userId = userInfo.getUserId();
-  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open, userId);
+  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open, userId, handlePutLike);
 
   const cardElement = card.generateCard();
   return cardElement;

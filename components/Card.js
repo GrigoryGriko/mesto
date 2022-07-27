@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({name, link, likes, _id, ownerId}, gridTemplateSelector, handleCardClick, openPopupConfirmation, userId) {
+  constructor({name, link, likes, _id, ownerId}, gridTemplateSelector, handleCardClick, openPopupConfirmation, userId, handlePutLike) {
     this._name = name;
     this._link = link;
     this._likesCount = likes.length;
@@ -12,6 +12,8 @@ export default class Card {
     this._openPopupConfirmation = openPopupConfirmation;
 
     this._userId = userId;
+
+    this._handlePutLike = handlePutLike;
   }
   _getTemplate() {
     return this._elementGridTemplate
@@ -47,17 +49,20 @@ export default class Card {
 
   _setEventListeners() {
     this._cardElementLike = this._cardElement.querySelector('.elements-grid__like');
-    this._cardElementLike.addEventListener('click', this._handlePutLike);
+    this._cardElementLike.addEventListener('click', this._handlerPutLike);
 
     if (this._ownerId == this._userId) {
-      this._elementDeleteButton.addEventListener('click', this._handleDeleteCard);
+      this._elementDeleteButton.addEventListener('click', this._handleDeleteCard);    //здесь при клике вызываем функцию посредник из index.js. В нее помещаем id карточки, состояние лайка, колбек...
     }
-
     this._cardElementImage.addEventListener('click', this._handleImageClick);
   }
 
-  _handlePutLike = () => {
+  _handlerPutLike = () => {
+    //this._cardElementLike.classList.toggle('elements-grid__like_active');
+    const stateLike = this._cardElementLike.classList.contains('elements-grid__like_active') ? true : false;
     this._cardElementLike.classList.toggle('elements-grid__like_active');
+
+    this._handlePutLike(this._id, stateLike);
   }
 
   removeCard = () => {
