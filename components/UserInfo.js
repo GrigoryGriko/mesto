@@ -4,11 +4,11 @@ export default class UserInfo {
     this._elementTextJob = document.querySelector(textJobSelector);
     this._elementAvatar = document.querySelector(userAvatarSelector);
 
-    this.getUserInfo = this.getUserInfo.bind(this);
-    this.setUserInfo = this.setUserInfo.bind(this);   //что-то делать с привязкой контекста
+    //this.getUserInfo = this.getUserInfo.bind(this);
+    //this.setUserInfo = this.setUserInfo.bind(this);   //что-то делать с привязкой контекста
   }
 
-  getUserInfo() {
+  getUserInfo = () => {
     return {nameInput: this._elementTextName.textContent, jobInput: this._elementTextJob.textContent, Userid: this._userId};
   }
 
@@ -22,7 +22,7 @@ export default class UserInfo {
     this._elementAvatar.setAttribute('src', avatar);
     this._elementAvatar.setAttribute('alt', 'аватарка');
 
-    this._userId = _id;
+    this._userId = 333;
     console.log('asd' + _id);
   }
 
