@@ -27,8 +27,8 @@ export function handleSaveForm({nameInput, jobInput}) {
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   api.addCard('cards', {name, link})
-    .then(({name, link, _id, owner}) => {
-      cardSection.addItem( createCard({name, link, like: 0, _id, owner}) );    //чекпоинт
+    .then((cardData) => {
+      cardSection.addItem( createCard(cardData) );
     })
     .catch((err) => {
       console.log(`Ошибка добавления карточки ${err}`);
@@ -51,7 +51,7 @@ export function handleDeleteCard({_id, removeCard}) {
     confirmDeleteCard.close();
 }
 
-export function createCard({name, link, likes = 0, _id, ownerId}) {
+export function createCard({name, link, likes, _id, owner: {_id: ownerId}}) {
   const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open);
 
   const cardElement = card.generateCard();

@@ -6,7 +6,7 @@ export default class Card {
     this._id = _id;
     this._ownerId = ownerId;
 
-    console.dir(this._ownerId);
+    this._userId = 0;   ///как-то передать его;
 
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;
@@ -26,8 +26,18 @@ export default class Card {
     this._cardElementImage = this._cardElement.querySelector('.elements-grid__image');
     this._cardPlaceName = this._cardElement.querySelector('.elements-grid__place-name');
     this._cardLikeCounter = this._cardElement.querySelector('.elements-grid__like-counter');
+    this._elementDeleteButton = this._cardElement.querySelector('.elements-grid__delete');
 
     this._setEventListeners();
+
+    if (this._ownerId != this._userId) {
+      console.group(this._name);
+      console.log(this._ownerId);
+      console.log(this._userId);
+
+      this._elementDeleteButton.remove();
+      this._elementDeleteButton = null;
+    }
 
     this._cardElementImage.setAttribute('src', this._link);
     this._cardElementImage.setAttribute('alt', this._name);
@@ -41,7 +51,10 @@ export default class Card {
   _setEventListeners() {
     this._cardElementLike = this._cardElement.querySelector('.elements-grid__like');
     this._cardElementLike.addEventListener('click', this._handlePutLike);
-    this._cardElement.querySelector('.elements-grid__delete').addEventListener('click', this._handleDeleteCard);
+
+    if (this._ownerId == this._userId) {
+      this._elementDeleteButton.addEventListener('click', this._handleDeleteCard);
+    }
 
     this._cardElementImage.addEventListener('click', this._handleImageClick);
   }
