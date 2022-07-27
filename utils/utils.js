@@ -19,7 +19,6 @@ export function handleSaveForm({nameInput, jobInput}) {
     console.log(`Ошибка изменения данных пользователя ${err}`);
   });
 
-
   editData.close();
 
   formListValidation['form-edit-info'].lockButton();
