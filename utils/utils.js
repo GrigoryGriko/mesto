@@ -28,7 +28,7 @@ export function handleSaveForm({nameInput, jobInput}) {
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   api.addCard('cards', {name, link})
     .then(({name, link, _id, owner}) => {
-      cardSection.addItem( createCard({name, link, like: 0, _id, owner}) );    //чекпоинт
+      cardSection.addItem( createCard({name, link, like: 0, _id, owner.Id}) );    //чекпоинт
     })
     .catch((err) => {
       console.log(`Ошибка добавления карточки ${err}`);
