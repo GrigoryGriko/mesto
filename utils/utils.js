@@ -53,7 +53,8 @@ export function handleDeleteCard({_id, removeCard}) {
 }
 
 export function createCard({name, link, likes, _id, owner: {_id: ownerId}}) {
-  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open, userInfo.getUserInfo);
+  const userId = userInfo.getUserId();
+  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open, userId);
 
   const cardElement = card.generateCard();
   return cardElement;

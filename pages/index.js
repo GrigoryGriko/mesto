@@ -36,9 +36,9 @@ const cardSection = new Section(
 
 Promise.all([api.getInitCards(), api.getInitUserData()])
   .then(([cards, user]) => {
-    cardSection.renderItems(cards);
-
     userInfo.setUserInfo(user);
+
+    cardSection.renderItems(cards);
   })
   .catch((err) => {
     console.log(`Ошибка загрузки данных пользователя ${err}`);

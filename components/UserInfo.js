@@ -9,12 +9,14 @@ export default class UserInfo {
   }
 
   getUserInfo = () => {
-    return {nameInput: this._elementTextName.textContent, jobInput: this._elementTextJob.textContent, Userid: this._userId};
+    return {nameInput: this._elementTextName.textContent, jobInput: this._elementTextJob.textContent};
+  }
+
+  getUserId = () => {
+    return this._userId;
   }
 
   setUserInfo = ({name, about, avatar, _id}) => {
-    console.log('iii');
-    console.dir(this);
     this._elementTextName.textContent = name;
     this._elementTextJob.textContent = about;
 
@@ -22,8 +24,7 @@ export default class UserInfo {
     this._elementAvatar.setAttribute('src', avatar);
     this._elementAvatar.setAttribute('alt', 'аватарка');
 
-    this._userId = 333;
-    console.log('asd' + _id);
+    this._userId = _id;
   }
 
 }
