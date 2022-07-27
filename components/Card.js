@@ -52,23 +52,26 @@ export default class Card {
     this._cardElementLike = this._cardElement.querySelector('.elements-grid__like');
     this._cardElementLike.addEventListener('click', this._handlerPutLike);
 
-    if (this._ownerId == this._userId) {
-      this._elementDeleteButton.addEventListener('click', this._handleDeleteCard);    //здесь при клике вызываем функцию посредник из index.js. В нее помещаем id карточки, состояние лайка, колбек...
+    if (this._ownerId === this._userId) {
+      this._elementDeleteButton.addEventListener('click', this._handleDeleteCard);
     }
     this._cardElementImage.addEventListener('click', this._handleImageClick);
   }
 
   _renderLikes = (likes) => {
-    console.log(likes[0]._id);
     const likesCount = likes.length;
     console.log(likesCount);
     this._cardLikeCounter.textContent = likesCount;
 
-    const likeIsUser = likes.some((element) => {
-      console.log(element);
-      console.log(this._ownerId);
-      return element === this._ownerId;
-    });
+    const likeIsUser = likes
+      .some((item) => {
+        console.log('item_id ' + item._id);
+
+        return item._id === this._ownerId;
+      });
+
+    console.log('ownerId ' + this._ownerId);
+
 
     console.log(likeIsUser);
 
@@ -81,7 +84,6 @@ export default class Card {
 
   _handlerPutLike = () => {
     const likeState = !this._cardElementLike.classList.contains('elements-grid__like_active') ? true : false;
-
     this._handlePutLike(this._id, likeState, this._renderLikes);
   }
 
