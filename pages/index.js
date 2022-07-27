@@ -19,13 +19,12 @@ import  {
 } from '../utils/utils.js';
 
 
-const config = {
+export const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46/',
   keyAuth: '110d7e44-821c-45aa-84e8-91b557d72ac5'
 }
 
 const api = new Api(config);
-
 
 const cardSection = new Section(
   (cardsList) => {
@@ -35,13 +34,11 @@ const cardSection = new Section(
     cardSection.addItem(...allCardNodes);
   } , elementsGridContainer);
 
-
 Promise.all([api.getInitCards(), api.getInitUserData()])
   .then(([cards, user]) => {
-    cardSection.renderItems(cards);
+    userInfo.setUserInfo(user);
 
-    userInfo.setUserInfo({name: user.name, about: user.about});   //создать еще функцию и объеденить весь объект пользователя
-    userInfo.setUserAvatar(user.avatar);
+    cardSection.renderItems(cards);
   })
   .catch((err) => {
     console.log(`Ошибка загрузки данных пользователя ${err}`);

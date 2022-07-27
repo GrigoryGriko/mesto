@@ -51,14 +51,26 @@ export default class Api {
         authorization: this._keyAuth
       },
       body: JSON.stringify(cardId)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));    //чекпоинт
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  putLike() {
-
+  putLike(urlKey, cardId) {
+    return fetch((this._baseUrl + urlKey + '/' + cardId + '/likes'), {
+      method: 'PUT',
+      headers: {
+        authorization: this._keyAuth
+      },
+      body: JSON.stringify(cardId)
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  deleteLike() {
-
+  deleteLike(urlKey, cardId) {
+    return fetch((this._baseUrl + urlKey + '/' + cardId + '/likes'), {
+      method: 'DELETE',
+      headers: {
+        authorization: this._keyAuth,
+      },
+      body: JSON.stringify(cardId)
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 }

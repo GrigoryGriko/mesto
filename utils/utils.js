@@ -5,15 +5,15 @@ import {selectorGridTemplate} from './constants.js';
 import {userInfo, editData, addCard, formListValidation, cardSection, popupWithImage, api, confirmDeleteCard} from '../pages/index.js';
 
 
+
 export function handleCardClick({name, link}) {
   popupWithImage.open(name, link);
 }
 
-
 export function handleSaveForm({nameInput, jobInput}) {
   api.editDataUser('users/me', {nameInput, jobInput})
-  .then(({name, about}) => {
-    userInfo.setUserInfo({name, about});
+  .then((userData) => {
+    userInfo.setUserInfo(userData);
   })
   .catch((err) => {
     console.log(`Ошибка изменения данных пользователя ${err}`);
@@ -27,8 +27,8 @@ export function handleSaveForm({nameInput, jobInput}) {
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   api.addCard('cards', {name, link})
-    .then(({name, link, _id, owner}) => {
-      cardSection.addItem( createCard({name, link, like: 0, _id, owner.Id}) );    //чекпоинт
+    .then((cardData) => {
+      cardSection.addItem( createCard(cardData) );
     })
     .catch((err) => {
       console.log(`Ошибка добавления карточки ${err}`);
@@ -51,8 +51,35 @@ export function handleDeleteCard({_id, removeCard}) {
     confirmDeleteCard.close();
 }
 
-export function createCard({name, link, likes = 0, _id, ownerId}) {
-  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open);
+export function handlePutLike(_id, likeState, renderLikes) {
+  if (likeState) {
+    api.putLike('cards', _id)
+    .then(({likes: likes}) => {
+      ///обновление количества, а также инициализировать лайки всех карточек,
+      //для этого надо делать проверку на присутсвие своего id среди лайкнувших
+
+      renderLikes(likes);
+    })
+    .catch((err) => {
+      console.log(`Ошибка постановки лайка ${err}`);
+    });
+
+  } else {
+    api.deleteLike('cards', _id)
+    .then(({likes: likes}) => {
+      ///обновление количества
+
+      renderLikes(likes);
+    })
+    .catch((err) => {
+      console.log(`Ошибка постановки лайка ${err}`);
+    });
+  }
+}
+
+export function createCard({name, link, likes, _id, owner: {_id: ownerId}}) {
+  const userId = userInfo.getUserId();
+  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open, userId, handlePutLike);
 
   const cardElement = card.generateCard();
   return cardElement;
