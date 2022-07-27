@@ -5,15 +5,16 @@ import {selectorGridTemplate} from './constants.js';
 import {userInfo, editData, addCard, formListValidation, cardSection, popupWithImage, api, confirmDeleteCard} from '../pages/index.js';
 
 
+
 export function handleCardClick({name, link}) {
   popupWithImage.open(name, link);
 }
 
-
 export function handleSaveForm({nameInput, jobInput}) {
   api.editDataUser('users/me', {nameInput, jobInput})
-  .then(({name, about}) => {
-    userInfo.setUserInfo({name, about});
+  .then((userData) => {
+    console.dir(userInfo);
+    userInfo.setUserInfo(userData);
   })
   .catch((err) => {
     console.log(`Ошибка изменения данных пользователя ${err}`);
@@ -52,7 +53,7 @@ export function handleDeleteCard({_id, removeCard}) {
 }
 
 export function createCard({name, link, likes, _id, owner: {_id: ownerId}}) {
-  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open, userInfo.getUserId);
+  const card = new Card({name, link, likes, _id, ownerId}, selectorGridTemplate, handleCardClick, confirmDeleteCard.open, userInfo.getUserInfo);
 
   const cardElement = card.generateCard();
   return cardElement;

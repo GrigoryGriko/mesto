@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({name, link, likes, _id, ownerId}, gridTemplateSelector, handleCardClick, openPopupConfirmation) {
+  constructor({name, link, likes, _id, ownerId}, gridTemplateSelector, handleCardClick, openPopupConfirmation, getUserInfo) {
     this._name = name;
     this._link = link;
     this._likesCount = likes.length;
@@ -11,7 +11,10 @@ export default class Card {
 
     this._openPopupConfirmation = openPopupConfirmation;
 
-    this._userId = 8;
+    this._getUserInfo = getUserInfo;
+
+    /*this._userId = getUserInfo()._id;
+    console.dir(getUserInfo());*/
   }
   _getTemplate() {
     return this._elementGridTemplate
@@ -31,9 +34,10 @@ export default class Card {
     this._setEventListeners();
 
     if (this._ownerId != this._userId) {
-      console.group(this._name);
+      console.dir(this._getUserInfo());
+      /*console.group(this._name);
       console.log(this._ownerId);
-      console.log('myId-' + this._userId);
+      console.log('myId-' + this._userId);*/
 
       this._elementDeleteButton.remove();
       this._elementDeleteButton = null;
