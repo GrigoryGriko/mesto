@@ -55,9 +55,6 @@ export function handlePutLike(_id, likeState, renderLikes) {
   if (likeState) {
     api.putLike('cards', _id)
     .then(({likes: likes}) => {
-      ///обновление количества, а также инициализировать лайки всех карточек,
-      //для этого надо делать проверку на присутсвие своего id среди лайкнувших
-
       renderLikes(likes);
     })
     .catch((err) => {
@@ -67,8 +64,6 @@ export function handlePutLike(_id, likeState, renderLikes) {
   } else {
     api.deleteLike('cards', _id)
     .then(({likes: likes}) => {
-      ///обновление количества
-
       renderLikes(likes);
     })
     .catch((err) => {
