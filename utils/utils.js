@@ -52,10 +52,11 @@ export function handleDeleteCard({_id, removeCard}) {
 }
 
 export function handlePutLike(_id, likeState) {
+  console.log(likeState);
   if (likeState) {
     api.putLike('cards', _id)
     .then((_id) => {
-      ///обновление количества
+      ///обновление количества, а также инициализировать лайки всех карточек, для этого надо делать проверку на присутсвие своего id среди лайкнувших
     })
     .catch((err) => {
       console.log(`Ошибка постановки лайка ${err}`);

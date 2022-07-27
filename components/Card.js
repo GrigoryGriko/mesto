@@ -59,10 +59,10 @@ export default class Card {
 
   _handlerPutLike = () => {
     //this._cardElementLike.classList.toggle('elements-grid__like_active');
-    const stateLike = this._cardElementLike.classList.contains('elements-grid__like_active') ? true : false;
+    const likeState = !this._cardElementLike.classList.contains('elements-grid__like_active') ? true : false;
     this._cardElementLike.classList.toggle('elements-grid__like_active');
 
-    this._handlePutLike(this._id, stateLike);
+    this._handlePutLike(this._id, likeState);
   }
 
   removeCard = () => {
