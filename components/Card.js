@@ -45,6 +45,8 @@ export default class Card {
     this._likesCount = this._likes.length;
     this._cardLikeCounter.textContent = this._likesCount;
 
+    this._renderLikes();
+
     return this._cardElement;
   }
 
@@ -58,24 +60,19 @@ export default class Card {
     this._cardElementImage.addEventListener('click', this._handleImageClick);
   }
 
-  _renderLikes = (likes) => {
-    const likesCount = likes.length;
-    console.log(likesCount);
-    this._cardLikeCounter.textContent = likesCount;
+  updateLikes = (likes) => {
+    this._likes = likes;
+    this._likesCount = this._likes.length;
 
-    const likeIsUser = likes
-      .some((item) => {
-        console.log('item_id ' + item._id);
+    this._renderLikes();
+  }
 
-        return item._id === this._ownerId;
-      });
+  _renderLikes = () => {
+    this._cardLikeCounter.textContent = this._likesCount;
 
-    console.log('ownerId ' + this._ownerId);
+    this._likeIsUser = this._likes.some(item => item._id === this._userId);
 
-
-    console.log(likeIsUser);
-
-    if (likeIsUser) {
+    if (this._likeIsUser) {
       this._cardElementLike.classList.add('elements-grid__like_active');
     } else {
       this._cardElementLike.classList.remove('elements-grid__like_active');
@@ -84,7 +81,7 @@ export default class Card {
 
   _handlerPutLike = () => {
     const likeState = !this._cardElementLike.classList.contains('elements-grid__like_active') ? true : false;
-    this._handlePutLike(this._id, likeState, this._renderLikes);
+    this._handlePutLike(this._id, likeState, this.updateLikes);
   }
 
   removeCard = () => {

@@ -51,11 +51,11 @@ export function handleDeleteCard({_id, removeCard}) {
     confirmDeleteCard.close();
 }
 
-export function handlePutLike(_id, likeState, renderLikes) {
+export function handlePutLike(_id, likeState, updateLikes) {
   if (likeState) {
     api.putLike('cards', _id)
     .then(({likes: likes}) => {
-      renderLikes(likes);
+      updateLikes(likes);
     })
     .catch((err) => {
       console.log(`Ошибка постановки лайка ${err}`);
@@ -64,7 +64,7 @@ export function handlePutLike(_id, likeState, renderLikes) {
   } else {
     api.deleteLike('cards', _id)
     .then(({likes: likes}) => {
-      renderLikes(likes);
+      updateLikes(likes);
     })
     .catch((err) => {
       console.log(`Ошибка постановки лайка ${err}`);
