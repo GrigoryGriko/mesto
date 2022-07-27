@@ -12,18 +12,13 @@ export default class UserInfo {
     return {nameInput: this._elementTextName.textContent, jobInput: this._elementTextJob.textContent};
   }
 
-  setUserInfo({name, about}) {
+  setUserInfo({name, about, avatar}) {
     this._elementTextName.textContent = name;
     this._elementTextJob.textContent = about;
-  }
 
-  setUserAvatar(avatar) {
+
     this._elementAvatar.setAttribute('src', avatar);
     this._elementAvatar.setAttribute('alt', 'аватарка');
   }
 
-  /*setUserInfo({nameInput, jobInput}, initUserData) {
-    this._elementTextName.textContent = nameInput;
-    this._elementTextJob.textContent = jobInput;
-  }*/
 }

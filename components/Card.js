@@ -6,12 +6,12 @@ export default class Card {
     this._id = _id;
     this._ownerId = ownerId;
 
-    this._userId = 0;   ///как-то передать его;
-
     this._elementGridTemplate = document.querySelector(gridTemplateSelector);
     this._handleCardClick = handleCardClick;
 
     this._openPopupConfirmation = openPopupConfirmation;
+
+    this._userId = 8;
   }
   _getTemplate() {
     return this._elementGridTemplate
@@ -33,7 +33,7 @@ export default class Card {
     if (this._ownerId != this._userId) {
       console.group(this._name);
       console.log(this._ownerId);
-      console.log(this._userId);
+      console.log('myId-' + this._userId);
 
       this._elementDeleteButton.remove();
       this._elementDeleteButton = null;

@@ -38,8 +38,7 @@ Promise.all([api.getInitCards(), api.getInitUserData()])
   .then(([cards, user]) => {
     cardSection.renderItems(cards);
 
-    userInfo.setUserInfo({name: user.name, about: user.about});   //создать еще функцию и объеденить весь объект пользователя
-    userInfo.setUserAvatar(user.avatar);
+    userInfo.setUserInfo(user);
   })
   .catch((err) => {
     console.log(`Ошибка загрузки данных пользователя ${err}`);
