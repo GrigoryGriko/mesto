@@ -44,15 +44,15 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  updateAvatar(urlKey, avatar) {
-    return fetch((`${this._baseUrl}${urlKey}`), {
+  updateAvatar(avatar) {
+    return fetch((`${this._baseUrl}users/me/avatar`), {
       method: 'PATCH',
       headers: {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(avatar)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}${urlKey}`, console.dir(avatar)));
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}users/me/avata`, console.dir(avatar)));
     //Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}${urlKey}/${avatar} `));
   }   //Promise.reject(console.dir(avatar)));
 

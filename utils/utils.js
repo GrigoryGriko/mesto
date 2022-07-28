@@ -39,7 +39,7 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
 }
 
 export function handleUpdateAvatar({linkAvatarInput: avatar}) {
-  api.updateAvatar('users/me/avatar', avatar)
+  api.updateAvatar(`{"avatar":${avatar}}`)
     .then((userData) => {
       userInfo.setUserInfo(userData);
     })
