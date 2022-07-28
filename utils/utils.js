@@ -38,8 +38,8 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   formListValidation['form-add-card'].lockButton();
 }
 
-export function handleUpdateAvatar(avatar) {
-  api.addCard('users/me', avatar)
+export function handleUpdateAvatar({linkAvatarInput: avatar}) {
+  api.updateAvatar('users/me/avatar', avatar)
     .then((userData) => {
       userInfo.setUserInfo(userData);
     })

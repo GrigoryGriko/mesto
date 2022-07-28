@@ -3,9 +3,6 @@ export default class UserInfo {
     this._elementTextName = document.querySelector(textNameSelector);
     this._elementTextJob = document.querySelector(textJobSelector);
     this._elementAvatar = document.querySelector(userAvatarSelector);
-
-    //this.getUserInfo = this.getUserInfo.bind(this);
-    //this.setUserInfo = this.setUserInfo.bind(this);   //что-то делать с привязкой контекста
   }
 
   getUserInfo = () => {

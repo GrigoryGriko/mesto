@@ -44,15 +44,16 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  addCard(urlKey, avatar) {
-    return fetch((this._baseUrl + urlKey + '/' + avatar), {
+  updateAvatar(urlKey, avatar) {
+    return fetch((`${this._baseUrl}${urlKey}/${avatar}`), {
       method: 'POST',
       headers: {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(avatar)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+    }).then(res => res.ok ? res.json() : Promise.reject(console.dir(avatar)));
+    //Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}${urlKey}/${avatar} `));
   }
 
   deleteCard(urlKey, cardId) {
