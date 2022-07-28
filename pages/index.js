@@ -68,7 +68,10 @@ editData.setEventListeners();
 const addCard = new PopupWithForm(
   popupsListSelector.popupAddCardSelector, formElementSelector,
   handleAddCardButton, formListValidation['form-add-card'].resetValidation,
-  {}
+  {
+    buttonSubmitSelector: elementsDocument.submitButtonSelector,
+    textButtonDefault: 'Создать', textButtonLoader:'Создание...'
+  }
 );
 addCard.setEventListeners();
 
@@ -76,14 +79,21 @@ addCard.setEventListeners();
 const updateAvatar = new PopupWithForm(
   popupsListSelector.popupUpdateAvatarSelector, formElementSelector,
   handleUpdateAvatar, formListValidation['form-update-avatar'].resetValidation,
-  {}
+  {
+    buttonSubmitSelector: elementsDocument.submitButtonSelector,
+    textButtonDefault: 'Сохранить', textButtonLoader:'Сохранение...'
+  }
 )
 updateAvatar.setEventListeners();
 
 
 export const confirmDeleteCard = new PopupWithConfirmation(
   popupsListSelector.popupDeleteCardSelector, formElementSelector,
-  handleDeleteCard
+  handleDeleteCard,
+  {
+    buttonSubmitSelector: elementsDocument.submitButtonSelector,
+    textButtonDefault: 'Да', textButtonLoader:'Удаление...'
+  }
 );
 confirmDeleteCard.setEventListeners();
 

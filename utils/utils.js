@@ -29,43 +29,57 @@ export function handleSaveForm({nameInput, jobInput}) {
 }
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
+  addCard.renderLoading(true);
+
   api.addCard({name, link})
     .then((cardData) => {
       cardSection.addItem( createCard(cardData) );
     })
     .catch((err) => {
       console.log(`Ошибка добавления карточки ${err}`);
+    })
+    .finally(() => {
+      addCard.close();
+      addCard.renderLoading(false);
     });
-
-  addCard.close();
 
   formListValidation['form-add-card'].lockButton();
 }
 
 export function handleUpdateAvatar({linkAvatarInput: avatar}) {
+  updateAvatar.renderLoading(true);
+
   api.updateAvatar({avatar: avatar})
     .then((userData) => {
       userInfo.setUserInfo(userData);
     })
     .catch((err) => {
       console.log(`Ошибка изменения аватара ${err}`);
+    })
+    .finally(() => {
+      updateAvatar.close();
+      updateAvatar.renderLoading(false);
     });
 
-  updateAvatar.close();
-
-  formListValidation['form-add-card'].lockButton();
+  formListValidation['form-update-avatar'].lockButton();
 }
 
 export function handleDeleteCard({_id, removeCard}) {
+  confirmDeleteCard.renderLoading(true);
+
   api.deleteCard(_id)
     .then((_id) => {
       removeCard();
     })
     .catch((err) => {
       console.log(`Ошибка удаления карточки ${err}`);
+    })
+    .finally(() => {
+      confirmDeleteCard.close();
+      confirmDeleteCard.renderLoading(false);
     });
 
-    confirmDeleteCard.close();
+    formListValidation['form-delete-card'].lockButton();
 }
 
 export function handlePutLike(_id, likeState, updateLikes) {

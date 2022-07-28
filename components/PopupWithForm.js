@@ -2,7 +2,16 @@ import Popup from './Popup.js';
 
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, formElementSelector, submitHandler, resetValidation, {buttonSubmitSelector, textButtonDefault, textButtonLoader}, getUserInfo = null) {
+  constructor(
+      popupSelector, formElementSelector, submitHandler,
+      resetValidation,
+      {
+        buttonSubmitSelector,
+        textButtonDefault,
+        textButtonLoader
+      },
+      getUserInfo = null
+    ) {
     super(popupSelector);
     this._popup = document.querySelector(popupSelector);
     this._formElement = this._popup.querySelector(formElementSelector);
@@ -45,11 +54,7 @@ export default class PopupWithForm extends Popup {
   }
 
   renderLoading(isLoading) {
-    if (isLoading) {
-      this._buttonSubmitElement.textContent = this._configButtonText.textButtonLoader;
-    } else {
-      this._buttonSubmitElement.textContent = this._configButtonText.textButtonDefault;
-    }
+    super.renderLoading(isLoading);
   }
 
   open() {
