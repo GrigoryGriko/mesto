@@ -14,7 +14,7 @@ export default class Api {
   }
 
   getInitUserData() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}users/me`, {
       headers: {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'

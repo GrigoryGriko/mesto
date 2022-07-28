@@ -41,6 +41,6 @@ export const textJobSelector = '.profile__info-descript';
 export const elementsGridContainer = '.elements-grid__list';
 export const selectorGridTemplate = '#elements-grid__item-template';
 
-export const userAvatarSelector = 'profile__button-avatar';
+export const userAvatarSelector = '.profile__button-avatar';
 export const userNameSelector = '.profile__info-name';
 export const userAboutSelector = '.profile__info-descript';
