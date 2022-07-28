@@ -119,3 +119,4 @@ buttonUpdateAvatar.addEventListener( 'click', function() {
 
 
 export {userInfo, editData, addCard, updateAvatar, formListValidation, cardSection, api};
+/**/
