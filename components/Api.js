@@ -22,8 +22,8 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status} ${res.statusText}`));
   }
 
-  editDataUser(urlKey, {nameInput, jobInput}) {
-    return fetch((this._baseUrl + urlKey), {
+  editDataUser({nameInput, jobInput}) {
+    return fetch((`${this._baseUrl}users/me`), {
       method: 'PATCH',
       headers: {
         authorization: this._keyAuth,
@@ -33,8 +33,8 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  addCard(urlKey, {name, link}) {
-    return fetch((this._baseUrl + urlKey), {
+  addCard({name, link}) {
+    return fetch((`${this._baseUrl}cards`), {
       method: 'POST',
       headers: {
         authorization: this._keyAuth,
@@ -52,12 +52,11 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(avatar)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}users/me/avata`, console.dir(avatar)));
-    //Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}${urlKey}/${avatar} `));
-  }   //Promise.reject(console.dir(avatar)));
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+  }
 
-  deleteCard(urlKey, cardId) {
-    return fetch((this._baseUrl + urlKey + '/' + cardId), {
+  deleteCard(cardId) {
+    return fetch((`${this._baseUrl}cards/${cardId}`), {
       method: 'DELETE',
       headers: {
         authorization: this._keyAuth
@@ -66,8 +65,8 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  putLike(urlKey, cardId) {
-    return fetch((this._baseUrl + urlKey + '/' + cardId + '/likes'), {
+  putLike(cardId) {
+    return fetch((`${this._baseUrl}cards/${cardId}/likes`), {
       method: 'PUT',
       headers: {
         authorization: this._keyAuth
@@ -76,8 +75,8 @@ export default class Api {
     }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
   }
 
-  deleteLike(urlKey, cardId) {
-    return fetch((this._baseUrl + urlKey + '/' + cardId + '/likes'), {
+  deleteLike(cardId) {
+    return fetch((`${this._baseUrl}cards${cardId}/likes`), {
       method: 'DELETE',
       headers: {
         authorization: this._keyAuth,

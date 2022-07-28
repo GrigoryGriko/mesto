@@ -11,7 +11,7 @@ export function handleCardClick({name, link}) {
 }
 
 export function handleSaveForm({nameInput, jobInput}) {
-  api.editDataUser('users/me', {nameInput, jobInput})
+  api.editDataUser({nameInput, jobInput})
   .then((userData) => {
     userInfo.setUserInfo(userData);
   })
@@ -25,7 +25,7 @@ export function handleSaveForm({nameInput, jobInput}) {
 }
 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
-  api.addCard('cards', {name, link})
+  api.addCard({name, link})
     .then((cardData) => {
       cardSection.addItem( createCard(cardData) );
     })
@@ -39,7 +39,7 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
 }
 
 export function handleUpdateAvatar({linkAvatarInput: avatar}) {
-  api.updateAvatar(`{"avatar":${avatar}}`)
+  api.updateAvatar({avatar: avatar})
     .then((userData) => {
       userInfo.setUserInfo(userData);
     })
@@ -53,7 +53,7 @@ export function handleUpdateAvatar({linkAvatarInput: avatar}) {
 }
 
 export function handleDeleteCard({_id, removeCard}) {
-  api.deleteCard('cards', _id)
+  api.deleteCard(_id)
     .then((_id) => {
       removeCard();
     })
@@ -66,7 +66,7 @@ export function handleDeleteCard({_id, removeCard}) {
 
 export function handlePutLike(_id, likeState, updateLikes) {
   if (likeState) {
-    api.putLike('cards', _id)
+    api.putLike(_id)
     .then(({likes: likes}) => {
       updateLikes(likes);
     })
@@ -75,7 +75,7 @@ export function handlePutLike(_id, likeState, updateLikes) {
     });
 
   } else {
-    api.deleteLike('cards', _id)
+    api.deleteLike(_id)
     .then(({likes: likes}) => {
       updateLikes(likes);
     })
