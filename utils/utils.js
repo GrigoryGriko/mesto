@@ -11,15 +11,19 @@ export function handleCardClick({name, link}) {
 }
 
 export function handleSaveForm({nameInput, jobInput}) {
+  editData.renderLoading(true);
+
   api.editDataUser({nameInput, jobInput})
   .then((userData) => {
     userInfo.setUserInfo(userData);
   })
   .catch((err) => {
     console.log(`Ошибка изменения данных пользователя ${err}`);
+  })
+  .finally(() => {
+    editData.close();
+    editData.renderLoading(false);
   });
-
-  editData.close();
 
   formListValidation['form-edit-info'].lockButton();
 }

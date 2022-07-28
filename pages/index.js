@@ -56,21 +56,27 @@ const userInfo = new UserInfo({textNameSelector, textJobSelector, userAvatarSele
 
 const editData = new PopupWithForm(
   popupsListSelector.popupEditDataSelector, formElementSelector,
-  handleSaveForm, formListValidation['form-edit-info'].resetValidation, userInfo.getUserInfo
+  handleSaveForm, formListValidation['form-edit-info'].resetValidation,
+  {
+    buttonSubmitSelector: elementsDocument.submitButtonSelector,
+    textButtonDefault: 'Сохранить', textButtonLoader:'Сохранение...'
+  }, userInfo.getUserInfo
 );
 editData.setEventListeners();
 
 
 const addCard = new PopupWithForm(
   popupsListSelector.popupAddCardSelector, formElementSelector,
-  handleAddCardButton, formListValidation['form-add-card'].resetValidation
+  handleAddCardButton, formListValidation['form-add-card'].resetValidation,
+  {}
 );
 addCard.setEventListeners();
 
 
 const updateAvatar = new PopupWithForm(
   popupsListSelector.popupUpdateAvatarSelector, formElementSelector,
-  handleUpdateAvatar, formListValidation['form-update-avatar'].resetValidation
+  handleUpdateAvatar, formListValidation['form-update-avatar'].resetValidation,
+  {}
 )
 updateAvatar.setEventListeners();
 
