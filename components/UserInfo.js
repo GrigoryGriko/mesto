@@ -18,8 +18,8 @@ export default class UserInfo {
     this._elementTextJob.textContent = about;
 
 
-    this._elementAvatar.setAttribute('src', avatar);
-    this._elementAvatar.setAttribute('alt', 'аватарка');
+    //this._elementAvatar.setAttribute('src', avatar);
+    this._elementAvatar.style.backgroundImage = `url('${avatar}')`;
 
     this._userId = _id;
   }

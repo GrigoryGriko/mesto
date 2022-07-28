@@ -45,8 +45,8 @@ export default class Api {
   }
 
   updateAvatar(urlKey, avatar) {
-    return fetch((`${this._baseUrl}${urlKey}/${avatar}`), {
-      method: 'POST',
+    return fetch((`${this._baseUrl}${urlKey}`), {
+      method: 'PATCH',
       headers: {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'
