@@ -102,4 +102,4 @@ buttonUpdateAvatar.addEventListener( 'click', function() {
 }, false);
 
 
-export {userInfo, editData, addCard, formListValidation, cardSection, api};
+export {userInfo, editData, addCard, updateAvatar, formListValidation, cardSection, api};

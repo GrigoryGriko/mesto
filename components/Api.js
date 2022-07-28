@@ -52,9 +52,9 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(avatar)
-    }).then(res => res.ok ? res.json() : Promise.reject(console.dir(avatar)));
+    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}${urlKey}`, console.dir(avatar)));
     //Promise.reject(`Не удается записать ${res.status} ${res.statusText} - ${this._baseUrl}${urlKey}/${avatar} `));
-  }
+  }   //Promise.reject(console.dir(avatar)));
 
   deleteCard(urlKey, cardId) {
     return fetch((this._baseUrl + urlKey + '/' + cardId), {

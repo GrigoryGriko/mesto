@@ -2,7 +2,7 @@ import Card from '../components/Card.js';
 
 import {selectorGridTemplate} from './constants.js';
 
-import {userInfo, editData, addCard, formListValidation, cardSection, popupWithImage, api, confirmDeleteCard} from '../pages/index.js';
+import {userInfo, editData, addCard, updateAvatar, formListValidation, cardSection, popupWithImage, api, confirmDeleteCard} from '../pages/index.js';
 
 
 
@@ -47,7 +47,7 @@ export function handleUpdateAvatar({linkAvatarInput: avatar}) {
       console.log(`Ошибка изменения аватара ${err}`);
     });
 
-  addCard.close();
+  updateAvatar.close();
 
   formListValidation['form-add-card'].lockButton();
 }

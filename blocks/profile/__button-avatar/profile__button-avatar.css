@@ -10,6 +10,7 @@
   background: url(../../../images/avatar.jpg) no-repeat center/cover;
   border-radius: 50%;
   border: none;
+  outline: none;
 
   overflow: hidden;
 }
