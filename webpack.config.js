@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const publicPath = () => isDev ?'/':'/mesto';
+
 module.exports = {
   entry: {
     main: './pages/index.js'
@@ -11,7 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    publicPath: '',
+    publicPath: publicPath(),
   },
   mode: 'development',
   devServer: {
