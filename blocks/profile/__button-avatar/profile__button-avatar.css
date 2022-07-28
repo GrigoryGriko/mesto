@@ -1,4 +1,4 @@
-.profile__avatar {
+.profile__button-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,10 +9,12 @@
   height: 120px;
   background: url(../../../images/avatar.jpg) no-repeat center/cover;
   border-radius: 50%;
+  border: none;
+
   overflow: hidden;
 }
 
-.profile__avatar::before {
+.profile__button-avatar::before {
   content: url(../../../images/avatar-edit.svg);
   width: 26px;
   height: 26px;
@@ -25,12 +27,12 @@
   opacity: 0;
   transition: visibility .3s, opacity .3s ease;
 }
-.profile__avatar:hover::before {
+.profile__button-avatar:hover::before {
   visibility: visible;
   opacity: 1;
 }
 
-.profile__avatar::after {
+.profile__button-avatar::after {
   content: '';
   position: absolute;
   left: 0;
@@ -45,7 +47,7 @@
   opacity: 0;
   transition: visibility .3s, opacity .3s ease;
 }
-.profile__avatar:hover::after {
+.profile__button-avatar:hover::after {
   background-color: #000;
   cursor: pointer;
 

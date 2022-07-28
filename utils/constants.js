@@ -20,10 +20,12 @@ export const elementsDocument = {
 export const page = document.querySelector('.page');
 export const buttonEdit = page.querySelector('.profile__button-edit');
 export const buttonAdd = page.querySelector('.profile__button-add');
+export const buttonUpdateAvatar = page.querySelector('.profile__button-avatar');
 
 export const popupsListSelector = {
   popupEditDataSelector: '.popup_edit_data',
   popupAddCardSelector: '.popup_add_card',
+  popupUpdateAvatarSelector: '.popup_update_avatar',
   popupDeleteCardSelector: '.popup_delete_card',
   popupShowImageSelector: '.popup_show_image'
 };
@@ -39,6 +41,6 @@ export const textJobSelector = '.profile__info-descript';
 export const elementsGridContainer = '.elements-grid__list';
 export const selectorGridTemplate = '#elements-grid__item-template';
 
-export const userAvatarSelector = '.profile__avatar';
+export const userAvatarSelector = 'profile__button-avatar';
 export const userNameSelector = '.profile__info-name';
 export const userAboutSelector = '.profile__info-descript';

@@ -9,13 +9,14 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
 import {
-  elementsDocument, page, buttonEdit, buttonAdd, popupsListSelector,
+  elementsDocument, page, buttonEdit, buttonAdd, buttonUpdateAvatar, popupsListSelector,
   formElementSelector, textNameSelector, textJobSelector, elementsGridContainer,
   fullImageSelector, captionImageSelector, userAvatarSelector
 } from '../utils/constants.js';
 
 import  {
-  handleSaveForm, handleAddCardButton, createCard, handleDeleteCard
+  handleSaveForm, handleAddCardButton, createCard, handleDeleteCard,
+  handleUpdateAvatar
 } from '../utils/utils.js';
 
 
@@ -66,6 +67,14 @@ const addCard = new PopupWithForm(
 );
 addCard.setEventListeners();
 
+
+const updateAvatar = new PopupWithForm(
+  popupsListSelector.popupUpdateAvatarSelector, formElementSelector,
+  handleUpdateAvatar, formListValidation['form-update-avatar'].resetValidation
+)
+updateAvatar.setEventListeners();
+
+
 export const confirmDeleteCard = new PopupWithConfirmation(
   popupsListSelector.popupDeleteCardSelector, formElementSelector,
   handleDeleteCard
@@ -86,6 +95,10 @@ buttonEdit.addEventListener( 'click', function() {
 
 buttonAdd.addEventListener( 'click', function() {
   addCard.open();
+}, false);
+
+buttonUpdateAvatar.addEventListener( 'click', function() {
+  updateAvatar.open();
 }, false);
 
 

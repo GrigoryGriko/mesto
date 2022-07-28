@@ -38,6 +38,20 @@ export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   formListValidation['form-add-card'].lockButton();
 }
 
+export function handleUpdateAvatar(avatar) {
+  api.addCard('users/me', avatar)
+    .then((userData) => {
+      userInfo.setUserInfo(userData);
+    })
+    .catch((err) => {
+      console.log(`Ошибка изменения аватара ${err}`);
+    });
+
+  addCard.close();
+
+  formListValidation['form-add-card'].lockButton();
+}
+
 export function handleDeleteCard({_id, removeCard}) {
   api.deleteCard('cards', _id)
     .then((_id) => {
