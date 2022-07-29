@@ -35,13 +35,4 @@ export default class Popup {
     this._popup.addEventListener('mousedown', this._handleOverlayClose);
     this._popup.addEventListener('mousedown', this._handleButtonClose);
   }
-
-
-  renderLoading(isLoading) {
-    if (isLoading) {
-      this._buttonSubmitElement.textContent = this._configButtonText.textButtonLoader;
-    } else {
-      this._buttonSubmitElement.textContent = this._configButtonText.textButtonDefault;
-    }
-  }
 }

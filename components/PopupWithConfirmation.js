@@ -38,7 +38,11 @@ _getInputValues = () => {
   }
 
   renderLoading(isLoading) {
-    super.renderLoading(isLoading);
+    if (isLoading) {
+      this._buttonSubmitElement.textContent = this._configButtonText.textButtonLoader;
+    } else {
+      this._buttonSubmitElement.textContent = this._configButtonText.textButtonDefault;
+    }
   }
 
   open = (_id, removeCard) => {

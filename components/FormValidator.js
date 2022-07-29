@@ -67,7 +67,7 @@ export default class FormValidator {
     });
   }
 
-  _unlockButton() {
+  unlockButton() {
     this._buttonSubmit.disabled = false;
     this._buttonSubmit.classList.remove(this._inactiveButtonClass);
   }
@@ -76,7 +76,7 @@ export default class FormValidator {
     if ( this._isInvalidInput() ) {
       this.lockButton();
     } else {
-      this._unlockButton(this._buttonSubmit);
+      this.unlockButton(this._buttonSubmit);
     }
   }
 

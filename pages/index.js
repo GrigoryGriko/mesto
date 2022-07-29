@@ -54,7 +54,7 @@ Array.from(page.querySelectorAll(formElementSelector)).forEach((item) => {
 
 const userInfo = new UserInfo({textNameSelector, textJobSelector, userAvatarSelector});
 
-const editData = new PopupWithForm(
+const dataEdit = new PopupWithForm(
   popupsListSelector.popupEditDataSelector, formElementSelector,
   handleSaveForm, formListValidation['form-edit-info'].resetValidation,
   {
@@ -62,10 +62,10 @@ const editData = new PopupWithForm(
     textButtonDefault: 'Сохранить', textButtonLoader:'Сохранение...'
   }, userInfo.getUserInfo
 );
-editData.setEventListeners();
+dataEdit.setEventListeners();
 
 
-const addCard = new PopupWithForm(
+const cardAdd = new PopupWithForm(
   popupsListSelector.popupAddCardSelector, formElementSelector,
   handleAddCardButton, formListValidation['form-add-card'].resetValidation,
   {
@@ -73,10 +73,10 @@ const addCard = new PopupWithForm(
     textButtonDefault: 'Создать', textButtonLoader:'Создание...'
   }
 );
-addCard.setEventListeners();
+cardAdd.setEventListeners();
 
 
-const updateAvatar = new PopupWithForm(
+const avatarUpdate = new PopupWithForm(
   popupsListSelector.popupUpdateAvatarSelector, formElementSelector,
   handleUpdateAvatar, formListValidation['form-update-avatar'].resetValidation,
   {
@@ -84,7 +84,7 @@ const updateAvatar = new PopupWithForm(
     textButtonDefault: 'Сохранить', textButtonLoader:'Сохранение...'
   }
 )
-updateAvatar.setEventListeners();
+avatarUpdate.setEventListeners();
 
 
 export const confirmDeleteCard = new PopupWithConfirmation(
@@ -106,16 +106,16 @@ popupWithImage.setEventListeners();
 
 
 buttonEdit.addEventListener( 'click', function() {
-  editData.open();
+  dataEdit.open();
 }, false);
 
 buttonAdd.addEventListener( 'click', function() {
-  addCard.open();
+  cardAdd.open();
 }, false);
 
 buttonUpdateAvatar.addEventListener( 'click', function() {
-  updateAvatar.open();
+  avatarUpdate.open();
 }, false);
 
 
-export {userInfo, editData, addCard, updateAvatar, formListValidation, cardSection, api};
+export {userInfo, dataEdit, cardAdd, avatarUpdate, formListValidation, cardSection, api};

@@ -4,13 +4,22 @@ export default class Api {
     this._keyAuth = keyAuth;
   }
 
+  _getResponseData(res) {
+    if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}  ${res.statusText}`);
+    }
+    return res.json();
+
+    //res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`)
+  }
+
   getInitCards() {
     return fetch(`${this._baseUrl}cards`, {
       headers: {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'
       }
-    }).then(res => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 
   getInitUserData() {
@@ -19,7 +28,7 @@ export default class Api {
         authorization: this._keyAuth,
         'Content-Type': 'application/json'
       }
-    }).then(res => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 
   editDataUser({nameInput, jobInput}) {
@@ -30,7 +39,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: nameInput, about: jobInput})
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 
   addCard({name, link}) {
@@ -41,7 +50,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: name, link: link})
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 
   updateAvatar(avatar) {
@@ -52,7 +61,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(avatar)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 
   deleteCard(cardId) {
@@ -62,7 +71,7 @@ export default class Api {
         authorization: this._keyAuth
       },
       body: JSON.stringify(cardId)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 
   putLike(cardId) {
@@ -72,7 +81,7 @@ export default class Api {
         authorization: this._keyAuth
       },
       body: JSON.stringify(cardId)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 
   deleteLike(cardId) {
@@ -82,6 +91,6 @@ export default class Api {
         authorization: this._keyAuth,
       },
       body: JSON.stringify(cardId)
-    }).then(res => res.ok ? res.json() : Promise.reject(`Не удается записать ${res.status} ${res.statusText}`));
+    }).then(res => this._getResponseData(res));
   }
 }

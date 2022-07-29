@@ -13,7 +13,6 @@ export default class PopupWithForm extends Popup {
       getUserInfo = null
     ) {
     super(popupSelector);
-    this._popup = document.querySelector(popupSelector);
     this._formElement = this._popup.querySelector(formElementSelector);
 
     this._submitHandler = submitHandler;
@@ -54,7 +53,11 @@ export default class PopupWithForm extends Popup {
   }
 
   renderLoading(isLoading) {
-    super.renderLoading(isLoading);
+    if (isLoading) {
+      this._buttonSubmitElement.textContent = this._configButtonText.textButtonLoader;
+    } else {
+      this._buttonSubmitElement.textContent = this._configButtonText.textButtonDefault;
+    }
   }
 
   open() {
